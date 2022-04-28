@@ -61,8 +61,8 @@
 		p5.mousePressed = () => {
 			if (finishedDrawing || moveCanvas || pallette || overButton) {
 				return;
-			} // Assign current mouse position to variables.
-
+			} 
+			// Assign current mouse position to variables.
 			x = p5.mouseX;
 			y = p5.mouseY;
 			px = p5.mouseX;

@@ -51,20 +51,21 @@
 		console.log('window.document.innerWidth: ', window.screen.width);
 		if (window.screen.width <= 560) {
 			createInfoModals = false;
+			window.addEventListener("scroll", scrollFunction)
 		}
 		console.log('onmount');
 		let gallery = document.getElementById('gallery');
-		gallery.addEventListener('scroll', function () {
-			console.log('scroll registered');
-			count += 5;
-			console.log('scrollY position: ', gallery.scrollTop);
-			console.log('Window Y: ', window.innerHeight);
-			console.log('body: ', gallery.offsetHeight);
-			if (gallery.scrollTop + window.innerHeight > gallery.offsetHeight - 150) {
+		let scroll = true;
+		gallery.addEventListener('scroll', scrollFunction);
+		function scrollFunction() {
+			console.log('scroll registered: ', scroll);
+			if (gallery.scrollTop + window.innerHeight > gallery.offsetHeight - 150 && scroll) {
 				console.log('near bottom');
+				count += 5;
 				getImages(count);
+				scroll = false;
 			}
-		});
+		}
 	});
 </script>
 
@@ -110,6 +111,7 @@
 <style>
 	.gallery {
 		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
 		overflow-y: scroll;
 		width: 100vw;
 		display: grid;
