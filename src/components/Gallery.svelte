@@ -71,7 +71,6 @@
 
 <div class="gallery" id="gallery">
 	{#each repoImages as image, i}
-		{#if i % 9 === 0 || i % 10 === 9}
 			<div class="gallery-container large">
 				<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
 					<div class="image" on:click={openImage(image)}>

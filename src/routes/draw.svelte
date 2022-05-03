@@ -2,6 +2,9 @@
 	import Draw from '../components/Testp5.svelte';
 	import { onMount } from 'svelte';
 	import StartDrawModal from '../components/StartDrawModal.svelte';
+	import DrawInstructions from '../components/DrawInstructModal.svelte';
+	import { cloudsToBe } from '../stores/wpTexts';
+	import { drawInstruction } from '../stores/wpTexts';
 
 	let drawBackground;
 	onMount(async () => {
@@ -14,8 +17,8 @@
 		drawBackground = result[randomVal]['source_url'];
 		//get info texts from wp and pass to components for display
 
-        //Somehow need this from frame to expand on mobile:
-        /*
+		//Somehow need this from frame to expand on mobile:
+		/*
 		let html = document.getElementsByTagName('html');
 		let body = document.getElementsByTagName('body');
 		console.log('html: ', html[0]);
@@ -27,21 +30,29 @@
 	let background;
 	let drawApp = false;
 	let startDrawApp = true;
-	const startDrawing = (e) => {
+	let drawInstructions = false;
+	const setBackground = (e) => {
 		console.log('startDrawing: ', e.detail);
 		if (e.detail) {
 			background = e.detail;
 		} else {
 			background = drawBackground;
+			console.log('startDrawing BG: ', drawBackground);
 		}
-		drawApp = true;
 		startDrawApp = false;
+		drawApp = true;
 	};
 </script>
 
 {#if drawBackground && startDrawApp}
-	<StartDrawModal propValue={drawBackground} on:startDrawing={startDrawing} />
+	<StartDrawModal
+		drawInstructions={$drawInstruction}
+		cloudsToBe={$cloudsToBe}
+		propValue={drawBackground}
+		on:startDrawing={setBackground}
+	/>
 {/if}
+
 {#if drawApp}
 	<Draw propValue={background} />
 {/if}

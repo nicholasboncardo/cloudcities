@@ -13,24 +13,26 @@
 	let green = 0;
 
 	let moveCanvas; //set true when user moves over canvas on mobile
-
+	let canvas;
 	const sketch = (p5) => {
 		let image;
+
 		p5.preload = () => {
 			console.log('preload');
 			//ToDo: load images from WP
 			image = p5.loadImage(backgroundImage);
 		};
 
+		let canvasRef;
 		p5.setup = () => {
 			//Handle width of canvas based on
 			console.log('setup: ', image.width);
 			if (p5.windowWidth > 500) {
-				p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
-				p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500) {
-				p5.createCanvas(image.width / 2, p5.windowHeight);
+				canvas = p5.createCanvas(image.width / 2, p5.windowHeight);
 			}
 			p5.background(image);
 
@@ -61,7 +63,7 @@
 		p5.mousePressed = () => {
 			if (finishedDrawing || moveCanvas || pallette || overButton) {
 				return;
-			} 
+			}
 			// Assign current mouse position to variables.
 			x = p5.mouseX;
 			y = p5.mouseY;
@@ -87,12 +89,19 @@
 			// Prevent default functionality.
 			return false;
 		};
+
+		p5.windowResized = () => {
+			canvasRef = p5.select('#defaultCanvas0');
+			//console.log('canvasRef: ', canvasRef);
+			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+			let imgURL = document.getElementById('defaultCanvas0').toDataURL();
+			let img = p5.loadImage(imgURL);
+			console.log('img: ', img);
+			p5.image(img);
+		};
 	};
 
 	//set color
-	const setColor = (e) => {
-		strokeColor = e.target.id;
-	};
 
 	//set stroke width and highlight chosen width with white background
 	let strokeButtons = document.getElementsByClassName('stroke-button');
@@ -119,10 +128,11 @@
 
 	let notEnoughInfo;
 
+	let allowUpload = true;
 	const submitImage = () => {
-		if (canvasTitle && canvasDescription) {
+		if (canvasTitle && canvasDescription && allowUpload) {
+			allowUpload = false;
 			notEnoughInfo = false;
-			console.log('submit image!');
 			let formData = new FormData();
 			formData.append('title', canvasTitle);
 			formData.append('description', canvasDescription);
@@ -135,6 +145,8 @@
 					body: formData
 				});
 			});
+		} else if (!allowUpload) {
+			return;
 		} else {
 			notEnoughInfo = true;
 		}
