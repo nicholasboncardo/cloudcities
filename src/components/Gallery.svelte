@@ -14,7 +14,7 @@
 
 	const showImageDetail = (e) => {
 		if (e.srcElement.offsetLeft + e.srcElement.offsetWidth > window.innerWidth - 280) {
-			console.log('to left');
+
 			e.srcElement.children[1].style.left = '0px';
 			e.srcElement.children[1].style.transform = `translate(-${
 				e.srcElement.children[1].offsetWidth - 20
@@ -30,7 +30,6 @@
 			e.srcElement.offsetTop + e.srcElement.offsetHeight > window.innerHeight - 100 &&
 			e.srcElement.offsetLeft + e.srcElement.offsetWidth > window.innerWidth - 280
 		) {
-			console.log('change everything');
 			e.srcElement.children[1].style.transform = `translate(-${
 				e.srcElement.children[1].offsetWidth - 20
 			}px, -${e.srcElement.children[1].offsetHeight - 20}px)`;
@@ -44,24 +43,22 @@
 	};
 
 	//load on scroll
-	let count = 5;
+	let count = 10;
 	let createInfoModals = true;
 	onMount(async () => {
 		//don't create info modals on mobile
-		console.log('window.document.innerWidth: ', window.screen.width);
 		if (window.screen.width <= 560) {
 			createInfoModals = false;
 			window.addEventListener("scroll", scrollFunction)
 		}
-		console.log('onmount');
 		let gallery = document.getElementById('gallery');
 		let scroll = true;
-		gallery.addEventListener('scroll', scrollFunction);
+		document.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
-			console.log('scroll registered: ', scroll);
+			console.log('scroll registered: ');
 			if (gallery.scrollTop + window.innerHeight > gallery.offsetHeight - 150 && scroll) {
 				console.log('near bottom');
-				count += 5;
+				count += 10;
 				getImages(count);
 				scroll = false;
 			}

@@ -8,9 +8,9 @@
 		<img src={image.link} alt="" />
 	</div>
 	<div class="indiv-post-info">
-		<p>{image.date}<br />{image.location}</p>
-		<p class="desc-text">{image.title}</p>
-		<p>{image.description}</p>
+		<p>{image.date}</p>
+		<p class="desc-text">{image.description}</p>
+		<p>{image.location}</p>
 	</div>
 </div>
 
@@ -23,7 +23,6 @@
 	}
 
 	.indiv-post-info {
-		padding: 20px;
 		position: absolute;
 		right: 20px;
 		bottom: 20px;
@@ -36,6 +35,8 @@
 		justify-content: space-around;
 		text-align: start;
 		padding: 20px;
+		min-width: 200px;
+		min-height: 100px;
 	}
 
 	.indiv-post-image {
@@ -43,7 +44,7 @@
 		height: 100%;
 		width: 100%;
 		overflow: hidden;
-		background-color: rgba(100, 0, 0, 0.85);
+		background-color: rgba(0, 0, 0, 0.95);
 	}
 
 	.indiv-post-image > img {
@@ -72,8 +73,8 @@
 			object-fit: scale-down;
 		}
 
-        .indiv-post-info {
-            width: 50%;
-        }
+		.indiv-post-info {
+			width: 50%;
+		}
 	}
 </style>

@@ -145,6 +145,8 @@
 					body: formData
 				});
 			});
+			finishedDrawing = false;
+			imageSubmitted = true;
 		} else if (!allowUpload) {
 			return;
 		} else {
@@ -152,6 +154,7 @@
 		}
 	};
 
+	let imageSubmitted = false;
 	let pallette = false;
 	let finishedDrawing = false;
 
@@ -275,6 +278,22 @@
 			/>
 		</div>
 	{/if}
+	{#if imageSubmitted}
+		<div class="container">
+			<div class="modal-center">
+				<h2>Thank you! Submission complete</h2>
+				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
+				<div class="flex-row">
+					<a href="/drawing" class="href">
+						<button>Return to drawing</button>
+					</a>
+					<a href="/" class="hred">
+						<button>Visit the repository</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	{/if}
 
 	{#if !pallette && !finishedDrawing}
 		<div
@@ -374,6 +393,10 @@
 		position: fixed;
 	}
 
+	.modal-center {
+		padding: 10px;
+	}
+
 	.pallette-button {
 		bottom: 10px;
 		left: 10px;
@@ -440,6 +463,14 @@
 	button {
 		height: 50px;
 		width: 49%;
+	}
+
+	.flex-row > a {
+		width: 49%;
+	}
+
+	.flex-row > a > button {
+		width: 100%;
 	}
 
 	@media (max-width: 700px) {

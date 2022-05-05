@@ -25,7 +25,7 @@
 	};
 
 	//load on scroll
-	let count = 5;
+	let count = 10;
 	let createInfoModals = true;
 
 	onMount(async () => {
@@ -38,12 +38,12 @@
 		console.log('onmount');
 		let gallery = document.getElementById('gallery');
 		let scroll = true;
-		gallery.addEventListener('scroll', scrollFunction);
+		window.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
 			console.log('scroll registered: ', scroll);
 			if (gallery.scrollTop + window.innerHeight > gallery.offsetHeight - 150 && scroll) {
 				console.log('near bottom');
-				count += 5;
+				count += 10;
 				getImages(count);
 				scroll = false;
 			}
@@ -68,7 +68,7 @@
 							<img src={image.link} alt="" />
 						</div>
 						{#if createInfoModals}
-							<div class="img-info" style="visibility: hidden">
+							<div class="img-info" style="visibility: visible">
 								<div class="info-text">
 									<p>{image.date}</p>
 									<p>{image.location}</p>
@@ -167,13 +167,15 @@
 	.gallery-item {
 		width: 100%;
 		position: relative;
+		max-height: 60vh;
 	}
 
 	.gallery-item .image {
-        display: grid;
+		display: grid;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+		min-height: 20vh;
 	}
 
 	.gallery-item .image img {
@@ -201,7 +203,16 @@
 	.info-text {
 		position: absolute;
 		bottom: 0px;
-		padding: 10px;
+		margin-left: 10px;
+	}
+
+	.info-text > h2 {
+		margin-top: 5px;
+	}
+
+	.info-text > p {
+		margin: 0px;
+		font-size: small;
 	}
 
 	.desc-text {
