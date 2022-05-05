@@ -68,7 +68,7 @@
 							<img src={image.link} alt="" />
 						</div>
 						{#if createInfoModals}
-							<div class="img-info" style="visibility: visible">
+							<div class="img-info" style="visibility: hidden">
 								<div class="info-text">
 									<p>{image.date}</p>
 									<p>{image.location}</p>
