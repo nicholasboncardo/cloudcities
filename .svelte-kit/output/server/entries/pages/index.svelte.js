@@ -1,5 +1,5 @@
 import { c as create_ssr_component, d as createEventDispatcher, f as each, g as add_attribute, e as escape, a as subscribe, v as validate_component } from "../../chunks/index-fc226c31.js";
-import { w as writable, a as welcomeToCloudCities } from "../../chunks/wpTexts-9d5e8b63.js";
+import { w as writable, a as welcomeToCloudCities } from "../../chunks/wpTexts-245d7894.js";
 const repoImages = writable([]);
 let count = 20;
 const getImages = async (count2) => {
@@ -31,7 +31,7 @@ const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   $$result.css.add(css$1);
   return `<div class="${"gallery svelte-12o0y98"}" id="${"gallery"}"><div class="${"flex-container svelte-12o0y98"}" id="${"flex-container1"}">${each(repoImages2, (image, i) => {
     return `${i % 4 == 0 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-12o0y98"}"><div class="${"image svelte-12o0y98"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-12o0y98"}"></div>
-						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: visible"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
+						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
 									<p class="${"svelte-12o0y98"}">${escape(image.location)}</p>
 									<h2 class="${"desc-text svelte-12o0y98"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
@@ -76,9 +76,8 @@ const Start = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.modalText(modalText);
   $$result.css.add(css);
   return `<div class="${"start-container svelte-l1ic82"}"><div class="${"modal-center start-info svelte-l1ic82"}"><h2 class="${"start-headline"}">Welcome to Cloud Cities</h2>
-		${each(modalText, (text, i) => {
-    return `<p>${escape(text)}</p>`;
-  })}
+		
+		<div id="${"text"}"></div>
 		<button class="${"enter-button svelte-l1ic82"}">Enter</button></div>
 </div>`;
 });

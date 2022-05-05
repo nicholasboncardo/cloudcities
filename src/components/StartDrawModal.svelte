@@ -1,13 +1,16 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
-	import { text } from 'svelte/internal';
+	import { onMount } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let propValue;
 	export let cloudsToBe;
 	export let drawInstructions;
 
-	console.log('draw instruction: ', drawInstructions);
+	onMount(async () => {
+		let startText = document.getElementById('cloudstobe');
+		startText.innerHTML = cloudsToBe[0];
+	});
 
 	let startDrawModal = true;
 	let instructionModal = false;
@@ -52,9 +55,7 @@
 	{#if startDrawModal}
 		<div class="start-draw-center">
 			<h2>Clouds to be...</h2>
-			{#each cloudsToBe as text, i}
-				<p>{text}</p>
-			{/each}
+			<div id="cloudstobe" />
 			<div class="button-section">
 				<button class="enter-button" on:click={drawOnThisImage}>Draw on this Canvas</button>
 				<button class="enter-button" on:click={chooseImage}>Upload your own Canvas</button>

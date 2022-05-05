@@ -50,13 +50,13 @@ const getModal = async (modal, writable2) => {
   let res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_${modal}`);
   let resJson = await res.json();
   let content = JSON.parse(resJson[0].grid);
-  let centerHTML = new DOMParser().parseFromString(content.cont[0].cont, "text/html");
-  let centerText = centerHTML.getElementsByTagName("p");
-  for (let i = 0; i < centerText.length; i++) {
-    innerArray.push(centerText[i].innerHTML);
-    console.log("centerText[i].innerHTML, ", centerText[i].innerHTML);
-  }
+  console.log("content: ", content.cont);
+  content.cont.forEach((element) => {
+    console.log("element: ", element.cont);
+    innerArray.push(element.cont);
+  });
   writable2.set(innerArray);
+  console.log("innnerarray: ", innerArray);
 };
 getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);

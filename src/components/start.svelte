@@ -6,6 +6,8 @@
 	const dispatch = createEventDispatcher();
 	export let modalText;
 
+
+
 	const enterCloudcities = () => {
 		console.log('enter cloud cities');
 		dispatch('enterCloudcities');
@@ -13,6 +15,9 @@
 
 	onMount(async () => {
 		console.log('modalText: ', modalText);
+		let text = document.getElementById('text');
+		text.innerHTML = modalText[0];
+
 		/*
 		let res = await fetch(
 			'https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_1'
@@ -35,9 +40,12 @@
 <div class="start-container" transition:fade={{ duration: 1000 }}>
 	<div class="modal-center start-info">
 		<h2 class="start-headline">Welcome to Cloud Cities</h2>
+		<!--
 		{#each modalText as text, i}
 			<p>{text}</p>
 		{/each}
+		-->
+		<div id="text" />
 		<button class="enter-button" on:click={enterCloudcities}>Enter</button>
 	</div>
 </div>
