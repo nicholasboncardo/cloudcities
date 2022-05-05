@@ -25,7 +25,7 @@
 	};
 
 	//load on scroll
-	let count = 10;
+	let count = 20;
 	let createInfoModals = true;
 
 	onMount(async () => {
