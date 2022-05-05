@@ -90,6 +90,8 @@ app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
 					}).then((result) => {
 						console.log('last result: ', result);
 					});
+				}).catch((error)=> {
+					console.log("error: ", error)
 				});
 		});
 });

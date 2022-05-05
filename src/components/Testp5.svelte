@@ -284,7 +284,7 @@
 				<h2>Thank you! Submission complete</h2>
 				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
 				<div class="flex-row">
-					<a href="/drawing" class="href">
+					<a href="/draw" class="href">
 						<button>Return to drawing</button>
 					</a>
 					<a href="/" class="hred">

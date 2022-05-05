@@ -1,7 +1,7 @@
 import { c as create_ssr_component, d as createEventDispatcher, f as each, g as add_attribute, e as escape, a as subscribe, v as validate_component } from "../../chunks/index-fc226c31.js";
 import { w as writable, a as welcomeToCloudCities } from "../../chunks/wpTexts-9d5e8b63.js";
 const repoImages = writable([]);
-let count = 10;
+let count = 20;
 const getImages = async (count2) => {
   const res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count2}`);
   const data = await res.json();
@@ -20,7 +20,7 @@ const getImages = async (count2) => {
 getImages(count);
 var Gallery2_svelte_svelte_type_style_lang = "";
 const css$1 = {
-  code: ".gallery.svelte-xs6vzv.svelte-xs6vzv{overflow-x:hidden;-webkit-overflow-scrolling:touch;overflow-y:scroll;width:100vw;display:grid;grid-template-columns:1fr 1fr 1fr 1fr}.flex-container.svelte-xs6vzv.svelte-xs6vzv{display:flex;flex-direction:column;gap:0px}.gallery-item.svelte-xs6vzv.svelte-xs6vzv{width:100%;position:relative;max-height:60vh}.gallery-item.svelte-xs6vzv .image.svelte-xs6vzv{display:grid;width:100%;height:100%;overflow:hidden;min-height:20vh}.gallery-item.svelte-xs6vzv .image img.svelte-xs6vzv{width:100%;height:100%;object-fit:fill}.img-info.svelte-xs6vzv.svelte-xs6vzv{position:absolute;left:0px;top:0px;width:100%;height:100%;align-items:flex-start;text-align:start;background-color:rgb(0, 0, 0, 0.24);color:white}.img-info.svelte-xs6vzv p.svelte-xs6vzv{margin:3px}.info-text.svelte-xs6vzv.svelte-xs6vzv{position:absolute;bottom:0px;padding:10px}.desc-text.svelte-xs6vzv.svelte-xs6vzv{font-size:20px}img.svelte-xs6vzv.svelte-xs6vzv:hover{transform:scale(1.2);-ms-transform:scale(1.2);-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2)}@media(max-width: 560px){.gallery.svelte-xs6vzv.svelte-xs6vzv{grid-template-columns:none}}",
+  code: ".gallery.svelte-12o0y98.svelte-12o0y98{overflow-x:hidden;-webkit-overflow-scrolling:touch;overflow-y:scroll;width:100vw;display:grid;grid-template-columns:1fr 1fr 1fr 1fr}.flex-container.svelte-12o0y98.svelte-12o0y98{display:flex;flex-direction:column;gap:0px}.gallery-item.svelte-12o0y98.svelte-12o0y98{width:100%;position:relative;max-height:60vh}.gallery-item.svelte-12o0y98 .image.svelte-12o0y98{display:grid;width:100%;height:100%;overflow:hidden;min-height:20vh}.gallery-item.svelte-12o0y98 .image img.svelte-12o0y98{width:100%;height:100%;object-fit:fill}.img-info.svelte-12o0y98.svelte-12o0y98{position:absolute;left:0px;top:0px;width:100%;height:100%;align-items:flex-start;text-align:start;background-color:rgb(0, 0, 0, 0.24);color:white}.img-info.svelte-12o0y98 p.svelte-12o0y98{margin:3px}.info-text.svelte-12o0y98.svelte-12o0y98{position:absolute;bottom:0px;margin-left:10px}.info-text.svelte-12o0y98>h2.svelte-12o0y98{margin-top:5px}.info-text.svelte-12o0y98>p.svelte-12o0y98{margin:0px;font-size:small}.desc-text.svelte-12o0y98.svelte-12o0y98{font-size:20px}img.svelte-12o0y98.svelte-12o0y98:hover{transform:scale(1.2);-ms-transform:scale(1.2);-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2)}@media(max-width: 560px){.gallery.svelte-12o0y98.svelte-12o0y98{grid-template-columns:none}}",
   map: null
 };
 const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -29,35 +29,35 @@ const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   if ($$props.repoImages === void 0 && $$bindings.repoImages && repoImages2 !== void 0)
     $$bindings.repoImages(repoImages2);
   $$result.css.add(css$1);
-  return `<div class="${"gallery svelte-xs6vzv"}" id="${"gallery"}"><div class="${"flex-container svelte-xs6vzv"}" id="${"flex-container1"}">${each(repoImages2, (image, i) => {
-    return `${i % 4 == 0 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-xs6vzv"}"><div class="${"image svelte-xs6vzv"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-xs6vzv"}"></div>
-						${`<div class="${"img-info svelte-xs6vzv"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-xs6vzv"}"><p class="${"svelte-xs6vzv"}">${escape(image.date)}</p>
-									<p class="${"svelte-xs6vzv"}">${escape(image.location)}</p>
-									<h2 class="${"desc-text svelte-xs6vzv"}">${escape(image.title)}</h2></div>
+  return `<div class="${"gallery svelte-12o0y98"}" id="${"gallery"}"><div class="${"flex-container svelte-12o0y98"}" id="${"flex-container1"}">${each(repoImages2, (image, i) => {
+    return `${i % 4 == 0 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-12o0y98"}"><div class="${"image svelte-12o0y98"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-12o0y98"}"></div>
+						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: visible"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
+									<p class="${"svelte-12o0y98"}">${escape(image.location)}</p>
+									<h2 class="${"desc-text svelte-12o0y98"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
 				</div>` : ``}`;
   })}</div>
-	<div class="${"flex-container svelte-xs6vzv"}" id="${"flex-container2"}">${each(repoImages2, (image, i) => {
-    return `${i % 4 == 1 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-xs6vzv"}"><div class="${"image svelte-xs6vzv"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-xs6vzv"}"></div>
-						${`<div class="${"img-info svelte-xs6vzv"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-xs6vzv"}"><p class="${"svelte-xs6vzv"}">${escape(image.date)}</p>
-									<p class="${"svelte-xs6vzv"}">${escape(image.location)}</p>
-									<h2 class="${"desc-text svelte-xs6vzv"}">${escape(image.title)}</h2></div>
+	<div class="${"flex-container svelte-12o0y98"}" id="${"flex-container2"}">${each(repoImages2, (image, i) => {
+    return `${i % 4 == 1 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-12o0y98"}"><div class="${"image svelte-12o0y98"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-12o0y98"}"></div>
+						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
+									<p class="${"svelte-12o0y98"}">${escape(image.location)}</p>
+									<h2 class="${"desc-text svelte-12o0y98"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
 				</div>` : ``}`;
   })}</div>
-	<div class="${"flex-container svelte-xs6vzv"}" id="${"flex-container3"}">${each(repoImages2, (image, i) => {
-    return `${i % 4 == 2 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-xs6vzv"}"><div class="${"image svelte-xs6vzv"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-xs6vzv"}"></div>
-						${`<div class="${"img-info svelte-xs6vzv"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-xs6vzv"}"><p class="${"svelte-xs6vzv"}">${escape(image.date)}</p>
-									<p class="${"svelte-xs6vzv"}">${escape(image.location)}</p>
-									<h2 class="${"desc-text svelte-xs6vzv"}">${escape(image.title)}</h2></div>
+	<div class="${"flex-container svelte-12o0y98"}" id="${"flex-container3"}">${each(repoImages2, (image, i) => {
+    return `${i % 4 == 2 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-12o0y98"}"><div class="${"image svelte-12o0y98"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-12o0y98"}"></div>
+						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
+									<p class="${"svelte-12o0y98"}">${escape(image.location)}</p>
+									<h2 class="${"desc-text svelte-12o0y98"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
 				</div>` : ``}`;
   })}</div>
-	<div class="${"flex-container svelte-xs6vzv"}" id="${"flex-container4"}">${each(repoImages2, (image, i) => {
-    return `${i % 4 == 3 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-xs6vzv"}"><div class="${"image svelte-xs6vzv"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-xs6vzv"}"></div>
-						${`<div class="${"img-info svelte-xs6vzv"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-xs6vzv"}"><p class="${"svelte-xs6vzv"}">${escape(image.date)}</p>
-									<p class="${"svelte-xs6vzv"}">${escape(image.location)}</p>
-									<h2 class="${"desc-text svelte-xs6vzv"}">${escape(image.title)}</h2></div>
+	<div class="${"flex-container svelte-12o0y98"}" id="${"flex-container4"}">${each(repoImages2, (image, i) => {
+    return `${i % 4 == 3 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-12o0y98"}"><div class="${"image svelte-12o0y98"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-12o0y98"}"></div>
+						${`<div class="${"img-info svelte-12o0y98"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-12o0y98"}"><p class="${"svelte-12o0y98"}">${escape(image.date)}</p>
+									<p class="${"svelte-12o0y98"}">${escape(image.location)}</p>
+									<h2 class="${"desc-text svelte-12o0y98"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
 				</div>` : ``}`;
   })}</div>
