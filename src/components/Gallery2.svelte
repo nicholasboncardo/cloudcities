@@ -4,10 +4,16 @@
 	import { getImages } from '../stores/repoImages';
 	const dispatch = createEventDispatcher();
 	export let repoImages;
+	export let remix;
 
+	console.log('remix: ', remix);
 	const openImage = (e) => {
 		console.log('open image: ', e);
-		dispatch('openImage', e);
+		if (remix) {
+			dispatch('drawOnImage', e);
+		} else {
+			dispatch('openImage', e);
+		}
 	};
 
 	let imageDetail = true;
@@ -15,7 +21,6 @@
 	const showImageDetail = (e) => {
 		if (imageDetail) {
 			e.srcElement.children[1].style.visibility = 'visible';
-			console.log('element: ', e.srcElement.children[0].children[0]);
 			e.srcElement.children[0].children[0].style.transform = 'scale(1.2)';
 		} else {
 			e.srcElement.children[1].style.visibility = 'hidden';
@@ -30,18 +35,19 @@
 
 	onMount(async () => {
 		//don't create info modals on mobile
-		console.log('window.document.innerWidth: ', window.screen.width);
 		if (window.screen.width <= 560) {
 			createInfoModals = false;
 			window.addEventListener('scroll', scrollFunction);
 		}
-		console.log('onmount');
 		let gallery = document.getElementById('gallery');
 		let scroll = true;
-		window.addEventListener('scroll', scrollFunction);
+		gallery.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
-			console.log('scroll registered: ', scroll);
-			if (gallery.scrollTop + window.innerHeight > gallery.offsetHeight - 150 && scroll) {
+			//console.log('scroll Top: ', gallery.scrollTop);
+			//console.log('scroll innerHeight: ', window.innerHeight);
+			//console.log('scroll offestHeight: ', gallery.scrollHeight);
+
+			if (gallery.scrollTop + window.innerHeight > gallery.scrollHeight - 100 && scroll) {
 				console.log('near bottom');
 				count += 10;
 				getImages(count);
@@ -51,9 +57,7 @@
 
 		let imgContainer = document.getElementsByClassName('gallery-item');
 		for (let i = 0; i < imgContainer.length; i++) {
-			imgContainer[i].addEventListener('mouseover', function (e) {
-				console.log('e: ', e.path);
-			});
+			imgContainer[i].addEventListener('mouseover', function (e) {});
 		}
 	});
 </script>
@@ -155,6 +159,7 @@
 		-webkit-overflow-scrolling: touch;
 		overflow-y: scroll;
 		width: 100vw;
+		height: 100vh;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}

@@ -30,7 +30,7 @@
 	<Overlay openComponent={component} image={chosenImage} on:closeLargeImage={closeIndividualPost} />
 {/if}
 
-<Gallery2 on:openImage={openIndividualPost} repoImages={$repoImages} />
+<Gallery2 on:openImage={openIndividualPost} repoImages={$repoImages} remix={false}/>
 
 {#if individualPost}
 	<IndividualPost image={chosenImage} />

@@ -41,6 +41,25 @@ function writable(value, start = noop) {
   }
   return { set, update, subscribe };
 }
+const repoImages = writable([]);
+let count = 20;
+const getImages = async (count2) => {
+  const res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count2}`);
+  const data = await res.json();
+  const dataForRepo = data.map((data2) => {
+    let newDate = new Date(data2.date);
+    return {
+      date: Intl.DateTimeFormat("de-DE").format(newDate),
+      link: data2["source_url"],
+      title: data2.title.rendered,
+      description: data2.description.rendered.includes("<p>") ? data2.description.rendered.split("<p>").pop().split("</p>")[0] : false,
+      location: data2.caption.rendered.split("<p>").pop().split("</p>")[0]
+    };
+  });
+  repoImages.set(dataForRepo);
+};
+getImages(count);
+var Gallery2_svelte_svelte_type_style_lang = "";
 const welcomeToCloudCities = writable([]);
 const cloudsToBe = writable([]);
 const drawInstruction = writable([]);
@@ -52,7 +71,6 @@ const getModal = async (modal, writable2) => {
   let content = JSON.parse(resJson[0].grid);
   console.log("content: ", content.cont);
   content.cont.forEach((element) => {
-    console.log("element: ", element.cont);
     innerArray.push(element.cont);
   });
   writable2.set(innerArray);
@@ -62,4 +80,4 @@ getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);
 getModal(3, drawInstruction);
 getModal(4, submitModal);
-export { welcomeToCloudCities as a, cloudsToBe as c, drawInstruction as d, writable as w };
+export { cloudsToBe as c, drawInstruction as d, repoImages as r, welcomeToCloudCities as w };

@@ -6,47 +6,33 @@
 	const dispatch = createEventDispatcher();
 	export let modalText;
 
-
-
 	const enterCloudcities = () => {
 		console.log('enter cloud cities');
 		dispatch('enterCloudcities');
 	};
 
+	let textField;
+	let button;
 	onMount(async () => {
 		console.log('modalText: ', modalText);
-		let text = document.getElementById('text');
-		text.innerHTML = modalText[0];
-
-		/*
-		let res = await fetch(
-			'https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_1'
-		);
-		let resJson = await res.json();
-		let content = JSON.parse(resJson[0].grid);
-		console.log('resjson: ', content);
-		let centerHTML = new DOMParser().parseFromString(content.cont[0].cont, 'text/html');
-		centerText = centerHTML.getElementsByTagName('p');
-		for (let i = 0; i < centerText.length; i++) {
-			innerArray.push(centerText[i].innerHTML);
-            console.log("centerText[i].innerHTML, ", centerText[i].innerHTML)
-		}
-		console.log('center text: ', centerText);
-		console.log('inner text: ', innerArray);
-        */
+		textField = document.getElementById('text');
+		button = document.getElementById('enter-button');
 	});
+
+	$: if (modalText.length > 0) {
+		if (textField) {
+			textField.innerHTML = modalText[0];
+			button.innerHTML = modalText[1];
+			button.children[0].style.margin = '0px';
+		}
+	}
 </script>
 
 <div class="start-container" transition:fade={{ duration: 1000 }}>
 	<div class="modal-center start-info">
 		<h2 class="start-headline">Welcome to Cloud Cities</h2>
-		<!--
-		{#each modalText as text, i}
-			<p>{text}</p>
-		{/each}
-		-->
 		<div id="text" />
-		<button class="enter-button" on:click={enterCloudcities}>Enter</button>
+		<button id="enter-button" on:click={enterCloudcities}>Enter</button>
 	</div>
 </div>
 
@@ -74,6 +60,7 @@
 		width: 100%;
 		height: 30px;
 	}
+
 	@media (max-width: 500px) {
 		.start-info {
 			width: 80%;

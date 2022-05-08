@@ -26,7 +26,8 @@
 		let canvasRef;
 		p5.setup = () => {
 			//Handle width of canvas based on
-			console.log('setup: ', image.width);
+			console.log('width: ', image.width);
+			console.log('height: ', image.height);
 			if (p5.windowWidth > 500) {
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
@@ -91,13 +92,9 @@
 		};
 
 		p5.windowResized = () => {
-			canvasRef = p5.select('#defaultCanvas0');
 			//console.log('canvasRef: ', canvasRef);
 			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-			let imgURL = document.getElementById('defaultCanvas0').toDataURL();
-			let img = p5.loadImage(imgURL);
-			console.log('img: ', img);
-			p5.image(img);
+			p5.background(image);
 		};
 	};
 
@@ -123,6 +120,7 @@
 	};
 
 	let canvasTitle;
+	let canvasLocation;
 	let canvasDescription;
 	let painterName;
 
@@ -135,6 +133,7 @@
 			notEnoughInfo = false;
 			let formData = new FormData();
 			formData.append('title', canvasTitle);
+			formData.append('title', canvasLocation);
 			formData.append('description', canvasDescription);
 			formData.append('name', painterName);
 			let canvas = document.getElementById('defaultCanvas0');
@@ -249,6 +248,10 @@
 				<div class="input-section">
 					<p>Cloud City</p>
 					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasTitle} />
+				</div>
+				<div class="input-section">
+					<p>Location</p>
+					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasLocation} />
 				</div>
 				<div class="input-section">
 					<p>Description</p>
@@ -438,6 +441,7 @@
 		height: 100%;
 		z-index: 10000;
 		cursor: pointer;
+		color: white;
 	}
 
 	#color-slider {

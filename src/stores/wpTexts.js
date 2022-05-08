@@ -14,17 +14,8 @@ const getModal = async (modal, writable) => {
 	let content = JSON.parse(resJson[0].grid);
 	console.log('content: ', content.cont);
 	content.cont.forEach((element) => {
-		console.log('element: ', element.cont);
 		innerArray.push(element.cont);
 	});
-	/*)
-	let centerHTML = new DOMParser().parseFromString(content.cont[0].cont, 'text/html');
-	let centerText = centerHTML.getElementsByTagName('p');
-	for (let i = 0; i < centerText.length; i++) {
-		innerArray.push(centerText[i].innerHTML);
-		console.log('centerText[i].innerHTML, ', centerText[i].innerHTML);
-	}
-	*/
 	writable.set(innerArray);
 	console.log('innnerarray: ', innerArray);
 };
