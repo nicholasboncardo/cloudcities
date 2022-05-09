@@ -69,15 +69,23 @@ const getModal = async (modal, writable2) => {
   let res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_${modal}`);
   let resJson = await res.json();
   let content = JSON.parse(resJson[0].grid);
-  console.log("content: ", content.cont);
   content.cont.forEach((element) => {
     innerArray.push(element.cont);
   });
   writable2.set(innerArray);
-  console.log("innnerarray: ", innerArray);
 };
 getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);
 getModal(3, drawInstruction);
 getModal(4, submitModal);
-export { cloudsToBe as c, drawInstruction as d, repoImages as r, welcomeToCloudCities as w };
+const welcomeTitle = writable();
+const drawStartTitle = writable([]);
+const getTitle = async (modal, writable2) => {
+  let res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_${modal}`);
+  let resJson = await res.json();
+  let title = resJson[0].title.rendered;
+  writable2.set(title);
+};
+getTitle(1, welcomeTitle);
+getTitle(2, drawStartTitle);
+export { drawInstruction as a, welcomeToCloudCities as b, cloudsToBe as c, drawStartTitle as d, repoImages as r, welcomeTitle as w };

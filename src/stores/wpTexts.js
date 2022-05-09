@@ -12,12 +12,10 @@ const getModal = async (modal, writable) => {
 	);
 	let resJson = await res.json();
 	let content = JSON.parse(resJson[0].grid);
-	console.log('content: ', content.cont);
 	content.cont.forEach((element) => {
 		innerArray.push(element.cont);
 	});
 	writable.set(innerArray);
-	console.log('innnerarray: ', innerArray);
 };
 getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);

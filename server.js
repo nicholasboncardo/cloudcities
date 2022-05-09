@@ -1,9 +1,9 @@
 import { handler } from './build/handler.js';
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+import { createRequire } from 'module'; // Bring in the ability to create the 'require' method
 const require = createRequire(import.meta.url);
 import express from 'express';
 const app = express();
-const fs = require("fs")
+const fs = require('fs');
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +32,6 @@ const diskStorage = multer.diskStorage({
 const uploader = multer({
 	storage: diskStorage
 });
-
 
 app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
 	console.log('req.file: ', req.body);
@@ -89,9 +88,13 @@ app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
 						})
 					}).then((result) => {
 						console.log('last result: ', result);
+						fs.unlink(path, () => {
+							console.log('file deleted');
+						});
 					});
-				}).catch((error)=> {
-					console.log("error: ", error)
+				})
+				.catch((error) => {
+					console.log('error: ', error);
 				});
 		});
 });

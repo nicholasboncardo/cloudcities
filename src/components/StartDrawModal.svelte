@@ -6,6 +6,7 @@
 	export let propValue;
 	export let cloudsToBe;
 	export let drawInstructions;
+	export let title;
 
 	let instructionsText;
 	onMount(async () => {
@@ -78,7 +79,7 @@
 >
 	{#if startDrawModal}
 		<div class="start-draw-center">
-			<h2>Clouds to be...</h2>
+			<h2>{title}</h2>
 			<div id="cloudstobe" />
 			<div class="button-section">
 				<button id="draw-button" class="enter-button" on:click={drawOnThisImage} />

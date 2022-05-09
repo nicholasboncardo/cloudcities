@@ -7,7 +7,7 @@
 	export let propValue;
 	let backgroundImage = propValue;
 
-	let strokeWidth = 3;
+	let strokeWidth = 4;
 	let red = 0;
 	let blue = 0;
 	let green = 0;
@@ -29,7 +29,12 @@
 			console.log('width: ', image.width);
 			console.log('height: ', image.height);
 			if (p5.windowWidth > 500) {
-				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				if (image.width < image.height) {
+					let canvasHeight = image.height / (image.width / p5.windowWidth);
+					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+				} else {
+					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				}
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500) {
@@ -173,12 +178,10 @@
 	let overButton = false;
 	const mouseEnterButton = () => {
 		overButton = true;
-		console.log('overbutton: ', overButton);
 	};
 
 	const mouseLeaveButton = () => {
 		overButton = false;
-		console.log('overbutton: ', overButton);
 	};
 
 	//enable click on repo on moble (instead a.href)
@@ -187,7 +190,6 @@
 	};
 
 	const handleExitButton = () => {
-		console.log('finishedDrawing: ', finishedDrawing);
 		if (pallette) {
 			pallette = false;
 		}
@@ -195,6 +197,26 @@
 			finishedDrawing = false;
 		}
 		overButton = false;
+	};
+
+	let smallButtonBorder;
+	let mediumButtonBorder;
+	let bigButtonBorder;
+	const openPallette = () => {
+		pallette = !pallette;
+		if (strokeWidth === 2) {
+			smallButtonBorder = 'solid 4px #00D1FF';
+			mediumButtonBorder = 'none';
+			bigButtonBorder = 'none';
+		} else if (strokeWidth === 4) {
+			smallButtonBorder = 'none';
+			mediumButtonBorder = 'solid 4px #00D1FF';
+			bigButtonBorder = 'none';
+		} else {
+			smallButtonBorder = 'none';
+			mediumButtonBorder = 'none';
+			bigButtonBorder = 'solid 4px #00D1FF';
+		}
 	};
 </script>
 
@@ -214,9 +236,24 @@
 				<div class="style-section">
 					<p>width</p>
 					<div class="stroke-width">
-						<div class="stroke-button" id="small-stroke" on:click={setStrokeWidth} />
-						<div class="stroke-button" id="medium-stroke" on:click={setStrokeWidth} />
-						<div class="stroke-button" id="big-stroke" on:click={setStrokeWidth} />
+						<div
+							class="stroke-button"
+							id="small-stroke"
+							on:click={setStrokeWidth}
+							style="border: {smallButtonBorder}"
+						/>
+						<div
+							class="stroke-button"
+							id="medium-stroke"
+							on:click={setStrokeWidth}
+							style="border: {mediumButtonBorder}"
+						/>
+						<div
+							class="stroke-button"
+							id="big-stroke"
+							on:click={setStrokeWidth}
+							style="border: {bigButtonBorder}"
+						/>
 					</div>
 				</div>
 				<div class="style-section">
@@ -312,8 +349,8 @@
 		<div
 			class="icon-button pallette-button"
 			id="p-button"
-			on:click={() => ((pallette = !pallette), console.log('click event on pallette'))}
-			on:touchstart={() => ((pallette = !pallette), console.log('touch event on pallette'))}
+			on:click={openPallette}
+			on:touchstart={() => (pallette = !pallette)}
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
 		/>

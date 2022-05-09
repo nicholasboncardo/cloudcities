@@ -7,6 +7,7 @@
 	//import DrawInstructions from '../components/DrawInstructModal.svelte';
 	import { cloudsToBe } from '../stores/wpTexts';
 	import { drawInstruction } from '../stores/wpTexts';
+	import { drawStartTitle } from '../stores/wpTitles';
 
 	let remix = false;
 
@@ -19,6 +20,7 @@
 		let result = await data.json();
 		let randomVal = Math.floor(Math.random() * result.length);
 		drawBackground = result[randomVal]['source_url'];
+		console.log('cloudstobe in onmount: ', $cloudsToBe);
 		//get info texts from wp and pass to components for display
 
 		//Somehow need this from frame to expand on mobile:
@@ -43,7 +45,7 @@
 			background = drawBackground;
 			console.log('startDrawing BG: ', drawBackground);
 		}
-		
+
 		if (remix) {
 			remix = false;
 			startDrawApp = true;
@@ -61,8 +63,9 @@
 	};
 </script>
 
-{#if drawBackground && startDrawApp}
+{#if drawBackground && startDrawApp && $cloudsToBe.length > 0}
 	<StartDrawModal
+		title={$drawStartTitle}
 		drawInstructions={$drawInstruction}
 		cloudsToBe={$cloudsToBe}
 		propValue={drawBackground}
