@@ -135,6 +135,7 @@
 	let allowUpload = true;
 	const submitImage = () => {
 		if (canvasTitle && canvasDescription && allowUpload) {
+			uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 			console.log('uploads: ', uploads);
 			uploads.push('upload');
 			localStorage.setItem('cloudUploads', JSON.stringify(uploads));
