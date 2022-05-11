@@ -158,6 +158,9 @@
 		text-shadow: 0px 0px 3px #ffffff;
 	}
 
+	input {
+		border-radius: 10px;
+	}
 	@media (max-width: 500px) {
 		.start-draw-center {
 			width: 80%;
