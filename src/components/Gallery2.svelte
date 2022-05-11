@@ -33,8 +33,27 @@
 	let count = 20;
 	let createInfoModals = true;
 
+	let columns;
+
+	const resizeGallery = () => {
+		console.log('resize!: ');
+		if (window.innerWidth <= 500) {
+			columns = 1;
+		} else if (window.innerWidth > 500 && window.innerWidth <= 700) {
+			columns = 2;
+		} else if (window.innerWidth > 700 && window.innerWidth <= 1000) {
+			columns = 3;
+		} else {
+			columns = 4;
+		}
+		console.log('columns: ', columns);
+	};
 	onMount(async () => {
+		console.log('Window-width: ', window.innerWidth);
+		resizeGallery();
+		window.onresize = resizeGallery;
 		//don't create info modals on mobile
+
 		if (window.screen.width <= 560) {
 			createInfoModals = false;
 			window.addEventListener('scroll', scrollFunction);
@@ -65,7 +84,7 @@
 <div class="gallery" id="gallery">
 	<div class="flex-container" id="flex-container1">
 		{#each repoImages as image, i}
-			{#if i % 4 == 0}
+			{#if i % columns == 0}
 				<div class="gallery-container" on:click={openImage(image)}>
 					<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
 						<div class="image">
@@ -85,72 +104,90 @@
 			{/if}
 		{/each}
 	</div>
-	<div class="flex-container" id="flex-container2">
-		{#each repoImages as image, i}
-			{#if i % 4 == 1}
-				<div class="gallery-container" on:click={openImage(image)}>
-					<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
-						<div class="image">
-							<img src={image.link} alt="" />
-						</div>
-						{#if createInfoModals}
-							<div class="img-info" style="visibility: hidden">
-								<div class="info-text">
-									<p>{image.date}</p>
-									<p>{image.location}</p>
-									<h2 class="desc-text">{image.title}</h2>
-								</div>
+	{#if columns == 2 || columns == 3 || columns == 4}
+		<div class="flex-container" id="flex-container2">
+			{#each repoImages as image, i}
+				{#if i % columns == 1}
+					<div class="gallery-container" on:click={openImage(image)}>
+						<div
+							class="gallery-item"
+							on:mouseenter={showImageDetail}
+							on:mouseleave={showImageDetail}
+						>
+							<div class="image">
+								<img src={image.link} alt="" />
 							</div>
-						{/if}
-					</div>
-				</div>
-			{/if}
-		{/each}
-	</div>
-	<div class="flex-container" id="flex-container3">
-		{#each repoImages as image, i}
-			{#if i % 4 == 2}
-				<div class="gallery-container" on:click={openImage(image)}>
-					<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
-						<div class="image">
-							<img src={image.link} alt="" />
-						</div>
-						{#if createInfoModals}
-							<div class="img-info" style="visibility: hidden">
-								<div class="info-text">
-									<p>{image.date}</p>
-									<p>{image.location}</p>
-									<h2 class="desc-text">{image.title}</h2>
+							{#if createInfoModals}
+								<div class="img-info" style="visibility: hidden">
+									<div class="info-text">
+										<p>{image.date}</p>
+										<p>{image.location}</p>
+										<h2 class="desc-text">{image.title}</h2>
+									</div>
 								</div>
-							</div>
-						{/if}
-					</div>
-				</div>
-			{/if}
-		{/each}
-	</div>
-	<div class="flex-container" id="flex-container4">
-		{#each repoImages as image, i}
-			{#if i % 4 == 3}
-				<div class="gallery-container" on:click={openImage(image)}>
-					<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
-						<div class="image">
-							<img src={image.link} alt="" />
+							{/if}
 						</div>
-						{#if createInfoModals}
-							<div class="img-info" style="visibility: hidden">
-								<div class="info-text">
-									<p>{image.date}</p>
-									<p>{image.location}</p>
-									<h2 class="desc-text">{image.title}</h2>
-								</div>
-							</div>
-						{/if}
 					</div>
-				</div>
-			{/if}
-		{/each}
-	</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
+	{#if columns == 3 || columns == 4}
+		<div class="flex-container" id="flex-container3">
+			{#each repoImages as image, i}
+				{#if i % columns == 2}
+					<div class="gallery-container" on:click={openImage(image)}>
+						<div
+							class="gallery-item"
+							on:mouseenter={showImageDetail}
+							on:mouseleave={showImageDetail}
+						>
+							<div class="image">
+								<img src={image.link} alt="" />
+							</div>
+							{#if createInfoModals}
+								<div class="img-info" style="visibility: hidden">
+									<div class="info-text">
+										<p>{image.date}</p>
+										<p>{image.location}</p>
+										<h2 class="desc-text">{image.title}</h2>
+									</div>
+								</div>
+							{/if}
+						</div>
+					</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
+	{#if columns == 4}
+		<div class="flex-container" id="flex-container4">
+			{#each repoImages as image, i}
+				{#if i % columns == 3}
+					<div class="gallery-container" on:click={openImage(image)}>
+						<div
+							class="gallery-item"
+							on:mouseenter={showImageDetail}
+							on:mouseleave={showImageDetail}
+						>
+							<div class="image">
+								<img src={image.link} alt="" />
+							</div>
+							{#if createInfoModals}
+								<div class="img-info" style="visibility: hidden">
+									<div class="info-text">
+										<p>{image.date}</p>
+										<p>{image.location}</p>
+										<h2 class="desc-text">{image.title}</h2>
+									</div>
+								</div>
+							{/if}
+						</div>
+					</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -232,9 +269,23 @@
 		-o-transform: scale(1.2); /* Opera */
 	}
 
-	@media (max-width: 560px) {
+
+
+	@media (max-width: 1000px) {
 		.gallery {
-			grid-template-columns: none;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.gallery {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.gallery {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

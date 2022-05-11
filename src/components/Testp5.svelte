@@ -1,8 +1,5 @@
 <script>
 	import P5 from 'p5-svelte';
-	import { createEventDispatcher } from 'svelte';
-	import { set_custom_element_data } from 'svelte/internal';
-	const dispatch = createEventDispatcher();
 
 	export let propValue;
 	let backgroundImage = propValue;
@@ -130,23 +127,33 @@
 	let painterName;
 
 	let notEnoughInfo;
-
+	const uploads = JSON.parse(localStorage.getItem('cloudUploads'));
+	const uploadArray = ['none'];
+	if (!uploads) {
+		localStorage.setItem('cloudUploads', JSON.stringify(uploadArray));
+	}
 	let allowUpload = true;
 	const submitImage = () => {
 		if (canvasTitle && canvasDescription && allowUpload) {
+			console.log('uploads: ', uploads);
+			uploads.push('upload');
+			localStorage.setItem('cloudUploads', JSON.stringify(uploads));
 			allowUpload = false;
 			notEnoughInfo = false;
 			let formData = new FormData();
 			formData.append('title', canvasTitle);
-			formData.append('title', canvasLocation);
+			formData.append('location', canvasLocation);
 			formData.append('description', canvasDescription);
 			formData.append('name', painterName);
+			formData.append('userUploads', uploads.length);
 			let canvas = document.getElementById('defaultCanvas0');
 			canvas.toBlob(function (blob) {
-				formData.append('file', blob);
+				formData.append('cloud', blob);
 				fetch('/addPostfromServer', {
 					method: 'POST',
 					body: formData
+				}).then((result) => {
+					console.log('result: ', result.status);
 				});
 			});
 			finishedDrawing = false;
@@ -217,6 +224,11 @@
 			mediumButtonBorder = 'none';
 			bigButtonBorder = 'solid 4px #00D1FF';
 		}
+	};
+
+	const returnToDraw = () => {
+		console.log('return to draw');
+		window.location.reload();
 	};
 </script>
 
@@ -324,10 +336,8 @@
 				<h2>Thank you! Submission complete</h2>
 				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
 				<div class="flex-row">
-					<a href="/draw" class="href">
-						<button>Return to drawing</button>
-					</a>
-					<a href="/" class="hred">
+					<button on:click={returnToDraw}>Return to drawing</button>
+					<a href="/" class="href">
 						<button>Visit the repository</button>
 					</a>
 				</div>

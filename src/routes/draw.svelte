@@ -40,7 +40,7 @@
 	const setBackground = (e) => {
 		console.log('startDrawing: ', e.detail);
 		if (e.detail) {
-			background = e.detail.link;
+			background = e.detail;
 		} else {
 			background = drawBackground;
 			console.log('startDrawing BG: ', drawBackground);

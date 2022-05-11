@@ -36,15 +36,22 @@
 		chooseUpload = true;
 	};
 
+	let fileTooBig;
 	const getInputImage = () => {
+		fileTooBig = false;
 		const uploadInput = document.getElementById('upload');
 		const imageFile = uploadInput.files[0];
+		if (imageFile.size > 10000000) {
+			fileTooBig = true;
+			return;
+		}
+		console.log('Blob?: : ', imageFile instanceof Blob);
 		imageUrl = URL.createObjectURL(imageFile);
-		console.log('chooseImage: ', imageUrl);
 	};
 
 	let drawMode;
 	const drawOnUploadImage = () => {
+		console.log('chooseImage: ', imageUrl);
 		startDrawModal = false;
 		instructionVisible = 'visible';
 		drawMode = 'drawOnUploadImage';
@@ -88,7 +95,12 @@
 			</div>
 			{#if chooseUpload}
 				<input accept=".png, .jpg, .jpeg" type="file" id="upload" on:change={getInputImage} />
-				<button on:click={drawOnUploadImage}>Start</button>
+				{#if !fileTooBig}
+					<button on:click={drawOnUploadImage}>Start</button>
+				{/if}
+				{#if fileTooBig}
+					<p>Please choose a smaller file</p>
+				{/if}
 			{/if}
 		</div>
 	{/if}

@@ -30,13 +30,40 @@ const diskStorage = multer.diskStorage({
 });
 
 const uploader = multer({
-	storage: diskStorage
-});
+	storage: diskStorage,
+	limits: {
+		fileSize: 100000000
+	}
+}).single('cloud');
 
-app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
-	console.log('req.file: ', req.body);
+const multerMiddeWare = (req, res, next) => {
+	// Here call the upload middleware of multer
+	uploader(req, res, function (err) {
+		if (err) {
+			// A Multer error occurred when uploading.
+			const err = new Error('Multer error');
+			console.log('multer error: ', err);
+			res.json('multerError');
+			return;
+		}
+		// Everything went fine.
+		console.log('everthing went fine');
+		next();
+	});
+};
+app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
+	console.log('req.body: ', req.body);
+	console.log('req.file: ', req.file);
 	let { path } = req.file;
 	let token;
+
+	if (req.body.userUploads > 30) {
+		fs.unlink(path, () => {
+			console.log('file deleted');
+		});
+		return;
+	}
+
 	fetch('https://cloudcities.studiotomassaraceno.org/wp-json/jwt-auth/v1/token', {
 		method: 'POST',
 		headers: {
@@ -68,10 +95,10 @@ app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
 			})
 				.then((result) => {
 					console.log('result: ', result);
+					res.sendStatus(200);
 					return result.json();
 				})
 				.then((result) => {
-					console.log('result from wp: ', result);
 					console.log('token after result from wp: ', token);
 					let imageID = result.id;
 					fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media/${imageID}`, {
@@ -84,16 +111,17 @@ app.post('/addPostfromServer', uploader.single('file'), (req, res) => {
 						body: JSON.stringify({
 							title: req.body.title,
 							description: req.body.description,
-							caption: req.body.name
+							caption: req.body.location,
+							alt_text: req.body.name
 						})
-					}).then((result) => {
-						console.log('last result: ', result);
+					}).then(() => {
 						fs.unlink(path, () => {
 							console.log('file deleted');
 						});
 					});
 				})
 				.catch((error) => {
+					res.sendStatus(500);
 					console.log('error: ', error);
 				});
 		});
