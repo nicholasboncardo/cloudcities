@@ -127,7 +127,7 @@
 	let painterName;
 
 	let notEnoughInfo;
-	const uploads = JSON.parse(localStorage.getItem('cloudUploads'));
+	let uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 	const uploadArray = ['none'];
 	if (!uploads) {
 		localStorage.setItem('cloudUploads', JSON.stringify(uploadArray));
