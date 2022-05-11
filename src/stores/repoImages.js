@@ -8,6 +8,7 @@ export const getImages = async (count) => {
 	);
 	const data = await res.json();
 	const dataForRepo = data.map((data) => {
+		console.log('data in store: ', data);
 		let newDate = new Date(data.date);
 		return {
 			date: Intl.DateTimeFormat('de-DE').format(newDate),

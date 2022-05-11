@@ -41,7 +41,7 @@ const multerMiddeWare = (req, res, next) => {
 	uploader(req, res, function (err) {
 		if (err) {
 			// A Multer error occurred when uploading.
-			const err = new Error('Multer error');
+			//const err = new Error('Multer error');
 			console.log('multer error: ', err);
 			res.json('multerError');
 			return;

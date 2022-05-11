@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	export let image;
+	console.log('image: ', image);
 </script>
 
 <div class="indiv-post-modal" transition:fade>
