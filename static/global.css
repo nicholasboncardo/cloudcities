@@ -107,11 +107,11 @@ h2 {
 }
 
 .icon-button {
-	width: 40px;
-	height: 40px;
+	width: 48px;
+	height: 48px;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: 40px;
+	background-size: 48px;
 	position: absolute;
 }
 

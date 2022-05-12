@@ -8,6 +8,7 @@
 	import { cloudsToBe } from '../stores/wpTexts';
 	import { drawInstruction } from '../stores/wpTexts';
 	import { drawStartTitle } from '../stores/wpTitles';
+	import { contributeModal } from '../stores/wpTexts';
 
 	let remix = false;
 	let drawInstructions = false;
@@ -66,7 +67,7 @@
 {/if}
 
 {#if drawApp}
-	<Draw propValue={background} {drawInstructions} />
+	<Draw propValue={background} {drawInstructions} contributeModal={$contributeModal} />
 {/if}
 
 {#if remix}

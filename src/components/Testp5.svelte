@@ -1,9 +1,19 @@
 <script>
 	import P5 from 'p5-svelte';
-
 	export let propValue;
-	export let drawInstructions;
+	export let contributeModal;
 	let backgroundImage = propValue;
+	console.log('contribute modal: ', contributeModal);
+	let contributeText = contributeModal.map((element) => {
+		if (element.includes('<span>')) {
+			return element.split('<span>').pop().split('<')[0];
+		} else if (element.includes('<p>')) {
+			return element.split('<p>').pop().split('<')[0];
+		} else {
+			return element.split('">').pop().split('<')[0];
+		}
+	});
+	console.log('contributeText: ', contributeText);
 
 	let strokeWidth = 4;
 	let red = 0;
@@ -232,6 +242,11 @@
 		console.log('return to draw');
 		window.location.reload();
 	};
+
+	const cancelSubmit = () => {
+		finishedDrawing = false;
+		overButton = false;
+	};
 </script>
 
 <div id="canvas-container">
@@ -297,15 +312,15 @@
 			<div class="modal-center submit-image">
 				<h2>Contribute to the Cloud Cities repository</h2>
 				<div class="input-section">
-					<p>Cloud City</p>
+					<p>{contributeText[0]}</p>
 					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasTitle} />
 				</div>
 				<div class="input-section">
-					<p>Location</p>
+					<p>{contributeText[1]}</p>
 					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasLocation} />
 				</div>
 				<div class="input-section">
-					<p>Description</p>
+					<p>{contributeText[2]}</p>
 					<input
 						type="text"
 						id="input-description"
@@ -314,13 +329,15 @@
 					/>
 				</div>
 				<div class="input-section">
-					<p>Name (optional)</p>
+					<p>{contributeText[3]}</p>
 					<input type="text" id="input-name" data-lpignore="true" bind:value={painterName} />
 				</div>
+				<p>{contributeText[4]}</p>
 				<div class="flex-row">
-					<button id="submit-button" on:click={submitImage}>Submit</button>
-					<button id="download-button" on:click={downloadImage}>Download</button>
+					<button id="submit-button" on:click={submitImage}>{contributeText[5]}</button>
+					<button id="download-button" on:click={downloadImage}>{contributeText[6]}</button>
 				</div>
+				<button id="cancel-button" on:click={cancelSubmit}>{contributeText[7]}</button>
 				{#if notEnoughInfo}
 					<p>We need more Information</p>
 				{/if}
@@ -478,7 +495,7 @@
 	}
 
 	.input-section p {
-		width: 30%;
+		width: 20%;
 		word-wrap: break-word;
 	}
 	input {
@@ -516,6 +533,10 @@
 	button {
 		height: 50px;
 		width: 49%;
+	}
+
+	#cancel-button {
+		width: 100%;
 	}
 
 	.flex-row > a {

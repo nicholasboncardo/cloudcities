@@ -4,6 +4,7 @@ export const welcomeToCloudCities = writable([]);
 export const cloudsToBe = writable([]);
 export const drawInstruction = writable([]);
 export const submitModal = writable([]);
+export const contributeModal = writable([]);
 
 const getModal = async (modal, writable) => {
 	let innerArray = [];
@@ -21,3 +22,4 @@ getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);
 getModal(3, drawInstruction);
 getModal(4, submitModal);
+getModal(5, contributeModal);

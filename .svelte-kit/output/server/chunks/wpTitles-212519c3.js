@@ -64,6 +64,7 @@ const welcomeToCloudCities = writable([]);
 const cloudsToBe = writable([]);
 const drawInstruction = writable([]);
 const submitModal = writable([]);
+const contributeModal = writable([]);
 const getModal = async (modal, writable2) => {
   let innerArray = [];
   let res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_${modal}`);
@@ -78,6 +79,7 @@ getModal(1, welcomeToCloudCities);
 getModal(2, cloudsToBe);
 getModal(3, drawInstruction);
 getModal(4, submitModal);
+getModal(5, contributeModal);
 const welcomeTitle = writable();
 const drawStartTitle = writable([]);
 const getTitle = async (modal, writable2) => {
@@ -88,4 +90,4 @@ const getTitle = async (modal, writable2) => {
 };
 getTitle(1, welcomeTitle);
 getTitle(2, drawStartTitle);
-export { drawInstruction as a, welcomeToCloudCities as b, cloudsToBe as c, drawStartTitle as d, repoImages as r, welcomeTitle as w };
+export { drawInstruction as a, contributeModal as b, cloudsToBe as c, drawStartTitle as d, welcomeToCloudCities as e, repoImages as r, welcomeTitle as w };

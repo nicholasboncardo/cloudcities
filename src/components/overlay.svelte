@@ -51,9 +51,9 @@
 
 	.overlay-button {
 		margin: 10px;
-		width: 30px;
-		height: 30px;
-		background-size: 30px;
+		width: 48px;
+		height: 48px;
+		background-size: 48px;
 		background-repeat: no-repeat;
 		background-position: center center;
 	}
