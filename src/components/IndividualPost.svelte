@@ -10,8 +10,12 @@
 	</div>
 	<div class="indiv-post-info">
 		<p>{image.date}</p>
-		<p class="desc-text">{image.description}</p>
-		<p>{image.location}</p>
+		{#if image.name !== '' || image.name !== 'undefined'}
+			<h2>{image.name}</h2>
+		{/if}
+		{#if image.location !== 'undefined'}
+			<p>{image.location}</p>
+		{/if}
 	</div>
 </div>
 
@@ -34,10 +38,12 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		text-align: start;
+		align-items: center;
 		padding: 20px;
 		min-width: 200px;
-		min-height: 100px;
+	}
+	.indiv-post-info > p {
+		margin: 0px;
 	}
 
 	.indiv-post-image {
@@ -54,10 +60,6 @@
 		transform: translateX(-50%);
 		height: 100%;
 		object-fit: fill;
-	}
-
-	.desc-text {
-		font-family: 'Fredoka One';
 	}
 
 	@media (max-width: 560px) {

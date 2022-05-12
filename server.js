@@ -110,7 +110,7 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 						},
 						body: JSON.stringify({
 							title: req.body.title,
-							description: req.body.description,
+							//description: req.body.description,
 							caption: req.body.location,
 							alt_text: req.body.name
 						})

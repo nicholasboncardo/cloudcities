@@ -43,10 +43,10 @@
     "isEntry": true,
     "imports": [
       "_index-fc226c31.js",
-      "_wpTitles-212519c3.js"
+      "_wpTitles-f89afeed.js"
     ],
     "css": [
-      "assets/entries/pages/draw.svelte-49f01099.css"
+      "assets/entries/pages/draw.svelte-17f33374.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -55,17 +55,17 @@
     "isEntry": true,
     "imports": [
       "_index-fc226c31.js",
-      "_wpTitles-212519c3.js"
+      "_wpTitles-f89afeed.js"
     ],
     "css": [
-      "assets/entries/pages/index.svelte-da15ede0.css"
+      "assets/entries/pages/index.svelte-5e285f6f.css"
     ]
   },
   "_index-fc226c31.js": {
     "file": "chunks/index-fc226c31.js"
   },
-  "_wpTitles-212519c3.js": {
-    "file": "chunks/wpTitles-212519c3.js",
+  "_wpTitles-f89afeed.js": {
+    "file": "chunks/wpTitles-f89afeed.js",
     "imports": [
       "_index-fc226c31.js"
     ],

@@ -46,12 +46,14 @@ let count = 20;
 const getImages = async (count2) => {
   const res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count2}`);
   const data = await res.json();
+  console.log("data: ", data);
   const dataForRepo = data.map((data2) => {
     let newDate = new Date(data2.date);
     return {
       date: Intl.DateTimeFormat("de-DE").format(newDate),
       link: data2["source_url"],
       title: data2.title.rendered,
+      name: data2.alt_text,
       description: data2.description.rendered.includes("<p>") ? data2.description.rendered.split("<p>").pop().split("</p>")[0] : false,
       location: data2.caption.rendered.split("<p>").pop().split("</p>")[0]
     };

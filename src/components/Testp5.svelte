@@ -145,7 +145,7 @@
 	}
 	let allowUpload = true;
 	const submitImage = () => {
-		if (canvasTitle && canvasDescription && allowUpload) {
+		if (canvasTitle && allowUpload) {
 			uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 			console.log('uploads: ', uploads);
 			uploads.push('upload');
@@ -155,7 +155,7 @@
 			let formData = new FormData();
 			formData.append('title', canvasTitle);
 			formData.append('location', canvasLocation);
-			formData.append('description', canvasDescription);
+			//formData.append('description', canvasDescription);
 			formData.append('name', painterName);
 			formData.append('userUploads', uploads.length);
 			let canvas = document.getElementById('defaultCanvas0');
@@ -313,11 +313,11 @@
 				<h2>Contribute to the Cloud Cities repository</h2>
 				<div class="input-section">
 					<p>{contributeText[0]}</p>
-					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasTitle} />
+					<input type="text" id="input-title" data-lpignore="true" bind:value={canvasTitle} />
 				</div>
 				<div class="input-section">
 					<p>{contributeText[1]}</p>
-					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasLocation} />
+					<input type="text" id="input-location" data-lpignore="true" bind:value={canvasLocation} />
 				</div>
 				<!--
 						<div class="input-section">
