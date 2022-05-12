@@ -41,7 +41,7 @@
 			columns = 1;
 		} else if (window.innerWidth > 500 && window.innerWidth <= 700) {
 			columns = 2;
-		} else if (window.innerWidth > 700 && window.innerWidth <= 1000) {
+		} else if (window.innerWidth > 700 && window.innerWidth <= 1500) {
 			columns = 3;
 		} else {
 			columns = 4;
@@ -184,7 +184,7 @@
 								<div class="img-info" style="visibility: hidden">
 									<div class="info-text">
 										<p>{image.date}</p>
-										{#if image.location !== 'undefined'}}
+										{#if image.location !== 'undefined'}
 											<p>{image.location}</p>
 										{/if}
 										<h2 class="desc-text">{image.title}</h2>
@@ -201,6 +201,7 @@
 
 <style>
 	.gallery {
+		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
 		overflow-x: hidden;
 		-webkit-overflow-scrolling: touch;
 		overflow-y: scroll;
@@ -218,7 +219,7 @@
 	.gallery-item {
 		width: 100%;
 		position: relative;
-		max-height: 60vh;
+		cursor: pointer;
 	}
 
 	.gallery-item .image {
@@ -226,7 +227,6 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		min-height: 20vh;
 	}
 
 	.gallery-item .image img {
@@ -279,7 +279,7 @@
 		-o-transform: scale(1.2); /* Opera */
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 1500px) {
 		.gallery {
 			grid-template-columns: 1fr 1fr 1fr;
 		}

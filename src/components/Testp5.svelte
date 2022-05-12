@@ -2,6 +2,7 @@
 	import P5 from 'p5-svelte';
 	export let propValue;
 	export let contributeModal;
+	export let drawInstructions;
 	let backgroundImage = propValue;
 	console.log('contribute modal: ', contributeModal);
 	let contributeText = contributeModal.map((element) => {
@@ -21,11 +22,16 @@
 	let green = 0;
 
 	let moveCanvas; //set true when user moves over canvas on mobile
+	console.log('drawInstructions: ', drawInstructions);
+	if (drawInstructions) {
+		moveCanvas = true;
+	}
 	let canvas;
 	const sketch = (p5) => {
 		let image;
 
 		p5.preload = () => {
+			moveCanvas = false;
 			console.log('preload');
 			//ToDo: load images from WP
 			image = p5.loadImage(backgroundImage);
@@ -66,6 +72,16 @@
 				if (moveCanvas) {
 					moveCanvas = false;
 				}
+			});
+
+			let redoButton = document.getElementById('r-button');
+			redoButton.addEventListener('click', function () {
+				p5.clear();
+				p5.background(image);
+			});
+			redoButton.addEventListener('touchstart', function () {
+				p5.clear();
+				p5.background(image);
 			});
 		};
 
@@ -169,6 +185,7 @@
 				});
 			});
 			finishedDrawing = false;
+			moveCanvas = true;
 			imageSubmitted = true;
 		} else if (!allowUpload) {
 			return;
@@ -239,7 +256,7 @@
 	};
 
 	const returnToDraw = () => {
-		console.log('return to draw');
+		moveCanvas = false;
 		window.location.reload();
 	};
 
@@ -299,6 +316,9 @@
 						/>
 					</div>
 				</div>
+				<button id="pallette-done" on:click={handleExitButton} on:touchstart={handleExitButton}
+					>Done</button
+				>
 			</div>
 			<div
 				class="icon-button exit-button"
@@ -346,7 +366,10 @@
 				</div>
 				<button id="cancel-button" on:click={cancelSubmit}>{contributeText[6]}</button>
 				{#if notEnoughInfo}
-					<p>We need more Information</p>
+					<p>
+						We are missing information to complete your Cloud Cities submission. Please tell us more
+						about your drawing! Please note: Location and Name are optional.
+					</p>
 				{/if}
 			</div>
 			<div
@@ -387,6 +410,12 @@
 			id="p-button"
 			on:click={openPallette}
 			on:touchstart={() => (pallette = !pallette)}
+			on:mouseenter={mouseEnterButton}
+			on:mouseleave={mouseLeaveButton}
+		/>
+		<div
+			class="icon-button redo-button"
+			id="r-button"
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
 		/>
@@ -466,6 +495,15 @@
 		right: 10px;
 		margin: 10px;
 		background-image: url('/button_finish.png');
+		position: fixed;
+	}
+
+	.redo-button {
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		margin: 10px;
+		background-image: url('/button_reset.png');
 		position: fixed;
 	}
 
@@ -568,6 +606,10 @@
 
 	img {
 		margin-left: 5px;
+	}
+
+	#pallette-done {
+		width: 100%;
 	}
 
 	@media (max-width: 700px) {

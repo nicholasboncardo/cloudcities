@@ -1,16 +1,16 @@
 <script>
 	import { fade } from 'svelte/transition';
 	export let image;
-	console.log('image: ', image);
+	console.log('image: ', image.name.length);
 </script>
 
-<div class="indiv-post-modal" transition:fade>
+<div class="indiv-post-modal">
 	<div class="indiv-post-image">
 		<img src={image.link} alt="" />
 	</div>
 	<div class="indiv-post-info">
 		<p>{image.date}</p>
-		{#if image.name !== '' || image.name !== 'undefined'}
+		{#if image.name.length > 0 && image.name !== 'undefined'}
 			<h2>{image.name}</h2>
 		{/if}
 		{#if image.location !== 'undefined'}
@@ -51,7 +51,8 @@
 		height: 100%;
 		width: 100%;
 		overflow: hidden;
-		background-color: rgba(0, 0, 0, 0.95);
+		background: rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(26px);
 	}
 
 	.indiv-post-image > img {

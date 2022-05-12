@@ -11,10 +11,8 @@
 
 	let instructionsText;
 	onMount(async () => {
-		
 		let startText = document.getElementById('cloudstobe');
 		startText.innerHTML = cloudsToBe[0];
-		
 
 		let drawButton = document.getElementById('draw-button');
 		let remixButton = document.getElementById('remix-button');
@@ -98,7 +96,7 @@
 			{#if chooseUpload}
 				<input accept=".png, .jpg, .jpeg" type="file" id="upload" on:change={getInputImage} />
 				{#if !fileTooBig}
-					<button on:click={drawOnUploadImage}>Start</button>
+					<button id="drawOnUpload-button" on:click={drawOnUploadImage}>Upload</button>
 				{/if}
 				{#if fileTooBig}
 					<p>Please choose a smaller file</p>
@@ -155,6 +153,11 @@
 		flex-grow: 1;
 	}
 
+	#drawOnUpload-button {
+		height: 48px;
+		margin: 0px;
+	}
+
 	h2 {
 		margin: 0px;
 		text-shadow: 0px 0px 3px #ffffff;
@@ -162,6 +165,8 @@
 
 	input {
 		border-radius: 10px;
+		margin: 0px;
+		text-align: center;
 	}
 	@media (max-width: 500px) {
 		.start-draw-center {

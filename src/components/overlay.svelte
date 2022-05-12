@@ -14,7 +14,8 @@
 	};
 
 	const goToAbout = () => {
-		dispatch('goToAbout');
+		console.log('go to about');
+		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
 	};
 </script>
 
@@ -24,9 +25,7 @@
 			<div on:click={clickDraw} class="overlay-button draw" />
 		</a>
 		<h2>Cloud Cities</h2>
-		<a href="/about">
-			<div class="overlay-button about" on:click={goToAbout} />
-		</a>
+		<div class="overlay-button about" on:click={goToAbout} />
 	{/if}
 	{#if openComponent === 'individualPost'}
 		<div class="overlay-button close" on:click={closeLargeImage} />
@@ -76,11 +75,11 @@
 	}
 
 	.about {
-		background-image: url('/burger-default.png');
+		background-image: url('/icon_info.png');
 		cursor: pointer;
 	}
 	.about:hover {
-		background-image: url('/burger-hover.png');
+		background-image: url('/icon_info_hover.png');
 	}
 
 	h2 {

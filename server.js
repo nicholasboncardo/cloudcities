@@ -126,6 +126,10 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 				});
 		});
 });
+
+app.get('/return', (req, res) => {
+	console.log('return!!!');
+});
 app.use(handler);
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
