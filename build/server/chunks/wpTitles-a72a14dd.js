@@ -47,7 +47,6 @@ const getImages = async (count2) => {
   const res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count2}`);
   const data = await res.json();
   const dataForRepo = data.map((data2) => {
-    console.log("data in store: ", data2);
     let newDate = new Date(data2.date);
     return {
       date: Intl.DateTimeFormat("de-DE").format(newDate),

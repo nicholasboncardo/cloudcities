@@ -3,7 +3,7 @@ export const manifest = {
 	assets: new Set(["burger-default.png","burger-hover.png","button_close.png","button_finish.png","button_pallette.png","button_repository.png","draw-hover.png","draw-unselected.png","global.css"]),
 	mimeTypes: {".png":"image/png",".css":"text/css"},
 	_: {
-		entry: {"file":"start-50a9c858.js","js":["start-50a9c858.js","chunks/index-c93fc7ab.js","chunks/index-a24d6f2a.js"],"css":[]},
+		entry: {"file":"start-c926e527.js","js":["start-c926e527.js","chunks/index-c93fc7ab.js","chunks/index-a24d6f2a.js"],"css":[]},
 		nodes: [
 			() => import('./server/nodes/0.js'),
 			() => import('./server/nodes/1.js'),

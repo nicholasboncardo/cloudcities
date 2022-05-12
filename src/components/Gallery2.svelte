@@ -62,6 +62,7 @@
 		let scroll = true;
 		gallery.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
+			console.log('scroll registered');
 			//console.log('scroll Top: ', gallery.scrollTop);
 			//console.log('scroll innerHeight: ', window.innerHeight);
 			//console.log('scroll offestHeight: ', gallery.scrollHeight);
@@ -269,8 +270,6 @@
 		-webkit-transform: scale(1.2); /* Safari and Chrome */
 		-o-transform: scale(1.2); /* Opera */
 	}
-
-
 
 	@media (max-width: 1000px) {
 		.gallery {
