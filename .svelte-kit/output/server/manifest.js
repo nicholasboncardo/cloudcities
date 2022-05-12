@@ -1,9 +1,9 @@
 export const manifest = {
 	appDir: "_app",
-	assets: new Set(["burger-default.png","burger-hover.png","button_close.png","button_finish.png","button_pallette.png","button_repository.png","draw-hover.png","draw-unselected.png","global.css"]),
-	mimeTypes: {".png":"image/png",".css":"text/css"},
+	assets: new Set(["burger-default.png","burger-hover.png","button_close.png","button_finish.png","button_pallette.png","button_repository.png","cloud_download.svg","cloud_submit.svg","draw-hover.png","draw-unselected.png","global.css"]),
+	mimeTypes: {".png":"image/png",".svg":"image/svg+xml",".css":"text/css"},
 	_: {
-		entry: {"file":"start-d1190e88.js","js":["start-d1190e88.js","chunks/index-c93fc7ab.js","chunks/index-a24d6f2a.js"],"css":[]},
+		entry: {"file":"start-56f19858.js","js":["start-56f19858.js","chunks/index-b4ba22ca.js","chunks/index-e1a0e36b.js"],"css":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

@@ -319,7 +319,8 @@
 					<p>{contributeText[1]}</p>
 					<input type="text" id="input-username" data-lpignore="true" bind:value={canvasLocation} />
 				</div>
-				<div class="input-section">
+				<!--
+						<div class="input-section">
 					<p>{contributeText[2]}</p>
 					<input
 						type="text"
@@ -328,16 +329,22 @@
 						bind:value={canvasDescription}
 					/>
 				</div>
+				-->
+
 				<div class="input-section">
-					<p>{contributeText[3]}</p>
+					<p>{contributeText[2]}</p>
 					<input type="text" id="input-name" data-lpignore="true" bind:value={painterName} />
 				</div>
-				<p>{contributeText[4]}</p>
+				<p>{contributeText[3]}</p>
 				<div class="flex-row">
-					<button id="submit-button" on:click={submitImage}>{contributeText[5]}</button>
-					<button id="download-button" on:click={downloadImage}>{contributeText[6]}</button>
+					<button id="submit-button" on:click={submitImage}
+						>{contributeText[4]} <img src="./cloud_submit.svg" alt="submit" /></button
+					>
+					<button id="download-button" on:click={downloadImage}
+						>{contributeText[5]}<img src="./cloud_download.svg" alt="download" /></button
+					>
 				</div>
-				<button id="cancel-button" on:click={cancelSubmit}>{contributeText[7]}</button>
+				<button id="cancel-button" on:click={cancelSubmit}>{contributeText[6]}</button>
 				{#if notEnoughInfo}
 					<p>We need more Information</p>
 				{/if}
@@ -535,6 +542,18 @@
 		width: 49%;
 	}
 
+	button > img {
+		height: 1em;
+	}
+
+	#download-button,
+	#submit-button {
+		font-size: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	#cancel-button {
 		width: 100%;
 	}
@@ -545,6 +564,10 @@
 
 	.flex-row > a > button {
 		width: 100%;
+	}
+
+	img {
+		margin-left: 5px;
 	}
 
 	@media (max-width: 700px) {

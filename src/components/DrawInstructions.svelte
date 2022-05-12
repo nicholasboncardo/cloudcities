@@ -55,29 +55,6 @@
 		text-align: center;
 	}
 
-	.button-section {
-		display: flex;
-		justify-content: space-between;
-		height: 50px;
-		width: 100%;
-		gap: 2px;
-	}
-	.button-section button {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-grow: 1;
-	}
-
-	h2 {
-		margin: 0px;
-		text-shadow: 0px 0px 3px #ffffff;
-	}
-
-	input {
-		border-radius: 10px;
-	}
 	@media (max-width: 500px) {
 		.start-draw-center {
 			width: 80%;
