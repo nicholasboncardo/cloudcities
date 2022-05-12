@@ -18,7 +18,7 @@ const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   return `<div class="${"gallery svelte-1bcr14j"}" id="${"gallery"}"><div class="${"flex-container svelte-1bcr14j"}" id="${"flex-container1"}">${each(repoImages2, (image, i) => {
     return `${i % columns == 0 ? `<div class="${"gallery-container"}"><div class="${"gallery-item svelte-1bcr14j"}"><div class="${"image svelte-1bcr14j"}"><img${add_attribute("src", image.link, 0)} alt="${""}" class="${"svelte-1bcr14j"}"></div>
 						${`<div class="${"img-info svelte-1bcr14j"}" style="${"visibility: hidden"}"><div class="${"info-text svelte-1bcr14j"}"><p class="${"svelte-1bcr14j"}">${escape(image.date)}</p>
-									<p class="${"svelte-1bcr14j"}">${escape(image.location)}</p>
+									${image.location !== "undefined" ? `<p class="${"svelte-1bcr14j"}">${escape(image.location)}</p>` : ``}
 									<h2 class="${"desc-text svelte-1bcr14j"}">${escape(image.title)}</h2></div>
 							</div>`}</div>
 				</div>` : ``}`;

@@ -7,13 +7,14 @@
 	export let cloudsToBe;
 	export let drawInstructions;
 	export let title;
+	export let straightToInstructions;
 
 	let instructionsText;
 	onMount(async () => {
+		
 		let startText = document.getElementById('cloudstobe');
 		startText.innerHTML = cloudsToBe[0];
-		instructionsText = document.getElementById('drawInstructions');
-		instructionsText.innerHTML = drawInstructions[0];
+		
 
 		let drawButton = document.getElementById('draw-button');
 		let remixButton = document.getElementById('remix-button');
@@ -22,7 +23,8 @@
 		drawButton.innerHTML = cloudsToBe[1];
 		remixButton.innerHTML = cloudsToBe[2];
 		uploadButton.innerHTML = cloudsToBe[3];
-
+		instructionsText = document.getElementById('drawInstructions');
+		instructionsText.innerHTML = drawInstructions[0];
 		let beginButton = document.getElementById('begin-button');
 		beginButton.innerHTML = drawInstructions[1];
 	});
@@ -84,7 +86,7 @@
 	transition:fade
 	style="background-image: url({propValue}); background-size: cover; background-position: center"
 >
-	{#if startDrawModal}
+	{#if startDrawModal && !straightToInstructions}
 		<div class="start-draw-center">
 			<h2>{title}</h2>
 			<div id="cloudstobe" />

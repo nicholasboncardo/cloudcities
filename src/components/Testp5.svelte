@@ -2,6 +2,7 @@
 	import P5 from 'p5-svelte';
 
 	export let propValue;
+	export let drawInstructions;
 	let backgroundImage = propValue;
 
 	let strokeWidth = 4;

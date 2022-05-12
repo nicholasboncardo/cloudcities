@@ -95,7 +95,9 @@
 							<div class="img-info" style="visibility: hidden">
 								<div class="info-text">
 									<p>{image.date}</p>
-									<p>{image.location}</p>
+									{#if image.location !== 'undefined'}
+										<p>{image.location}</p>
+									{/if}
 									<h2 class="desc-text">{image.title}</h2>
 								</div>
 							</div>
@@ -122,7 +124,9 @@
 								<div class="img-info" style="visibility: hidden">
 									<div class="info-text">
 										<p>{image.date}</p>
-										<p>{image.location}</p>
+										{#if image.location !== 'undefined'}
+											<p>{image.location}</p>
+										{/if}
 										<h2 class="desc-text">{image.title}</h2>
 									</div>
 								</div>
@@ -150,7 +154,9 @@
 								<div class="img-info" style="visibility: hidden">
 									<div class="info-text">
 										<p>{image.date}</p>
-										<p>{image.location}</p>
+										{#if image.location !== 'undefined'}
+											<p>{image.location}</p>
+										{/if}
 										<h2 class="desc-text">{image.title}</h2>
 									</div>
 								</div>
@@ -178,7 +184,9 @@
 								<div class="img-info" style="visibility: hidden">
 									<div class="info-text">
 										<p>{image.date}</p>
-										<p>{image.location}</p>
+										{#if image.location !== 'undefined'}}
+											<p>{image.location}</p>
+										{/if}
 										<h2 class="desc-text">{image.title}</h2>
 									</div>
 								</div>

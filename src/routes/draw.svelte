@@ -1,6 +1,7 @@
 <script>
 	import Draw from '../components/Testp5.svelte';
 	import Gallery from '../components/Gallery2.svelte';
+	import DrawInstructions from '../components/DrawInstructions.svelte';
 	import { repoImages } from '../stores/repoImages';
 	import { onMount } from 'svelte';
 	import StartDrawModal from '../components/StartDrawModal.svelte';
@@ -9,7 +10,7 @@
 	import { drawStartTitle } from '../stores/wpTitles';
 
 	let remix = false;
-
+	let drawInstructions = false;
 	let drawBackground;
 	onMount(async () => {
 		//get background Images from wp and choose random image
@@ -24,7 +25,7 @@
 	let background;
 	let drawApp = false;
 	let startDrawApp = true;
-	let drawInstructions = false;
+	let straightToInstructions = false;
 	const setBackground = (e) => {
 		console.log('startDrawing: ', e.detail);
 		if (e.detail) {
@@ -35,9 +36,10 @@
 		}
 
 		if (remix) {
+			drawInstructions = true;
 			remix = false;
-			startDrawApp = true;
-			drawBackground = e.detail.link;
+			drawApp = true;
+			background = e.detail.link;
 		} else {
 			startDrawApp = false;
 			drawApp = true;
@@ -57,15 +59,23 @@
 		drawInstructions={$drawInstruction}
 		cloudsToBe={$cloudsToBe}
 		propValue={drawBackground}
+		{straightToInstructions}
 		on:startDrawing={setBackground}
 		on:remixCanvas={chooseCanvas}
 	/>
 {/if}
 
 {#if drawApp}
-	<Draw propValue={background} />
+	<Draw propValue={background} {drawInstructions} />
 {/if}
 
 {#if remix}
 	<Gallery repoImages={$repoImages} remix={true} on:drawOnImage={setBackground} />
+{/if}
+
+{#if drawInstructions}
+	<DrawInstructions
+		drawInstructions={$drawInstruction}
+		on:closeInstructions={() => (drawInstructions = false)}
+	/>
 {/if}

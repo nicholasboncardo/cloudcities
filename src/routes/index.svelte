@@ -8,6 +8,8 @@
 	import { welcomeTitle } from '../stores/wpTitles';
 	console.log('title: ', $welcomeTitle);
 
+
+
 	let start = true;
 	let component = 'gallery';
 	const leaveStartPage = () => {
