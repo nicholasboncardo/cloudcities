@@ -123,6 +123,20 @@
 		p5.windowResized = () => {
 			//console.log('canvasRef: ', canvasRef);
 			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+
+			if (p5.windowWidth > 500) {
+				if (image.width < image.height) {
+					let canvasHeight = image.height / (image.width / p5.windowWidth);
+					p5.resizeCanvas(p5.windowWidth, canvasHeight);
+				} else {
+					p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+				}
+			} else if (p5.windowWidth < 500 && image.width < image.height) {
+				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+			} else if (p5.windowWidth < 500) {
+				p5.resizeCanvas(image.width / 2, p5.windowHeight);
+			}
+
 			p5.background(image);
 		};
 	};
@@ -268,14 +282,13 @@
 
 <div id="canvas-container">
 	<P5 {sketch} />
-	<a href="/">
-		<div
-			class="icon-button repo-button"
-			on:mouseenter={mouseEnterButton}
-			on:mouseleave={mouseLeaveButton}
-			on:touchstart={redirectMobile}
-		/>
-	</a>
+	<div
+		class="icon-button repo-button"
+		on:mouseenter={mouseEnterButton}
+		on:mouseleave={mouseLeaveButton}
+		on:touchstart={redirectMobile}
+		on:click={redirectMobile}
+	/>
 	{#if pallette}
 		<div class="container">
 			<div class="modal-center draw-settings">
@@ -444,6 +457,7 @@
 		background-position: center center;
 		background-image: url('/button_repository.png');
 		position: fixed;
+		z-index: 10000;
 	}
 	.draw-settings {
 		width: 300px;

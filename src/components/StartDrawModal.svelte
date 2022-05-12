@@ -77,6 +77,9 @@
 	const remixCanvas = () => {
 		dispatch('remixCanvas');
 	};
+	const redirectMobile = () => {
+		window.location.replace('/');
+	};
 </script>
 
 <div
@@ -84,6 +87,11 @@
 	transition:fade
 	style="background-image: url({propValue}); background-size: cover; background-position: center"
 >
+	<div
+			class="icon-button repo-button"
+			on:touchstart={redirectMobile}
+			on:click={redirectMobile}
+		/>
 	{#if startDrawModal && !straightToInstructions}
 		<div class="start-draw-center">
 			<h2>{title}</h2>
@@ -167,6 +175,18 @@
 		border-radius: 10px;
 		margin: 0px;
 		text-align: center;
+	}
+	.repo-button {
+		top: 10px;
+		left: 10px;
+		margin: 10px;
+		width: 40px;
+		height: 40px;
+		background-size: 40px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-image: url('/button_repository.png');
+		position: fixed;
 	}
 	@media (max-width: 500px) {
 		.start-draw-center {
