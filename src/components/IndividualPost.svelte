@@ -52,6 +52,7 @@
 		width: 100%;
 		overflow: hidden;
 		background: rgba(0, 0, 0, 0.25);
+		-webkit-backdrop-filter: blur(26px);
 		backdrop-filter: blur(26px);
 	}
 
@@ -66,6 +67,7 @@
 	@media (max-width: 560px) {
 		.indiv-post-modal {
 			background: rgba(0, 0, 0, 0.24);
+			-webkit-backdrop-filter: blur(26px);
 			backdrop-filter: blur(26px);
 		}
 		.indiv-post-image > img {
