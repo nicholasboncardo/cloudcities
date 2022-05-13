@@ -89,7 +89,7 @@
 				<div class="gallery-container" on:click={openImage(image)}>
 					<div class="gallery-item" on:mouseenter={showImageDetail} on:mouseleave={showImageDetail}>
 						<div class="image">
-							<img src={image.link} alt="" />
+							<img src="{image.link}?12345" alt="" />
 						</div>
 						{#if createInfoModals}
 							<div class="img-info" style="visibility: hidden">
