@@ -14,10 +14,12 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 const { STS_user, STS_pw } = require('./secrets.json');
 
+/*
 app.use((req, res, next) => {
 	res.setHeader('x-frame-options', 'deny');
 	next();
 });
+*/
 //app.use(express.json());
 
 const diskStorage = multer.diskStorage({
