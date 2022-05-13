@@ -43,7 +43,7 @@
 
 <style>
 	.start-container {
-		background: rgba(0, 0, 0, 0.44);
+		background: rgba(0, 0, 0, 0.75);
 		position: fixed;
 		top: 0px;
 		z-index: 1000;

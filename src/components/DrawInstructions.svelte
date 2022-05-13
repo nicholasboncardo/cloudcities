@@ -21,6 +21,7 @@
 </script>
 
 <div class="start-draw-container">
+	<div class="modal-container"></div>
 	<div class="start-draw-center">
 		<div id="drawInstructions" />
 		<button id="begin-button" on:click={startDrawing} />

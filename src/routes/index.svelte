@@ -36,7 +36,7 @@
 	};
 </script>
 
-{#if $welcomeToCloudCities || $welcomeToCloudCities.length <= 0}
+{#if !$welcomeToCloudCities || $repoImages.length <= 0}
 	<Loading />
 {/if}
 

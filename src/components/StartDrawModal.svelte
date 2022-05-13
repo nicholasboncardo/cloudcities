@@ -87,11 +87,8 @@
 	transition:fade
 	style="background-image: url({propValue}); background-size: cover; background-position: center"
 >
-	<div
-			class="icon-button repo-button"
-			on:touchstart={redirectMobile}
-			on:click={redirectMobile}
-		/>
+	<div class="icon-button repo-button" on:touchstart={redirectMobile} on:click={redirectMobile} />
+	<div class="modal-container" />
 	{#if startDrawModal && !straightToInstructions}
 		<div class="start-draw-center">
 			<h2>{title}</h2>
@@ -125,7 +122,7 @@
 		top: 0px;
 		width: 100%;
 		height: 100%;
-		background: rgba(0, 0, 0, 0.24);
+		background: rgba(0, 0, 0, 0.75);
 		color: white;
 	}
 
