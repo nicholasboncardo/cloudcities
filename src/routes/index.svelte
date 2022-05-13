@@ -3,14 +3,22 @@
 	import Overlay from '../components/overlay.svelte';
 	import Start from '../components/start.svelte';
 	import IndividualPost from '../components/IndividualPost.svelte';
+	import Loading from '../components/Loading.svelte';
 	import { repoImages } from '../stores/repoImages';
 	import { welcomeToCloudCities } from '../stores/wpTexts';
 	import { welcomeTitle } from '../stores/wpTitles';
+	import { onMount } from 'svelte';
 	console.log('title: ', $welcomeTitle);
+	let start;
+	onMount(() => {
+		console.log('referrer: ', document.referrer);
+		if (document.referrer === 'http://localhost:3000/draw') {
+			start = false;
+		} else {
+			start = true;
+		}
+	});
 
-
-
-	let start = true;
 	let component = 'gallery';
 	const leaveStartPage = () => {
 		start = false;
@@ -27,6 +35,10 @@
 		component = 'gallery';
 	};
 </script>
+
+{#if $welcomeToCloudCities || $welcomeToCloudCities.length <= 0}
+	<Loading />
+{/if}
 
 {#if start && $welcomeToCloudCities.length > 0}
 	<Start

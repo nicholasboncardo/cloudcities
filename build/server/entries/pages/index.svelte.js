@@ -51,30 +51,17 @@ const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 </div>`;
 });
 var start_svelte_svelte_type_style_lang = "";
+var IndividualPost_svelte_svelte_type_style_lang = "";
+var Loading_svelte_svelte_type_style_lang = "";
 const css = {
-  code: ".start-container.svelte-1407kxg{background:rgba(0, 0, 0, 0.44);position:fixed;top:0px;z-index:1000;width:100%;height:100%;color:white}.start-info.svelte-1407kxg{display:flex;flex-direction:column;justify-content:space-around;position:absolute;padding:20px;width:60%}button.svelte-1407kxg{width:100%;height:30px}@media(max-width: 500px){.start-info.svelte-1407kxg{width:80%}}",
+  code: ".loading.svelte-1akkeh1.svelte-1akkeh1{position:fixed;top:0px;width:100vw;height:100vh;background:linear-gradient(0deg, #ffffff 0%, #0094ff 100%);color:white}.loading.svelte-1akkeh1>h2.svelte-1akkeh1{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)}",
   map: null
 };
-const Start = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  createEventDispatcher();
-  let { modalText } = $$props;
-  let { title } = $$props;
-  console.log("title in onmount: ", typeof title);
-  if ($$props.modalText === void 0 && $$bindings.modalText && modalText !== void 0)
-    $$bindings.modalText(modalText);
-  if ($$props.title === void 0 && $$bindings.title && title !== void 0)
-    $$bindings.title(title);
+const Loading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);
-  {
-    if (modalText.length > 0)
-      ;
-  }
-  return `<div class="${"start-container svelte-1407kxg"}"><div class="${"modal-center start-info svelte-1407kxg"}"><h2 id="${"title"}" class="${"start-headline"}">${escape(title)}</h2>
-		<div id="${"text"}"></div>
-		<button id="${"enter-button"}" class="${"svelte-1407kxg"}">Enter</button></div>
+  return `<div class="${"loading svelte-1akkeh1"}"><h2 class="${"svelte-1akkeh1"}">Loading...</h2>
 </div>`;
 });
-var IndividualPost_svelte_svelte_type_style_lang = "";
 const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $welcomeTitle, $$unsubscribe_welcomeTitle;
   let $welcomeToCloudCities, $$unsubscribe_welcomeToCloudCities;
@@ -88,10 +75,9 @@ const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$unsubscribe_welcomeTitle();
   $$unsubscribe_welcomeToCloudCities();
   $$unsubscribe_repoImages();
-  return `${$welcomeToCloudCities.length > 0 ? `${validate_component(Start, "Start").$$render($$result, {
-    title: $welcomeTitle,
-    modalText: $welcomeToCloudCities
-  }, {}, {})}` : `${validate_component(Overlay, "Overlay").$$render($$result, {
+  return `${$welcomeToCloudCities || $welcomeToCloudCities.length <= 0 ? `${validate_component(Loading, "Loading").$$render($$result, {}, {}, {})}` : ``}
+
+${`${validate_component(Overlay, "Overlay").$$render($$result, {
     openComponent: component,
     image: chosenImage
   }, {}, {})}`}
