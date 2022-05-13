@@ -23,15 +23,13 @@
 
 	let moveCanvas; //set true when user moves over canvas on mobile
 	console.log('drawInstructions: ', drawInstructions);
-	if (drawInstructions) {
-		moveCanvas = true;
-	}
+
 	let canvas;
 	const sketch = (p5) => {
 		let image;
 
 		p5.preload = () => {
-			moveCanvas = false;
+			//moveCanvas = false;
 			console.log('preload');
 			//ToDo: load images from WP
 			image = p5.loadImage(backgroundImage);
@@ -91,7 +89,7 @@
 			py = 0,
 			easing = 0.3;
 		p5.mousePressed = () => {
-			if (finishedDrawing || moveCanvas || pallette || overButton) {
+			if (finishedDrawing || moveCanvas || pallette || overButton || drawInstructions) {
 				return;
 			}
 			// Assign current mouse position to variables.
@@ -103,7 +101,7 @@
 			return false;
 		};
 		p5.touchMoved = () => {
-			if (finishedDrawing || moveCanvas || pallette || overButton) {
+			if (finishedDrawing || moveCanvas || pallette || overButton || drawInstructions) {
 				return;
 			}
 			let targetX = p5.mouseX;

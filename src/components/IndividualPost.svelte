@@ -65,8 +65,8 @@
 
 	@media (max-width: 560px) {
 		.indiv-post-modal {
-			background: rgba(0, 0, 0, 0.85);
-			backdrop-filter: blur(10px);
+			background: rgba(0, 0, 0, 0.24);
+			backdrop-filter: blur(26px);
 		}
 		.indiv-post-image > img {
 			width: 100%;
@@ -79,6 +79,7 @@
 
 		.indiv-post-info {
 			width: 50%;
+			bottom: 100px;
 		}
 	}
 </style>
