@@ -22,10 +22,10 @@
 <div class="overlay">
 	{#if openComponent === 'gallery'}
 		<a href="/draw">
-			<div on:click={clickDraw} class="overlay-button draw" />
+			<img on:click={clickDraw} src="svg/draw.svg" alt="draw-button" class="overlay-button"/>
 		</a>
 		<h2>Cloud Cities</h2>
-		<div class="overlay-button about" on:click={goToAbout} />
+		<img src="svg/about.svg" alt="about-button" class="overlay-button" on:click={goToAbout} />
 	{/if}
 	{#if openComponent === 'individualPost'}
 		<div class="overlay-button close" on:click={closeLargeImage} />
@@ -55,16 +55,18 @@
 		background-size: 48px;
 		background-repeat: no-repeat;
 		background-position: center center;
+		cursor: pointer;
 	}
-
+	/*
 	.draw {
 		background-image: url('/draw-unselected.png');
 	}
 
 	.draw:hover {
-		cursor: pointer;
+		
 		background-image: url('/draw-hover.png');
 	}
+	*/
 	.close {
 		position: relative;
 		width: 30px;
@@ -101,7 +103,6 @@
 			margin: 5px;
 		}
 		h2 {
-			
 			font-family: 'Fredoka One';
 			font-style: normal;
 			font-weight: 400;

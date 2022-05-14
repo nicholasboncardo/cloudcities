@@ -12,14 +12,15 @@ const port = process.env.PORT || 3000;
 const multer = require('multer');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
+let uidSafe = require('uid-safe');
+
 const { STS_user, STS_pw } = require('./secrets.json');
 
-/*
 app.use((req, res, next) => {
 	res.setHeader('x-frame-options', 'deny');
 	next();
 });
-*/
+
 //app.use(express.json());
 
 const diskStorage = multer.diskStorage({
@@ -27,7 +28,10 @@ const diskStorage = multer.diskStorage({
 		callback(null, __dirname + '/uploads');
 	},
 	filename: function (req, file, callback) {
-		callback(null, `${file.fieldname}.png`);
+		//callback(null, `${file.fieldname}.png`);
+		uidSafe(12).then(function (uid) {
+			callback(null, uid);
+		});
 	}
 });
 
@@ -56,7 +60,9 @@ const multerMiddeWare = (req, res, next) => {
 app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 	console.log('req.body: ', req.body);
 	console.log('req.file: ', req.file);
+	let filename = req.body.title.split(' ').join('');
 	let { path } = req.file;
+	console.log('path: ', req.file);
 	let token;
 
 	if (req.body.userUploads > 30) {
@@ -90,7 +96,7 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 				method: 'POST',
 				headers: {
 					'content-type': 'image/png',
-					'Content-Disposition': 'attachment; filename=file.png',
+					'Content-Disposition': `attachment; filename=${req.file.filename}.png`,
 					Authorization: `Bearer ${result}`
 				},
 				body: fs.readFileSync(path)
