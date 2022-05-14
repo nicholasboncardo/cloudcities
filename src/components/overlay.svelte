@@ -89,5 +89,26 @@
 		line-height: 38px;
 		text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 		margin: 0px;
+		max-width: 60vw;
+		word-wrap: break-word;
+	}
+
+	@media (max-width: 500px) {
+		.overlay-button {
+			width: 28px;
+			height: 28px;
+			background-size: 28px;
+			margin: 5px;
+		}
+		h2 {
+			
+			font-family: 'Fredoka One';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			text-align: center;
+			letter-spacing: 0.05em;
+		}
 	}
 </style>

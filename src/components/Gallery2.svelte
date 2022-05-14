@@ -260,6 +260,7 @@
 	.info-text > h2 {
 		margin-top: 5px;
 		display: flex;
+		text-align: left;
 	}
 
 	.info-text > p {

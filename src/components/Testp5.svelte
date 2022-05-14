@@ -291,7 +291,7 @@
 		<div class="container">
 			<div class="modal-center draw-settings">
 				<div class="style-section">
-					<p>width</p>
+					<p>size</p>
 					<div class="stroke-width">
 						<div
 							class="stroke-button"
@@ -435,7 +435,7 @@
 
 <style>
 	.container {
-		background: rgba(0, 0, 0, 0.24);
+		background: rgba(0, 0, 0, 0.75);
 		position: fixed;
 		top: 0px;
 		z-index: 1000;
@@ -466,12 +466,13 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		width: 50%;
 	}
 	.stroke-width {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		width: 40%;
+		width: 50%;
 	}
 
 	.stroke-button {
@@ -482,8 +483,8 @@
 	}
 
 	#big-stroke {
-		width: 30px;
-		height: 30px;
+		width: 40px;
+		height: 40px;
 	}
 	#medium-stroke {
 		width: 20px;
@@ -539,6 +540,10 @@
 		align-items: center;
 		gap: 1%;
 		text-align: left;
+	}
+
+	.style-section > p {
+		font-size: 20px;
 	}
 
 	.exit-button {
