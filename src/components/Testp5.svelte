@@ -74,6 +74,7 @@
 
 			let redoButton = document.getElementById('r-button');
 			redoButton.addEventListener('click', function () {
+				console.log('redo!');
 				p5.clear();
 				p5.background(image);
 			});
@@ -289,7 +290,7 @@
 	/>
 	{#if pallette}
 		<div class="container">
-			<div class="modal-center draw-settings">
+			<div class="modal-info draw-settings">
 				<div class="style-section">
 					<p>size</p>
 					<div class="stroke-width">
@@ -350,18 +351,6 @@
 					<p>{contributeText[1]}</p>
 					<input type="text" id="input-location" data-lpignore="true" bind:value={canvasLocation} />
 				</div>
-				<!--
-						<div class="input-section">
-					<p>{contributeText[2]}</p>
-					<input
-						type="text"
-						id="input-description"
-						data-lpignore="true"
-						bind:value={canvasDescription}
-					/>
-				</div>
-				-->
-
 				<div class="input-section">
 					<p>{contributeText[2]}</p>
 					<input type="text" id="input-name" data-lpignore="true" bind:value={painterName} />
@@ -392,7 +381,7 @@
 	{/if}
 	{#if imageSubmitted}
 		<div class="container">
-			<div class="modal-center">
+			<div class="modal-info">
 				<h2>Thank you! Submission complete</h2>
 				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
 				<div class="flex-row">
@@ -448,9 +437,9 @@
 		top: 10px;
 		left: 10px;
 		margin: 10px;
-		width: 40px;
-		height: 40px;
-		background-size: 40px;
+		width: 48px;
+		height: 48px;
+		background-size: 48px;
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-image: url('/button_repository.png');
@@ -550,9 +539,9 @@
 		bottom: 10px;
 		left: 30px;
 		margin: 20px;
-		width: 20px;
-		height: 20px;
-		background-size: 20px;
+		width: 48px;
+		height: 48px;
+		background-size: 48px;
 		background-image: url('/button_close.png');
 	}
 
@@ -593,7 +582,7 @@
 	}
 
 	button {
-		height: 50px;
+		height: 48px;
 		width: 49%;
 	}
 

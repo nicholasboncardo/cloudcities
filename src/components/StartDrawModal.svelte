@@ -22,6 +22,7 @@
 		remixButton.innerHTML = cloudsToBe[2];
 		uploadButton.innerHTML = cloudsToBe[3];
 		instructionsText = document.getElementById('drawInstructions');
+		console.log('drawinstructions: ', drawInstructions);
 		instructionsText.innerHTML = drawInstructions[0];
 		let beginButton = document.getElementById('begin-button');
 		beginButton.innerHTML = drawInstructions[1];
@@ -83,14 +84,14 @@
 </script>
 
 <div
-	class="start-draw-container"
+	class="modal-container"
 	transition:fade
 	style="background-image: url({propValue}); background-size: cover; background-position: center"
 >
 	<div class="icon-button repo-button" on:touchstart={redirectMobile} on:click={redirectMobile} />
 	<div class="modal-container" />
 	{#if startDrawModal && !straightToInstructions}
-		<div class="start-draw-center">
+		<div class="modal-info">
 			<h2>{title}</h2>
 			<div id="cloudstobe" />
 			<div class="button-section">
@@ -109,44 +110,17 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="start-draw-center" style="visibility: {instructionVisible}">
+	<div class="modal-info" style="visibility: {instructionVisible}">
 		<div id="drawInstructions" />
 		<button id="begin-button" on:click={startDrawing} />
 	</div>
 </div>
 
 <style>
-	.start-draw-container {
-		position: absolute;
-		background-size: cover;
-		top: 0px;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.75);
-		color: white;
-	}
-
-	.start-draw-center {
-		position: absolute;
-		width: 50%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		background: rgba(0, 0, 0, 0.25);
-		backdrop-filter: blur(26px);
-		border-radius: 20px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding: 20px;
-		gap: 10px;
-		text-align: center;
-	}
-
 	.button-section {
 		display: flex;
 		justify-content: space-between;
-		height: 50px;
+		height: 48px;
 		width: 100%;
 		gap: 2px;
 	}
@@ -168,6 +142,10 @@
 		text-shadow: 0px 0px 3px #ffffff;
 	}
 
+	p {
+		margin: 0px;
+	}
+
 	input {
 		border-radius: 10px;
 		margin: 0px;
@@ -186,8 +164,16 @@
 		position: fixed;
 		z-index: 10000;
 	}
+
+	#cloudstobe {
+		text-align: center;
+	}
+
+	#begin-button {
+		width: 100%;
+	}
 	@media (max-width: 500px) {
-		.start-draw-center {
+		.modal-info {
 			width: 80%;
 		}
 	}

@@ -33,8 +33,8 @@
 	}
 </script>
 
-<div class="start-container" transition:fade={{ duration: 1000 }}>
-	<div class="modal-center start-info">
+<div class="modal-container" transition:fade={{ duration: 1000 }}>
+	<div class="modal-info">
 		<h2 id="title" class="start-headline">{title}</h2>
 		<div id="text" />
 		<button id="enter-button" on:click={enterCloudcities}>Enter</button>
@@ -42,32 +42,16 @@
 </div>
 
 <style>
-	.start-container {
-		background: rgba(0, 0, 0, 0.75);
-		position: fixed;
-		top: 0px;
+	.modal-container {
 		z-index: 1000;
-		width: 100%;
-		height: 100%;
-		color: white;
-	}
-
-	.start-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		position: absolute;
-		padding: 20px;
-		width: 60%;
 	}
 
 	button {
 		width: 100%;
-		height: 30px;
 	}
 
 	@media (max-width: 500px) {
-		.start-info {
+		.modal-info {
 			width: 80%;
 		}
 	}
