@@ -280,7 +280,7 @@
 
 	const goToAbout = () => {
 		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
-	}
+	};
 </script>
 
 <div id="canvas-container">
@@ -524,6 +524,7 @@
 		top: 0px;
 		right: 0px;
 		background-image: url('/icon_info.png');
+		position: fixed;
 	}
 
 	.style-section,

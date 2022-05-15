@@ -134,6 +134,7 @@
 
 	#drawOnUpload-button {
 		height: 48px;
+		width: 100%;
 		margin: 0px;
 	}
 
@@ -150,6 +151,7 @@
 		border-radius: 10px;
 		margin: 0px;
 		text-align: center;
+		width: 100%;
 	}
 	.repo-button {
 		background-image: url('/button_repository.png');
