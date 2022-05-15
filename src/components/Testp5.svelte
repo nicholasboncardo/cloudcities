@@ -341,7 +341,7 @@
 	{/if}
 	{#if finishedDrawing}
 		<div class="container">
-			<div class="modal-center submit-image">
+			<div class="modal-info submit-image">
 				<h2>Contribute to the Cloud Cities repository</h2>
 				<div class="input-section">
 					<p>{contributeText[0]}</p>
@@ -546,7 +546,7 @@
 	}
 
 	.input-section p {
-		width: 20%;
+		width: 40%;
 		word-wrap: break-word;
 	}
 	input {
@@ -623,4 +623,5 @@
 			width: 90%;
 		}
 	}
+
 </style>
