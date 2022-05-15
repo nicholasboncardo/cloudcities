@@ -17,18 +17,43 @@
 		console.log('go to about');
 		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
 	};
+
+	let drawButtonSrc = 'svg/draw.svg';
+	let aboutButtonSrc = 'svg/about.svg';
+	let closeButtonSrc = 'svg/close.svg';
 </script>
 
 <div class="overlay">
 	{#if openComponent === 'gallery'}
 		<a href="/draw">
-			<img on:click={clickDraw} src="svg/draw.svg" alt="draw-button" class="overlay-button"/>
+			<img
+				on:click={clickDraw}
+				on:mouseenter={() => (drawButtonSrc = 'svg/draw_hover.svg')}
+				on:mouseleave={() => (drawButtonSrc = 'svg/draw.svg')}
+				src={drawButtonSrc}
+				alt="draw-button"
+				class="overlay-button"
+			/>
 		</a>
 		<h2>Cloud Cities</h2>
-		<img src="svg/about.svg" alt="about-button" class="overlay-button" on:click={goToAbout} />
+		<img
+			src={aboutButtonSrc}
+			alt="about-button"
+			class="overlay-button"
+			on:click={goToAbout}
+			on:mouseenter={() => (aboutButtonSrc = 'svg/about_hover.svg')}
+			on:mouseleave={() => (aboutButtonSrc = 'svg/about.svg')}
+		/>
 	{/if}
 	{#if openComponent === 'individualPost'}
-		<div class="overlay-button close" on:click={closeLargeImage} />
+		<img
+			class="overlay-button"
+			alt="exit-button"
+			src={closeButtonSrc}
+			on:click={closeLargeImage}
+			on:mouseenter={() => (closeButtonSrc = 'svg/close_hover.svg')}
+			on:mouseleave={() => (closeButtonSrc = 'svg/close.svg')}
+		/>
 		<h2>{image.title}</h2>
 		<a href="/about">
 			<div class="overlay-button about" on:click={goToAbout} />
@@ -69,9 +94,9 @@
 	*/
 	.close {
 		position: relative;
-		width: 30px;
-		height: 30px;
-		background-size: 30px;
+		width: 48px;
+		height: 48px;
+		background-size: 48px;
 		background-image: url('/button_close.png');
 		cursor: pointer;
 	}
