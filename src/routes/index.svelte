@@ -39,11 +39,11 @@
 	};
 </script>
 
-{#if !$welcomeToCloudCities || $repoImages.length <= 10 || !$welcomeTitle || $welcomeTitle === 'undefined'}
+{#if !$welcomeToCloudCities || $repoImages.length <= 10 || !$welcomeTitle || $welcomeTitle === 'undefined'}
 	<Loading />
 {/if}
 
-{#if start && $welcomeToCloudCities.length > 0}
+{#if start && $welcomeToCloudCities.length > 0 && $welcomeTitle}
 	<Start
 		title={$welcomeTitle}
 		modalText={$welcomeToCloudCities}
