@@ -39,7 +39,7 @@
 	};
 </script>
 
-{#if !$welcomeToCloudCities || $repoImages.length <= 10 || !$welcomeTitle}
+{#if !$welcomeToCloudCities || $repoImages.length <= 10 || $welcomeTitle === 'undefined'}
 	<Loading />
 {/if}
 
