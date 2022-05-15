@@ -74,6 +74,7 @@
 	}
 
 	.overlay-button {
+		border: red 1px solid;
 		margin: 10px;
 		width: 48px;
 		height: 48px;
@@ -124,7 +125,6 @@
 		.overlay-button {
 			width: 28px;
 			height: 28px;
-			background-size: 28px;
 			margin: 5px;
 		}
 		h2 {
