@@ -184,6 +184,7 @@
 		background-position: center center;
 		background-image: url('/button_repository.png');
 		position: fixed;
+		z-index: 10000;
 	}
 	@media (max-width: 500px) {
 		.start-draw-center {

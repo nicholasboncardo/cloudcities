@@ -18,21 +18,21 @@
 		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
 	};
 
-	let drawButtonSrc = 'svg/draw.svg';
-	let aboutButtonSrc = 'svg/about.svg';
-	let closeButtonSrc = 'svg/close.svg';
+	let drawButtonSrc = 'draw-unselected.png';
+	let aboutButtonSrc = 'icon_info.png';
+	let closeButtonSrc = 'button_close.png';
 </script>
 
 <div class="overlay">
 	{#if openComponent === 'gallery'}
 		<a href="/draw">
 			<img
-				on:click={clickDraw}
-				on:mouseenter={() => (drawButtonSrc = 'svg/draw_hover.svg')}
-				on:mouseleave={() => (drawButtonSrc = 'svg/draw.svg')}
 				src={drawButtonSrc}
 				alt="draw-button"
 				class="overlay-button"
+				on:click={clickDraw}
+				on:mouseenter={() => (drawButtonSrc = 'draw-hover.png')}
+				on:mouseleave={() => (drawButtonSrc = 'draw-unselected.png')}
 			/>
 		</a>
 		<h2>Cloud Cities</h2>
@@ -41,8 +41,8 @@
 			alt="about-button"
 			class="overlay-button"
 			on:click={goToAbout}
-			on:mouseenter={() => (aboutButtonSrc = 'svg/about_hover.svg')}
-			on:mouseleave={() => (aboutButtonSrc = 'svg/about.svg')}
+			on:mouseenter={() => (aboutButtonSrc = 'icon_info_hover.png')}
+			on:mouseleave={() => (aboutButtonSrc = 'icon_info.png')}
 		/>
 	{/if}
 	{#if openComponent === 'individualPost'}
@@ -51,8 +51,8 @@
 			alt="exit-button"
 			src={closeButtonSrc}
 			on:click={closeLargeImage}
-			on:mouseenter={() => (closeButtonSrc = 'svg/close_hover.svg')}
-			on:mouseleave={() => (closeButtonSrc = 'svg/close.svg')}
+			on:mouseenter={() => (closeButtonSrc = 'button_close_hover.png')}
+			on:mouseleave={() => (closeButtonSrc = 'button_close.png')}
 		/>
 		<h2>{image.title}</h2>
 		<a href="/about">
@@ -74,7 +74,6 @@
 	}
 
 	.overlay-button {
-		border: red 1px solid;
 		margin: 10px;
 		width: 48px;
 		height: 48px;
