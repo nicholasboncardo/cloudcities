@@ -152,16 +152,7 @@
 		text-align: center;
 	}
 	.repo-button {
-		top: 10px;
-		left: 10px;
-		margin: 10px;
-		width: 40px;
-		height: 40px;
-		background-size: 40px;
-		background-repeat: no-repeat;
-		background-position: center center;
 		background-image: url('/button_repository.png');
-		position: fixed;
 		z-index: 10000;
 	}
 

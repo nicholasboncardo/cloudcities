@@ -277,10 +277,16 @@
 		finishedDrawing = false;
 		overButton = false;
 	};
+
+	const goToAbout = () => {
+		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
+	}
 </script>
 
 <div id="canvas-container">
 	<P5 {sketch} />
+	<h2 id="title">Cloud Cities</h2>
+	<div class="icon-button about-button" on:click={goToAbout} />
 	<div
 		class="icon-button repo-button"
 		on:mouseenter={mouseEnterButton}
@@ -433,15 +439,23 @@
 		color: white;
 	}
 
+	#title {
+		position: fixed;
+		top: 0px;
+		left: 50%;
+		transform: translate(-50%);
+		color: white;
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 38px;
+		text-shadow: 0px 0px 3px #ffffff;
+		margin: 0px;
+		top: 8px;
+	}
+
 	.repo-button {
-		top: 10px;
-		left: 10px;
-		margin: 10px;
-		width: 48px;
-		height: 48px;
-		background-size: 48px;
-		background-repeat: no-repeat;
-		background-position: center center;
+		top: 0px;
+		left: 0px;
 		background-image: url('/button_repository.png');
 		position: fixed;
 		z-index: 10000;
@@ -484,41 +498,32 @@
 		height: 10px;
 	}
 
-	.submit-image {
-		position: absolute;
-		padding: 20px;
-		max-width: none;
-		text-align: center;
-		width: 60%;
-	}
-
 	.finished-drawing-button {
-		bottom: 10px;
-		right: 10px;
-		margin: 10px;
+		bottom: 0px;
+		right: 0px;
 		background-image: url('/button_finish.png');
 		position: fixed;
 	}
 
 	.redo-button {
-		bottom: 10px;
+		bottom: 0px;
 		left: 50%;
 		transform: translateX(-50%);
-		margin: 10px;
 		background-image: url('/button_reset.png');
 		position: fixed;
 	}
 
-	.modal-center {
-		padding: 10px;
-	}
-
 	.pallette-button {
-		bottom: 10px;
-		left: 10px;
-		margin: 10px;
+		bottom: 0px;
+		left: 0px;
 		background-image: url('/button_pallette.png');
 		position: fixed;
+	}
+
+	.about-button {
+		top: 0px;
+		right: 0px;
+		background-image: url('/icon_info.png');
 	}
 
 	.style-section,
@@ -536,12 +541,8 @@
 	}
 
 	.exit-button {
-		bottom: 10px;
-		left: 30px;
-		margin: 20px;
-		width: 48px;
-		height: 48px;
-		background-size: 48px;
+		bottom: 0px;
+		left: 50px;
 		background-image: url('/button_close.png');
 	}
 
@@ -618,10 +619,19 @@
 		width: 100%;
 	}
 
-	@media (max-width: 700px) {
-		.submit-image {
-			width: 90%;
+	@media (max-width: 500px) {
+		.modal-info {
+			width: 80%;
+		}
+
+		.input-section > p,
+		.modal-info > p {
+			font-size: 13px;
+		}
+
+		#title {
+			font-size: 18px;
+			line-height: 20px;
 		}
 	}
-
 </style>

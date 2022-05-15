@@ -130,6 +130,7 @@ p {
 	background-size: 48px;
 	position: absolute;
 	cursor: pointer;
+	margin: 10px;
 }
 
 .flex-row {
@@ -137,4 +138,19 @@ p {
 	display: flex;
 	justify-content: space-between;
 	margin: 10px;
+}
+
+@media (max-width: 500px) {
+	.icon-button {
+		width: 28px;
+		height: 28px;
+		margin: 5px;
+		background-size: 28px;
+	}
+	.overlay-button {
+		width: 28px;
+		height: 28px;
+		background-size: 28px;
+		margin: 5px;
+	}
 }

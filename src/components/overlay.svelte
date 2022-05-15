@@ -29,7 +29,7 @@
 			<img
 				src={drawButtonSrc}
 				alt="draw-button"
-				class="overlay-button"
+				class="icon-button"
 				on:click={clickDraw}
 				on:mouseenter={() => (drawButtonSrc = 'draw-hover.png')}
 				on:mouseleave={() => (drawButtonSrc = 'draw-unselected.png')}
@@ -39,7 +39,7 @@
 		<img
 			src={aboutButtonSrc}
 			alt="about-button"
-			class="overlay-button"
+			class="icon-button"
 			on:click={goToAbout}
 			on:mouseenter={() => (aboutButtonSrc = 'icon_info_hover.png')}
 			on:mouseleave={() => (aboutButtonSrc = 'icon_info.png')}
@@ -47,7 +47,7 @@
 	{/if}
 	{#if openComponent === 'individualPost'}
 		<img
-			class="overlay-button"
+			class="icon-button"
 			alt="exit-button"
 			src={closeButtonSrc}
 			on:click={closeLargeImage}
@@ -73,34 +73,10 @@
 		z-index: 1000;
 	}
 
-	.overlay-button {
-		margin: 10px;
-		width: 48px;
-		height: 48px;
-		background-size: 48px;
-		background-repeat: no-repeat;
-		background-position: center center;
-		cursor: pointer;
+	.icon-button {
+		position: initial;
 	}
-	/*
-	.draw {
-		background-image: url('/draw-unselected.png');
-	}
-
-	.draw:hover {
-		
-		background-image: url('/draw-hover.png');
-	}
-	*/
-	.close {
-		position: relative;
-		width: 48px;
-		height: 48px;
-		background-size: 48px;
-		background-image: url('/button_close.png');
-		cursor: pointer;
-	}
-
+	
 	.about {
 		background-image: url('/icon_info.png');
 		cursor: pointer;
@@ -121,11 +97,6 @@
 	}
 
 	@media (max-width: 500px) {
-		.overlay-button {
-			width: 28px;
-			height: 28px;
-			margin: 5px;
-		}
 		h2 {
 			font-family: 'Fredoka One';
 			font-style: normal;
