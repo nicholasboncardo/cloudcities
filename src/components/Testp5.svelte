@@ -16,7 +16,7 @@
 	});
 	console.log('contributeText: ', contributeText);
 
-	let strokeWidth = 4;
+	let strokeWidth = 10;
 	let red = 0;
 	let blue = 0;
 	let green = 0;
@@ -146,11 +146,11 @@
 	let strokeButtons = document.getElementsByClassName('stroke-button');
 	const setStrokeWidth = (e) => {
 		if (e.target.id === 'small-stroke') {
-			strokeWidth = 2;
+			strokeWidth = 10;
 		} else if (e.target.id === 'medium-stroke') {
-			strokeWidth = 4;
+			strokeWidth = 20;
 		} else if (e.target.id === 'big-stroke') {
-			strokeWidth = 6;
+			strokeWidth = 30;
 		}
 		strokeButtons.forEach((element) => {
 			if (element !== e.target) {
@@ -253,11 +253,11 @@
 	let bigButtonBorder;
 	const openPallette = () => {
 		pallette = !pallette;
-		if (strokeWidth === 2) {
+		if (strokeWidth === 10) {
 			smallButtonBorder = 'solid 4px #00D1FF';
 			mediumButtonBorder = 'none';
 			bigButtonBorder = 'none';
-		} else if (strokeWidth === 4) {
+		} else if (strokeWidth === 20) {
 			smallButtonBorder = 'none';
 			mediumButtonBorder = 'solid 4px #00D1FF';
 			bigButtonBorder = 'none';
