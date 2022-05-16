@@ -38,17 +38,14 @@
 		let canvasRef;
 		p5.setup = () => {
 			//Handle width of canvas based on
+			let canvasHeight = image.height / (image.width / p5.windowWidth);
+			let canvasWidth = image.width / (image.height / p5.windowHeight);
 			if (p5.windowWidth > 500) {
-				if (image.width < image.height) {
-					let canvasHeight = image.height / (image.width / p5.windowWidth);
-					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
-				} else {
-					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-				}
+				canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500) {
-				canvas = p5.createCanvas(image.width / 2, p5.windowHeight);
+				canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
 			}
 			p5.background(image);
 
@@ -117,19 +114,21 @@
 		};
 
 		p5.windowResized = () => {
-			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+			console.log('imageheight: ', p5.height);
+			console.log('windowwidth: ', p5.windowWidth);
 
 			if (p5.windowWidth > 500) {
-				if (image.width < image.height) {
-					let canvasHeight = image.height / (image.width / p5.windowWidth);
-					p5.resizeCanvas(p5.windowWidth, canvasHeight);
-				} else {
-					p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+				let canvasHeight = image.height / (image.width / p5.windowWidth);
+				if (p5.height < p5.windowHeight && p5.windowWidth < p5.width) {
+					return;
 				}
+				p5.resizeCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(image.width / 2, p5.windowHeight);
+			} else {
+				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			}
 
 			p5.background(image);
@@ -414,9 +413,7 @@
 			class="icon-button finished-drawing-button"
 			id="finish-button"
 			on:click={() => (finishedDrawing = !finishedDrawing)}
-			on:touchstart={() => (
-				(finishedDrawing = !finishedDrawing)
-			)}
+			on:touchstart={() => (finishedDrawing = !finishedDrawing)}
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
 		/>
