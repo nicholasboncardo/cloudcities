@@ -86,11 +86,13 @@
 		object-fit: fill;
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 500px) {
 		.indiv-post-modal {
 			background: rgba(0, 0, 0, 0.24);
 			-webkit-backdrop-filter: blur(26px);
 			backdrop-filter: blur(26px);
+			height: 100vh;
+			height: calc(var(--vh, 1vh) * 100);
 		}
 		.indiv-post-image > img {
 			width: 100%;
@@ -103,7 +105,7 @@
 
 		.indiv-post-info {
 			width: 50%;
-			bottom: 80px;
+			bottom: 10px;
 		}
 	}
 </style>
