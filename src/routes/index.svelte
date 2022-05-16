@@ -15,6 +15,7 @@
 		if (
 			document.referrer === 'http://localhost:3000/draw' ||
 			document.referrer === 'http://cloudcities.herokuapp.com/draw' ||
+			document.referrer === 'https://cloudcities.herokuapp.com/draw' ||
 			document.referrer === 'http://cloudcities.herokuapp.com'
 		) {
 			start = false;
