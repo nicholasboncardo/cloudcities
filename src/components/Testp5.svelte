@@ -213,7 +213,14 @@
 
 	const downloadImage = () => {
 		let link = document.createElement('a');
-		link.download = 'myCanvas.png';
+		console.log('canvasTitle: ', canvasTitle);
+		let title;
+		if (canvasTitle) {
+			title = canvasTitle.split(' ').join('-');
+		} else {
+			title = 'myCloudCity';
+		}
+		link.download = `${title}.png`;
 		link.href = document.getElementById('defaultCanvas0').toDataURL();
 		link.click();
 	};
