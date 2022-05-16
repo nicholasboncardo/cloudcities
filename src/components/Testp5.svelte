@@ -279,7 +279,7 @@
 	};
 
 	const goToAbout = () => {
-		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
+		window.open('https://cloudcities.studiotomassaraceno.org', '_self');
 	};
 </script>
 

@@ -36,14 +36,15 @@
 			/>
 		</a>
 		<h2>Cloud Cities</h2>
-		<img
-			src={aboutButtonSrc}
-			alt="about-button"
-			class="icon-button"
-			on:click={goToAbout}
-			on:mouseenter={() => (aboutButtonSrc = 'icon_info_hover.png')}
-			on:mouseleave={() => (aboutButtonSrc = 'icon_info.png')}
-		/>
+		<a href="https://cloudcities.studiotomassaraceno.org">
+			<img
+				src={aboutButtonSrc}
+				alt="about-button"
+				class="icon-button"
+				on:mouseenter={() => (aboutButtonSrc = 'icon_info_hover.png')}
+				on:mouseleave={() => (aboutButtonSrc = 'icon_info.png')}
+			/>
+		</a>
 	{/if}
 	{#if openComponent === 'individualPost'}
 		<img
@@ -55,9 +56,18 @@
 			on:mouseleave={() => (closeButtonSrc = 'button_close.png')}
 		/>
 		<h2>{image.title}</h2>
-		<a href="/about">
-			<div class="overlay-button about" on:click={goToAbout} />
+		<a href="https://cloudcities.studiotomassaraceno.org">
+			<img
+				src={aboutButtonSrc}
+				alt="about-button"
+				class="icon-button"
+				on:mouseenter={() => (aboutButtonSrc = 'icon_info_hover.png')}
+				on:mouseleave={() => (aboutButtonSrc = 'icon_info.png')}
+			/>
 		</a>
+	{/if}
+	{#if openComponent === 'remix'}
+		<h2 id="remix">Select a drawing to re/interpret</h2>
 	{/if}
 </div>
 
@@ -76,7 +86,7 @@
 	.icon-button {
 		position: initial;
 	}
-	
+
 	.about {
 		background-image: url('/icon_info.png');
 		cursor: pointer;
@@ -94,6 +104,13 @@
 		margin: 0px;
 		max-width: 60vw;
 		word-wrap: break-word;
+	}
+
+	#remix {
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	@media (max-width: 500px) {

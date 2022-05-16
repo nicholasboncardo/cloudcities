@@ -2,6 +2,7 @@
 	import Draw from '../components/Testp5.svelte';
 	import Gallery from '../components/Gallery2.svelte';
 	import DrawInstructions from '../components/DrawInstructions.svelte';
+	import Overlay from '../components/overlay.svelte';
 	import { repoImages } from '../stores/repoImages';
 	import { onMount } from 'svelte';
 	import StartDrawModal from '../components/StartDrawModal.svelte';
@@ -71,6 +72,7 @@
 {/if}
 
 {#if remix}
+	<Overlay openComponent="remix" image={false} />
 	<Gallery repoImages={$repoImages} remix={true} on:drawOnImage={setBackground} />
 {/if}
 
