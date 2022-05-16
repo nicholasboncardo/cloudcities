@@ -171,9 +171,8 @@
 	let notEnoughInfo;
 	let uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 	const uploadArray = ['none'];
-	if (!uploads) {
-		localStorage.setItem('cloudUploads', JSON.stringify(uploadArray));
-	}
+	localStorage.setItem('cloudUploads', JSON.stringify(uploadArray));
+
 	let allowUpload = true;
 	const submitImage = () => {
 		if (canvasTitle.length > 50 || canvasLocation.length > 30 || painterName > 30) {

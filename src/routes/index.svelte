@@ -60,5 +60,5 @@
 <Gallery2 on:openImage={openIndividualPost} repoImages={$repoImages} remix={false} />
 
 {#if individualPost}
-	<IndividualPost image={chosenImage} />
+	<IndividualPost image={chosenImage} on:closeBigImage={closeIndividualPost} />
 {/if}

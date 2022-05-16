@@ -1,12 +1,33 @@
 <script>
 	import { fade } from 'svelte/transition';
 	export let image;
-	console.log('image: ', image.name.length);
+	import { onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
+	onMount(() => {
+		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+		let vh = window.innerHeight * 0.01;
+		// Then we set the value in the --vh custom property to the root of the document
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+		function closeModal() {
+			dispatch('closeBigImage');
+		}
+		let modal = document.getElementsByClassName('indiv-post-image')[0];
+		let imageElement = document.getElementById('bigImage');
+		modal.addEventListener('click', closeModal, true);
+		imageElement.addEventListener('mouseover', function () {
+			modal.removeEventListener('click', closeModal, true);
+		});
+		imageElement.addEventListener('mouseout', function () {
+			modal.addEventListener('click', closeModal, true);
+		});
+	});
 </script>
 
 <div class="indiv-post-modal">
 	<div class="indiv-post-image">
-		<img src={image.link} alt="" />
+		<img src={image.link} alt="" id="bigImage" />
 	</div>
 	<div class="indiv-post-info">
 		<p>{image.date}</p>
@@ -25,6 +46,7 @@
 		top: 0px;
 		width: 100vw;
 		height: 100vh;
+		height: calc(var(--vh, 1vh) * 100);
 	}
 
 	.indiv-post-info {
@@ -81,7 +103,7 @@
 
 		.indiv-post-info {
 			width: 50%;
-			bottom: 100px;
+			bottom: 80px;
 		}
 	}
 </style>
