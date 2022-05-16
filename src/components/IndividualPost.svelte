@@ -106,6 +106,7 @@
 		.indiv-post-info {
 			width: 50%;
 			bottom: 10px;
+			right: 10px;
 		}
 	}
 </style>
