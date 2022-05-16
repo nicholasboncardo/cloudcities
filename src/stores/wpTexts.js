@@ -12,7 +12,6 @@ const getModal = async (modal, writable) => {
 		`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/posts?slug=modal_${modal}`
 	);
 	let resJson = await res.json();
-	console.log('wp modal: ', resJson);
 	let content = JSON.parse(resJson[0].grid);
 	content.cont.forEach((element) => {
 		innerArray.push(element.cont);

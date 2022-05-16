@@ -121,9 +121,6 @@
 		};
 
 		p5.windowResized = () => {
-			console.log('imageheight: ', p5.height);
-			console.log('windowwidth: ', p5.windowWidth);
-
 			if (p5.windowWidth > 500) {
 				let canvasHeight = image.height / (image.width / p5.windowWidth);
 				if (p5.height < p5.windowHeight && p5.windowWidth < p5.width) {

@@ -5,10 +5,7 @@
 	const dispatch = createEventDispatcher();
 	export let repoImages;
 	export let remix;
-
-	console.log('remix: ', remix);
 	const openImage = (e) => {
-		console.log('open image: ', e);
 		if (remix) {
 			dispatch('drawOnImage', e);
 		} else {
@@ -36,7 +33,6 @@
 	let columns;
 
 	const resizeGallery = () => {
-		console.log('resize!: ');
 		if (window.innerWidth <= 500) {
 			columns = 1;
 		} else if (window.innerWidth > 500 && window.innerWidth <= 700) {
@@ -46,10 +42,8 @@
 		} else {
 			columns = 4;
 		}
-		console.log('columns: ', columns);
 	};
 	onMount(async () => {
-		console.log('Window-width: ', window.innerWidth);
 		resizeGallery();
 		window.onresize = resizeGallery;
 		//don't create info modals on mobile
@@ -62,11 +56,6 @@
 		let scroll = true;
 		gallery.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
-			console.log('scroll registered');
-			//console.log('scroll Top: ', gallery.scrollTop);
-			//console.log('scroll innerHeight: ', window.innerHeight);
-			//console.log('scroll offestHeight: ', gallery.scrollHeight);
-
 			if (gallery.scrollTop + window.innerHeight > gallery.scrollHeight - 100 && scroll) {
 				console.log('near bottom');
 				count += 10;

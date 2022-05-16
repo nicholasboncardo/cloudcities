@@ -14,7 +14,6 @@
 	};
 
 	const goToAbout = () => {
-		console.log('go to about');
 		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
 	};
 

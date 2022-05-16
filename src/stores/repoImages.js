@@ -7,7 +7,6 @@ export const getImages = async (count) => {
 		`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count}`
 	);
 	const data = await res.json();
-	console.log('data: ', data);
 	const dataForRepo = data.map((data) => {
 		let newDate = new Date(data.date);
 		return {

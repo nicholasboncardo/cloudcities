@@ -22,7 +22,6 @@
 		remixButton.innerHTML = cloudsToBe[2];
 		uploadButton.innerHTML = cloudsToBe[3];
 		instructionsText = document.getElementById('drawInstructions');
-		console.log('drawinstructions: ', drawInstructions);
 		instructionsText.innerHTML = drawInstructions[0];
 		let beginButton = document.getElementById('begin-button');
 		beginButton.innerHTML = drawInstructions[1];
@@ -46,13 +45,11 @@
 			fileTooBig = true;
 			return;
 		}
-		console.log('Blob?: : ', imageFile instanceof Blob);
 		imageUrl = URL.createObjectURL(imageFile);
 	};
 
 	let drawMode;
 	const drawOnUploadImage = () => {
-		console.log('chooseImage: ', imageUrl);
 		startDrawModal = false;
 		instructionVisible = 'visible';
 		drawMode = 'drawOnUploadImage';
@@ -62,8 +59,6 @@
 		startDrawModal = false;
 		instructionVisible = 'visible';
 		drawMode = 'drawOnThisImage';
-
-		console.log('instructionsText: ', instructionsText);
 	};
 
 	const startDrawing = () => {

@@ -8,7 +8,6 @@
 	export let title;
 
 	const enterCloudcities = () => {
-		console.log('enter cloud cities');
 		dispatch('enterCloudcities');
 	};
 
@@ -19,16 +18,11 @@
 		textField = document.getElementById('text');
 		button = document.getElementById('enter-button');
 	});
-	console.log('title in onmount: ', typeof title);
-	$: if (typeof title !== 'undefined') {
-		//titleField.innerText = title;
-	}
 	$: if (modalText.length > 0) {
 		if (textField) {
 			textField.innerHTML = modalText[0];
 			button.innerHTML = modalText[1];
 			button.children[0].style.margin = '0px';
-			console.log('title in onmount: ', typeof title);
 		}
 	}
 </script>

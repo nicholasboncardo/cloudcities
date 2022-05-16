@@ -29,12 +29,10 @@
 	let startDrawApp = true;
 	let straightToInstructions = false;
 	const setBackground = (e) => {
-		console.log('startDrawing: ', e.detail);
 		if (e.detail) {
 			background = e.detail;
 		} else {
 			background = drawBackground;
-			console.log('startDrawing BG: ', drawBackground);
 		}
 
 		if (remix) {
@@ -49,7 +47,6 @@
 	};
 
 	const chooseCanvas = () => {
-		console.log('choose canvas');
 		remix = true;
 		startDrawApp = false;
 	};
