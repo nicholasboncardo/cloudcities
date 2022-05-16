@@ -28,6 +28,7 @@
 	let moveCanvas; //set true when user moves over canvas on mobile
 
 	let canvas;
+	let redoFunction;
 	const sketch = (p5) => {
 		let image;
 
@@ -67,6 +68,7 @@
 				}
 			});
 
+			/*
 			let redoButton = document.getElementById('r-button');
 			redoButton.addEventListener('click', function () {
 				p5.clear();
@@ -76,6 +78,11 @@
 				p5.clear();
 				p5.background(image);
 			});
+			*/
+			redoFunction = () => {
+				p5.clear();
+				p5.background(image);
+			};
 		};
 
 		let x = 0,
@@ -169,6 +176,9 @@
 	}
 	let allowUpload = true;
 	const submitImage = () => {
+		if (canvasTitle.length > 50 || canvasLocation.length > 30 || painterName > 30) {
+			return;
+		}
 		if (canvasTitle && allowUpload) {
 			uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 			uploads.push('upload');
@@ -355,15 +365,33 @@
 				<h2>Contribute to the Cloud Cities repository</h2>
 				<div class="input-section">
 					<p>{contributeText[0]}</p>
-					<input type="text" id="input-title" data-lpignore="true" bind:value={canvasTitle} />
+					<input
+						type="text"
+						id="input-title"
+						data-lpignore="true"
+						maxlength="50"
+						bind:value={canvasTitle}
+					/>
 				</div>
 				<div class="input-section">
 					<p>{contributeText[1]}</p>
-					<input type="text" id="input-location" data-lpignore="true" bind:value={canvasLocation} />
+					<input
+						type="text"
+						id="input-location"
+						data-lpignore="true"
+						maxlength="30"
+						bind:value={canvasLocation}
+					/>
 				</div>
 				<div class="input-section">
 					<p>{contributeText[2]}</p>
-					<input type="text" id="input-name" data-lpignore="true" bind:value={painterName} />
+					<input
+						type="text"
+						id="input-name"
+						data-lpignore="true"
+						maxlength="30"
+						bind:value={painterName}
+					/>
 				</div>
 				<p>
 					{tandcText}<span style="text-decoration: underline; cursor: pointer" on:click={openTerms}
@@ -430,6 +458,8 @@
 			id="r-button"
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
+			on:click={redoFunction}
+			on:touchstart={redoFunction}
 		/>
 	{/if}
 </div>
