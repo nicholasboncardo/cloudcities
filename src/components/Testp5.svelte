@@ -4,7 +4,6 @@
 	export let contributeModal;
 	export let drawInstructions;
 	let backgroundImage = propValue;
-	console.log('contribute modal: ', contributeModal);
 	let contributeText = contributeModal.map((element) => {
 		if (element.includes('<span>')) {
 			return element.split('<span>').pop().split('<')[0];
@@ -14,7 +13,12 @@
 			return element.split('">').pop().split('<')[0];
 		}
 	});
-	console.log('contributeText: ', contributeText);
+	let tandcLinK = contributeModal[3].split('href="').pop().split('"')[0];
+	let tandcText = contributeModal[3].split('<span>').pop().split('<')[0];
+	let tandcAelemText = contributeModal[3]
+		.split('style="text-decoration: underline;">')
+		.pop()
+		.split('<')[0];
 
 	let strokeWidth = 10;
 	let red = 0;
@@ -22,24 +26,18 @@
 	let green = 0;
 
 	let moveCanvas; //set true when user moves over canvas on mobile
-	console.log('drawInstructions: ', drawInstructions);
 
 	let canvas;
 	const sketch = (p5) => {
 		let image;
 
 		p5.preload = () => {
-			//moveCanvas = false;
-			console.log('preload');
-			//ToDo: load images from WP
 			image = p5.loadImage(backgroundImage);
 		};
 
 		let canvasRef;
 		p5.setup = () => {
 			//Handle width of canvas based on
-			console.log('width: ', image.width);
-			console.log('height: ', image.height);
 			if (p5.windowWidth > 500) {
 				if (image.width < image.height) {
 					let canvasHeight = image.height / (image.width / p5.windowWidth);
@@ -74,7 +72,6 @@
 
 			let redoButton = document.getElementById('r-button');
 			redoButton.addEventListener('click', function () {
-				console.log('redo!');
 				p5.clear();
 				p5.background(image);
 			});
@@ -120,7 +117,6 @@
 		};
 
 		p5.windowResized = () => {
-			//console.log('canvasRef: ', canvasRef);
 			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 
 			if (p5.windowWidth > 500) {
@@ -176,7 +172,6 @@
 	const submitImage = () => {
 		if (canvasTitle && allowUpload) {
 			uploads = JSON.parse(localStorage.getItem('cloudUploads'));
-			console.log('uploads: ', uploads);
 			uploads.push('upload');
 			localStorage.setItem('cloudUploads', JSON.stringify(uploads));
 			allowUpload = false;
@@ -213,7 +208,6 @@
 
 	const downloadImage = () => {
 		let link = document.createElement('a');
-		console.log('canvasTitle: ', canvasTitle);
 		let title;
 		if (canvasTitle) {
 			title = canvasTitle.split(' ').join('-');
@@ -287,6 +281,10 @@
 
 	const goToAbout = () => {
 		window.open('https://cloudcities.studiotomassaraceno.org', '_self');
+	};
+
+	const openTerms = () => {
+		window.open('https://cloudcities.studiotomassaraceno.org/terms/', '_blank').focus();
 	};
 </script>
 
@@ -368,7 +366,11 @@
 					<p>{contributeText[2]}</p>
 					<input type="text" id="input-name" data-lpignore="true" bind:value={painterName} />
 				</div>
-				<p>{contributeText[3]}</p>
+				<p>
+					{tandcText}<span style="text-decoration: underline; cursor: pointer" on:click={openTerms}
+						><p>{tandcAelemText}</p></span
+					>
+				</p>
 				<div class="flex-row">
 					<button id="submit-button" on:click={submitImage}
 						>{contributeText[4]} <img src="./cloud_submit.svg" alt="submit" /></button
@@ -413,7 +415,7 @@
 			id="finish-button"
 			on:click={() => (finishedDrawing = !finishedDrawing)}
 			on:touchstart={() => (
-				(finishedDrawing = !finishedDrawing), console.log('touch event on pallette')
+				(finishedDrawing = !finishedDrawing)
 			)}
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
