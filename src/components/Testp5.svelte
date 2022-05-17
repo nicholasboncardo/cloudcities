@@ -123,7 +123,7 @@
 		};
 
 		p5.windowResized = () => {
-			//if (p5.windowWidth > 500) {
+			if (p5.windowWidth >= 500) {
 				canvasHeight = image.height / (image.width / p5.windowWidth);
 				canvasWidth = image.width / (image.height / p5.windowHeight);
 				if (p5.height <= p5.windowHeight && p5.windowWidth < p5.width) {
@@ -131,15 +131,11 @@
 				} else {
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
-			/*	
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
-				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+				p5.resizeCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500) {
-				p5.resizeCanvas(image.width / 2, p5.windowHeight);
-			} else {
-				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-			}
-			*/
+				p5.resizeCanvas(canvasWidth, p5.windowHeight);
+			} 
 			p5.background(image);
 		};
 	};
