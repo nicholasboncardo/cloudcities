@@ -476,8 +476,8 @@
 		position: fixed;
 		top: 0px;
 		z-index: 1000;
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		color: white;
 	}
 
@@ -664,7 +664,7 @@
 
 	@media (max-width: 500px) {
 		.modal-info {
-			width: 80%;
+			width: 80vw;
 		}
 
 		.input-section > p,
@@ -679,7 +679,7 @@
 	}
 	@media (max-height: 500px) {
 		.modal-info {
-			width: 80%;
+			width: 80vw;
 		}
 
 		.input-section > p,
