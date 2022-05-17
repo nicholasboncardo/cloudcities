@@ -308,6 +308,11 @@
 	const openTerms = () => {
 		window.open('https://cloudcities.studiotomassaraceno.org/terms/', '_blank').focus();
 	};
+
+	const startFullscreen = () => {
+		let containerEl = document.getElementById('canvas-container');
+		containerEl.requestFullscreen();
+	};
 </script>
 
 <div id="canvas-container">
@@ -318,6 +323,7 @@
 					For this image we encourge putting you in landscape mode. Please turn your phone 90° and
 					press continue
 				</h2>
+				<button on:touchstart={startFullscreen} on:click={startFullscreen}>Fullscreen</button>
 				<button
 					on:click={() => (encourageLandscape = false)}
 					on:touchstart={() => (encourageLandscape = false)}>Ok</button
