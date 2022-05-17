@@ -467,6 +467,10 @@
 </div>
 
 <style>
+	#canvas-container {
+		width: 100vw;
+		height: 100vh;
+	}
 	.container {
 		background: rgba(0, 0, 0, 0.75);
 		position: fixed;
