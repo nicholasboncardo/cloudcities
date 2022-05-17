@@ -309,21 +309,6 @@
 		window.open('https://cloudcities.studiotomassaraceno.org/terms/', '_blank').focus();
 	};
 
-	const startFullscreen = () => {
-		let containerEl = document.getElementById('canvas-container');
-		if (containerEl.requestFullscreen) {
-			containerEl.requestFullscreen();
-		} else if (containerEl.mozRequestFullScreen) {
-			/* Firefox */
-			containerEl.mozRequestFullScreen();
-		} else if (containerEl.webkitRequestFullscreen) {
-			/* Chrome, Safari and Opera */
-			containerEl.webkitRequestFullscreen();
-		} else if (containerEl.msRequestFullscreen) {
-			/* IE/Edge */
-			containerEl.msRequestFullscreen();
-		}
-	};
 </script>
 
 <div id="canvas-container">
@@ -334,7 +319,6 @@
 					For this image we encourge putting you in landscape mode. Please turn your phone 90° and
 					press continue
 				</h2>
-				<button on:touchstart={startFullscreen} on:click={startFullscreen}>Fullscreen</button>
 				<button
 					on:click={() => (encourageLandscape = false)}
 					on:touchstart={() => (encourageLandscape = false)}>Ok</button
