@@ -316,10 +316,10 @@
 		} else if (containerEl.mozRequestFullScreen) {
 			/* Firefox */
 			containerEl.mozRequestFullScreen();
-		} else if (elem.webkitRequestFullscreen) {
+		} else if (containerEl.webkitRequestFullscreen) {
 			/* Chrome, Safari and Opera */
 			containerEl.webkitRequestFullscreen();
-		} else if (elem.msRequestFullscreen) {
+		} else if (containerEl.msRequestFullscreen) {
 			/* IE/Edge */
 			containerEl.msRequestFullscreen();
 		}
