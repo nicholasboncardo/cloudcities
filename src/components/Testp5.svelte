@@ -123,7 +123,7 @@
 		};
 
 		p5.windowResized = () => {
-			if (p5.windowWidth >= 600) {
+			if (p5.windowWidth >= 600 && p5.windowHeight > 500) {
 				canvasHeight = image.height / (image.width / p5.windowWidth);
 				canvasWidth = image.width / (image.height / p5.windowHeight);
 				if (p5.height <= p5.windowHeight && p5.windowWidth < p5.width) {
