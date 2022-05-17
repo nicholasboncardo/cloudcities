@@ -56,38 +56,42 @@
 			//Handle width of canvas based on
 			canvasHeight = image.height / (image.width / p5.windowWidth);
 			canvasWidth = image.width / (image.height / p5.windowHeight);
-	
-				if (p5.windowWidth > 500) {
-					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
-				} else if (p5.windowWidth < 500 && image.width < image.height) {
-					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-				} else if (p5.windowWidth < 500) {
+
+			if (p5.windowWidth > 500) {
+				if (canvasHeight < p5.windowHeight) {
 					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+				} else {
+					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 				}
+			} else if (p5.windowWidth < 500 && image.width < image.height) {
+				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+			} else if (p5.windowWidth < 500) {
+				canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+			}
+			p5.background(image);
+
+			let container = document.getElementById('canvas-container');
+
+			container.addEventListener('touchstart', (event) => {
+				if (event.touches.length === 2) {
+					moveCanvas = true;
+				}
+			});
+			container.addEventListener('touchmove', (event) => {
+				if (event.touches.length === 2) {
+					moveCanvas = true;
+				}
+			});
+			container.addEventListener('touchend', (event) => {
+				if (moveCanvas) {
+					moveCanvas = false;
+				}
+			});
+
+			redoFunction = () => {
+				p5.clear();
 				p5.background(image);
-
-				let container = document.getElementById('canvas-container');
-
-				container.addEventListener('touchstart', (event) => {
-					if (event.touches.length === 2) {
-						moveCanvas = true;
-					}
-				});
-				container.addEventListener('touchmove', (event) => {
-					if (event.touches.length === 2) {
-						moveCanvas = true;
-					}
-				});
-				container.addEventListener('touchend', (event) => {
-					if (moveCanvas) {
-						moveCanvas = false;
-					}
-				});
-
-				redoFunction = () => {
-					p5.clear();
-					p5.background(image);
-				};
+			};
 		};
 
 		let x = 0,
@@ -135,7 +139,11 @@
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
 			} else if (p5.windowHeight < 500) {
-				p5.resizeCanvas(p5.windowWidth, canvasHeight);
+				if (canvasHeight < p5.windowHeight) {
+					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+				} else {
+					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+				}
 			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(canvasWidth, p5.windowHeight);
 			}
