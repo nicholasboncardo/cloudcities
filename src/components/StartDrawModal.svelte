@@ -9,6 +9,8 @@
 	export let title;
 	export let straightToInstructions;
 
+
+
 	let instructionsText;
 	onMount(async () => {
 		let startText = document.getElementById('cloudstobe');
@@ -50,6 +52,7 @@
 
 	let drawMode;
 	const drawOnUploadImage = () => {
+		
 		startDrawModal = false;
 		instructionVisible = 'visible';
 		drawMode = 'drawOnUploadImage';

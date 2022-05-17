@@ -3,7 +3,11 @@
 	export let propValue;
 	export let contributeModal;
 	export let drawInstructions;
+	export let mobile;
 	let backgroundImage = propValue;
+
+	console.log('backgroundImage: ', backgroundImage);
+
 	let contributeText = contributeModal.map((element) => {
 		if (element.includes('<span>')) {
 			return element.split('<span>').pop().split('<')[0];
@@ -29,11 +33,16 @@
 
 	let canvas;
 	let redoFunction;
+	let encourageLandscape;
 	const sketch = (p5) => {
 		let image;
 
 		p5.preload = () => {
 			image = p5.loadImage(backgroundImage);
+			console.log('image: ', image);
+			if (image.height > image.width && mobile && p5.windowHeight > p5.windowWidth) {
+				encourageLandscape = true;
+			}
 		};
 
 		let canvasRef;
@@ -289,6 +298,14 @@
 </script>
 
 <div id="canvas-container">
+	{#if encourageLandscape}
+		<div id="landscapemodal">
+			<div id="center">
+				<h2>For this image we encourge putting you in landscape mode by turning it 90°</h2>
+				<button>Ok</button>
+			</div>
+		</div>
+	{/if}
 	<P5 {sketch} />
 	<h2 id="title">Cloud Cities</h2>
 	<div class="icon-button about-button" on:click={goToAbout} />
@@ -649,6 +666,22 @@
 
 	#pallette-done {
 		width: 100%;
+	}
+
+	#landscapemodal {
+		position: fixed;
+		top: 0px;
+		width: 100vw;
+		height: 100vh;
+		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
+		color: white;
+	}
+	#landscapemodal > #center {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 100000;
 	}
 
 	@media (max-width: 500px) {
