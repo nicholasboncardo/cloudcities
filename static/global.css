@@ -140,13 +140,12 @@ p {
 	margin: 10px;
 }
 
-
 .about-button {
-		top: 0px;
-		right: 0px;
-		background-image: url('/icon_info.png');
-		position: fixed;
-	}
+	top: 0px;
+	right: 0px;
+	background-image: url('/icon_info.png');
+	position: fixed;
+}
 
 @media (max-width: 500px) {
 	.icon-button {
@@ -162,7 +161,26 @@ p {
 		margin: 5px;
 	}
 	#title {
-			font-size: 18px;
-			line-height: 20px;
-		}
+		font-size: 18px;
+		line-height: 20px;
+	}
+}
+
+@media (max-height: 500px) {
+	.icon-button {
+		width: 28px;
+		height: 28px;
+		margin: 5px;
+		background-size: 28px;
+	}
+	.overlay-button {
+		width: 28px;
+		height: 28px;
+		background-size: 28px;
+		margin: 5px;
+	}
+	#title {
+		font-size: 18px;
+		line-height: 20px;
+	}
 }
