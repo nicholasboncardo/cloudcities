@@ -140,7 +140,7 @@
 
 	h2 {
 		margin: 0px;
-		text-shadow: 0px 0px 3px #ffffff;
+		/*text-shadow: 0px 0px 3px #ffffff;*/
 	}
 
 	p {
@@ -174,7 +174,7 @@
 		font-weight: 400;
 		font-size: 32px;
 		line-height: 38px;
-		text-shadow: 0px 0px 3px #ffffff;
+		/*text-shadow: 0px 0px 3px #ffffff;*/
 		margin: 0px;
 		top: 10px;
 	}

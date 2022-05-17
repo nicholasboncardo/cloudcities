@@ -70,17 +70,6 @@
 				}
 			});
 
-			/*
-			let redoButton = document.getElementById('r-button');
-			redoButton.addEventListener('click', function () {
-				p5.clear();
-				p5.background(image);
-			});
-			redoButton.addEventListener('touchstart', function () {
-				p5.clear();
-				p5.background(image);
-			});
-			*/
 			redoFunction = () => {
 				p5.clear();
 				p5.background(image);
@@ -133,7 +122,7 @@
 				}
 			} else if (p5.windowHeight < 500) {
 				p5.resizeCanvas(p5.windowWidth, canvasHeight);
-			} else if (p5.windowWidth<500){
+			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(canvasWidth, p5.windowHeight);
 			}
 			/* 
@@ -170,7 +159,6 @@
 
 	let canvasTitle;
 	let canvasLocation;
-	let canvasDescription;
 	let painterName;
 
 	let notEnoughInfo;
@@ -373,7 +361,7 @@
 						id="input-title"
 						data-lpignore="true"
 						maxlength="50"
-						bind:value={canvasTitle}
+						bind:value={painterName}
 					/>
 				</div>
 				<div class="input-section">
@@ -393,7 +381,7 @@
 						id="input-name"
 						data-lpignore="true"
 						maxlength="30"
-						bind:value={painterName}
+						bind:value={canvasTitle}
 					/>
 				</div>
 				<p>
@@ -491,7 +479,7 @@
 		font-weight: 400;
 		font-size: 32px;
 		line-height: 38px;
-		text-shadow: 0px 0px 3px #ffffff;
+		/*text-shadow: 0px 0px 3px #ffffff;*/
 		margin: 0px;
 		top: 8px;
 	}

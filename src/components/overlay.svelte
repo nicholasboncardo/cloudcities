@@ -99,7 +99,7 @@
 		font-weight: 400;
 		font-size: 32px;
 		line-height: 38px;
-		text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+		/*text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);*/
 		margin: 0px;
 		max-width: 60vw;
 		word-wrap: break-word;
@@ -114,7 +114,6 @@
 
 	@media (max-width: 500px) {
 		h2 {
-			font-family: 'Fredoka One';
 			font-style: normal;
 			font-weight: 400;
 			font-size: 18px;

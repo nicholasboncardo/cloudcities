@@ -46,7 +46,7 @@
 		transform: translate(-50%, -50%);
 		background: rgba(0, 0, 0, 0.25);
 		backdrop-filter: blur(26px);
-		border-radius: 20px;
+		/*border-radius: 20px;*/
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
