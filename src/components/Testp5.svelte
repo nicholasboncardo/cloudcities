@@ -131,7 +131,7 @@
 				} else {
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
-			} else if (p5.windowHeight < 500 && p5.windowWidth > p5.windowHeight) {
+			} else if (p5.windowHeight < 500) {
 				p5.resizeCanvas(p5.windowWidth, canvasHeight);
 			}
 			/*
