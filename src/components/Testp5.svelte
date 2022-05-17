@@ -131,11 +131,16 @@
 				} else {
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
-			} else if (p5.windowWidth < 500 && image.width < image.height) {
+			} else if (p5.windowWidth < 500 && p5.windowWidth>p5.windowHeight){
+				p5.resizeCanvas(p5.windowWidth, canvasHeight)
+			}
+			/*
+			else if (p5.windowWidth < 500 && image.width < image.height) {
 				p5.resizeCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(canvasWidth, p5.windowHeight);
 			} 
+			*/
 			p5.background(image);
 		};
 	};
