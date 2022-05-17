@@ -140,6 +140,26 @@ p {
 	margin: 10px;
 }
 
+#title {
+		position: fixed;
+		top: 0px;
+		left: 50%;
+		transform: translate(-50%);
+		color: white;
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 38px;
+		text-shadow: 0px 0px 3px #ffffff;
+		margin: 0px;
+		top: 8px;
+	}
+.about-button {
+		top: 0px;
+		right: 0px;
+		background-image: url('/icon_info.png');
+		position: fixed;
+	}
+
 @media (max-width: 500px) {
 	.icon-button {
 		width: 28px;
@@ -153,4 +173,8 @@ p {
 		background-size: 28px;
 		margin: 5px;
 	}
+	#title {
+			font-size: 18px;
+			line-height: 20px;
+		}
 }

@@ -76,6 +76,9 @@
 	const redirectMobile = () => {
 		window.location.replace('/');
 	};
+	const goToAbout = () => {
+		window.open('https://cloudcities.studiotomassaraceno.org', '_self');
+	}
 </script>
 
 <div
@@ -85,6 +88,8 @@
 >
 	<div class="icon-button repo-button" on:touchstart={redirectMobile} on:click={redirectMobile} />
 	<div class="modal-container" />
+	<h2 id="title">Cloud Cities</h2>
+	<div class="icon-button about-button" on:click={goToAbout} />
 	{#if startDrawModal && !straightToInstructions}
 		<div class="modal-info">
 			<h2>{title}</h2>
@@ -159,6 +164,9 @@
 
 	#begin-button {
 		width: 100%;
+	}
+	#title {
+		top: 10px
 	}
 	@media (max-width: 500px) {
 		.modal-info {
