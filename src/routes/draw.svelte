@@ -16,9 +16,6 @@
 	let drawBackground;
 	let mobile;
 	onMount(async () => {
-		let meta = document.getElementsByTagName('meta').viewport;
-		meta.content = 'width=device-width, initial-scale=1';
-		console.log('meta: ', meta);
 		//test if user is on mobile
 		let windowWidth =
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;

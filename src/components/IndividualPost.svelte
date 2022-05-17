@@ -55,7 +55,6 @@
 		bottom: 20px;
 		background: rgba(0, 0, 0, 0.24);
 		backdrop-filter: blur(26px);
-		/*border-radius: 20px;*/
 		color: white;
 		display: flex;
 		flex-direction: column;

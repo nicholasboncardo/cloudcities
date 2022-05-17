@@ -151,7 +151,7 @@
 	}
 
 	input {
-		border-radius: 10px;
+
 		margin: 0px;
 		text-align: center;
 		width: 100%;

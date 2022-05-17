@@ -45,10 +45,6 @@
 		let canvasWidth;
 		let canvasHeight;
 		p5.setup = () => {
-			console.log('image: ', image.height);
-			console.log('windowHeight: ', p5.windowHeight);
-			console.log('windowWidth: ', p5.windowWidth);
-			console.log('mobile: ', mobile);
 			if (image.width > image.height && mobile) {
 				encourageLandscape = true;
 				console.log('encourageLandscape: ', encourageLandscape);
@@ -261,14 +257,18 @@
 		window.location.replace('/');
 	};
 
+	let disableClick = false;
+
 	const handleExitButton = () => {
-		if (pallette) {
-			pallette = false;
+		if (!disableClick) {
+			if (pallette) {
+				pallette = false;
+			}
+			if (finishedDrawing) {
+				finishedDrawing = false;
+			}
+			overButton = false;
 		}
-		if (finishedDrawing) {
-			finishedDrawing = false;
-		}
-		overButton = false;
 	};
 
 	let smallButtonBorder;
@@ -308,7 +308,6 @@
 	const openTerms = () => {
 		window.open('https://cloudcities.studiotomassaraceno.org/terms/', '_blank').focus();
 	};
-
 </script>
 
 <div id="canvas-container">
@@ -337,8 +336,13 @@
 		on:click={redirectMobile}
 	/>
 	{#if pallette}
-		<div class="container">
-			<div class="modal-info draw-settings">
+		<div class="container" id="pallette-container" on:click={handleExitButton}>
+			<div
+				class="modal-info draw-settings"
+				id="pallette"
+				on:mouseenter={() => (disableClick = !disableClick)}
+				on:mouseleave={() => (disableClick = !disableClick)}
+			>
 				<div class="style-section">
 					<p>size</p>
 					<div class="stroke-width">
@@ -376,8 +380,12 @@
 						/>
 					</div>
 				</div>
-				<button id="pallette-done" on:click={handleExitButton} on:touchstart={handleExitButton}
-					>Done</button
+				<button
+					id="pallette-done"
+					on:click={handleExitButton}
+					on:touchstart={handleExitButton}
+					on:mouseenter={() => (disableClick = !disableClick)}
+					on:mouseleave={() => (disableClick = !disableClick)}>Done</button
 				>
 			</div>
 			<div
@@ -455,10 +463,10 @@
 				<h2>Thank you! Submission complete</h2>
 				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
 				<div class="flex-row">
-					<button on:click={returnToDraw}>Return to drawing</button>
-					<a href="/" class="href">
-						<button>Visit the repository</button>
-					</a>
+					<button on:click={returnToDraw} on:touchstart={returnToDraw}>Return to drawing</button>
+					<button on:click={redirectMobile} on:touchstart={redirectMobile}
+						>Visit the repository</button
+					>
 				</div>
 			</div>
 		</div>
@@ -621,7 +629,6 @@
 	}
 	input {
 		background-color: rgb(0, 0, 0, 0.24);
-		border-radius: 20px;
 		border: none;
 		flex-grow: 3;
 		margin: 0px;
@@ -669,14 +676,6 @@
 	}
 
 	#cancel-button {
-		width: 100%;
-	}
-
-	.flex-row > a {
-		width: 49%;
-	}
-
-	.flex-row > a > button {
 		width: 100%;
 	}
 
