@@ -159,7 +159,9 @@
 	//set stroke width and highlight chosen width with white background
 	let strokeButtons = document.getElementsByClassName('stroke-button');
 	const setStrokeWidth = (e) => {
-		if (e.target.id === 'small-stroke') {
+		if (e.target.id === 'tiny-stroke') {
+			strokeWidth = 5;
+		} else if (e.target.id === 'small-stroke') {
 			strokeWidth = 10;
 		} else if (e.target.id === 'medium-stroke') {
 			strokeWidth = 20;
@@ -271,22 +273,31 @@
 		}
 	};
 
+	let tinyButtonBorder;
 	let smallButtonBorder;
 	let mediumButtonBorder;
 	let bigButtonBorder;
 	const openPallette = () => {
 		pallette = !pallette;
-		if (strokeWidth === 10) {
+		if (strokeWidth === 5) {
+			tinyButtonBorder = 'solid 4px #00D1FF';
+			smallButtonBorder = 'none';
+			mediumButtonBorder = 'none';
+			bigButtonBorder = 'none';
+		} else if (strokeWidth === 10) {
 			smallButtonBorder = 'solid 4px #00D1FF';
 			mediumButtonBorder = 'none';
 			bigButtonBorder = 'none';
+			tinyButtonBorder = 'none';
 		} else if (strokeWidth === 20) {
 			smallButtonBorder = 'none';
 			mediumButtonBorder = 'solid 4px #00D1FF';
 			bigButtonBorder = 'none';
+			tinyButtonBorder = 'none';
 		} else {
 			smallButtonBorder = 'none';
 			mediumButtonBorder = 'none';
+			tinyButtonBorder = 'none';
 			bigButtonBorder = 'solid 4px #00D1FF';
 		}
 	};
@@ -346,6 +357,12 @@
 				<div class="style-section">
 					<p>size</p>
 					<div class="stroke-width">
+						<div
+							class="stroke-button"
+							id="tiny-stroke"
+							on:click={setStrokeWidth}
+							style="border: {tinyButtonBorder}"
+						/>
 						<div
 							class="stroke-button"
 							id="small-stroke"
@@ -572,6 +589,10 @@
 	#small-stroke {
 		width: 10px;
 		height: 10px;
+	}
+	#tiny-stroke {
+		width: 5px;
+		height: 5px;
 	}
 
 	.finished-drawing-button {
