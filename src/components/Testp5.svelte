@@ -311,7 +311,18 @@
 
 	const startFullscreen = () => {
 		let containerEl = document.getElementById('canvas-container');
-		containerEl.requestFullscreen();
+		if (containerEl.requestFullscreen) {
+			containerEl.requestFullscreen();
+		} else if (containerEl.mozRequestFullScreen) {
+			/* Firefox */
+			containerEl.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) {
+			/* Chrome, Safari and Opera */
+			containerEl.webkitRequestFullscreen();
+		} else if (elem.msRequestFullscreen) {
+			/* IE/Edge */
+			containerEl.msRequestFullscreen();
+		}
 	};
 </script>
 
