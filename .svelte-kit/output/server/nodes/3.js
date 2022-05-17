@@ -1,6 +1,6 @@
 import * as module from '../entries/pages/draw.svelte.js';
 
 export { module };
-export const entry = 'pages/draw.svelte-7dbc25be.js';
-export const js = ["pages/draw.svelte-7dbc25be.js","chunks/index-4cf7e0c2.js","chunks/wpTitles-f85297d0.js","chunks/index-f857ab2f.js"];
-export const css = ["assets/pages/draw.svelte-c9cdd03e.css","assets/wpTitles-98a05f95.css"];
+export const entry = 'pages/draw.svelte-a0ae7427.js';
+export const js = ["pages/draw.svelte-a0ae7427.js","chunks/index-37d50d90.js","chunks/wpTitles-bbb4604d.js","chunks/index-d2201ef8.js"];
+export const css = ["assets/pages/draw.svelte-06822ac5.css","assets/wpTitles-9c4a8d85.css"];

@@ -17,7 +17,7 @@
 	let mobile;
 	onMount(async () => {
 		let meta = document.getElementsByTagName('meta').viewport;
-		matchMedia.content = 'width=device-width, initial-scale=1';
+		meta.content = 'width=device-width, initial-scale=1';
 		console.log('meta: ', meta);
 		//test if user is on mobile
 		let windowWidth =

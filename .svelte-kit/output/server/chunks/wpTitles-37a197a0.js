@@ -46,7 +46,6 @@ let count = 20;
 const getImages = async (count2) => {
   const res = await fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count2}`);
   const data = await res.json();
-  console.log("data: ", data);
   const dataForRepo = data.map((data2) => {
     let newDate = new Date(data2.date);
     return {
@@ -62,6 +61,7 @@ const getImages = async (count2) => {
 };
 getImages(count);
 var Gallery2_svelte_svelte_type_style_lang = "";
+var overlay_svelte_svelte_type_style_lang = "";
 const welcomeToCloudCities = writable([]);
 const cloudsToBe = writable([]);
 const drawInstruction = writable([]);
@@ -92,4 +92,4 @@ const getTitle = async (modal, writable2) => {
 };
 getTitle(1, welcomeTitle);
 getTitle(2, drawStartTitle);
-export { drawInstruction as a, contributeModal as b, cloudsToBe as c, drawStartTitle as d, welcomeToCloudCities as e, repoImages as r, welcomeTitle as w };
+export { drawInstruction as a, contributeModal as b, cloudsToBe as c, drawStartTitle as d, welcomeTitle as e, repoImages as r, welcomeToCloudCities as w };
