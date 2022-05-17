@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 html,
 body {
 	position: relative;
 	width: 100vw;
 	height: 100vh;
-
+	touch-action: none;
 }
 
 body {
