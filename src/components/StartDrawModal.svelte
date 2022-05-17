@@ -78,7 +78,7 @@
 	};
 	const goToAbout = () => {
 		window.open('https://cloudcities.studiotomassaraceno.org', '_self');
-	}
+	};
 </script>
 
 <div
@@ -166,8 +166,19 @@
 		width: 100%;
 	}
 	#title {
-		top: 10px
+		position: fixed;
+		top: 0px;
+		left: 50%;
+		transform: translate(-50%);
+		color: white;
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 38px;
+		text-shadow: 0px 0px 3px #ffffff;
+		margin: 0px;
+		top: 10px;
 	}
+
 	@media (max-width: 500px) {
 		.modal-info {
 			width: 80%;
