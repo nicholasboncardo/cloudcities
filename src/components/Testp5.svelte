@@ -673,4 +673,19 @@
 			line-height: 20px;
 		}
 	}
+	@media (max-height: 500px) {
+		.modal-info {
+			width: 80%;
+		}
+
+		.input-section > p,
+		.modal-info > p {
+			font-size: 13px;
+		}
+
+		#title {
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
 </style>

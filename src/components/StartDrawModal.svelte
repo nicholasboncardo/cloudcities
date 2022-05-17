@@ -184,4 +184,9 @@
 			width: 80%;
 		}
 	}
+	@media (max-height: 500px) {
+		.modal-info {
+			width: 80%;
+		}
+	}
 </style>
