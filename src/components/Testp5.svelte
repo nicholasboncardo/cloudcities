@@ -39,50 +39,55 @@
 
 		p5.preload = () => {
 			image = p5.loadImage(backgroundImage);
-			console.log('image: ', image);
-			if (image.height > image.width && mobile && p5.windowHeight > p5.windowWidth) {
-				encourageLandscape = true;
-			}
 		};
 
 		let canvasRef;
 		let canvasWidth;
 		let canvasHeight;
 		p5.setup = () => {
+			console.log('image: ', image.height);
+			console.log('windowHeight: ', p5.windowHeight);
+			console.log('windowWidth: ', p5.windowWidth);
+			console.log('mobile: ', mobile);
+			if (image.width > image.height && mobile) {
+				encourageLandscape = true;
+				console.log('encourageLandscape: ', encourageLandscape);
+			}
 			//Handle width of canvas based on
 			canvasHeight = image.height / (image.width / p5.windowWidth);
 			canvasWidth = image.width / (image.height / p5.windowHeight);
-			if (p5.windowWidth > 500) {
-				canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
-			} else if (p5.windowWidth < 500 && image.width < image.height) {
-				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-			} else if (p5.windowWidth < 500) {
-				canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
-			}
-			p5.background(image);
-
-			let container = document.getElementById('canvas-container');
-
-			container.addEventListener('touchstart', (event) => {
-				if (event.touches.length === 2) {
-					moveCanvas = true;
+	
+				if (p5.windowWidth > 500) {
+					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+				} else if (p5.windowWidth < 500 && image.width < image.height) {
+					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				} else if (p5.windowWidth < 500) {
+					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
 				}
-			});
-			container.addEventListener('touchmove', (event) => {
-				if (event.touches.length === 2) {
-					moveCanvas = true;
-				}
-			});
-			container.addEventListener('touchend', (event) => {
-				if (moveCanvas) {
-					moveCanvas = false;
-				}
-			});
-
-			redoFunction = () => {
-				p5.clear();
 				p5.background(image);
-			};
+
+				let container = document.getElementById('canvas-container');
+
+				container.addEventListener('touchstart', (event) => {
+					if (event.touches.length === 2) {
+						moveCanvas = true;
+					}
+				});
+				container.addEventListener('touchmove', (event) => {
+					if (event.touches.length === 2) {
+						moveCanvas = true;
+					}
+				});
+				container.addEventListener('touchend', (event) => {
+					if (moveCanvas) {
+						moveCanvas = false;
+					}
+				});
+
+				redoFunction = () => {
+					p5.clear();
+					p5.background(image);
+				};
 		};
 
 		let x = 0,
@@ -301,8 +306,14 @@
 	{#if encourageLandscape}
 		<div id="landscapemodal">
 			<div id="center">
-				<h2>For this image we encourge putting you in landscape mode by turning it 90°</h2>
-				<button>Ok</button>
+				<h2>
+					For this image we encourge putting you in landscape mode. Please turn your phone 90° and
+					press continue
+				</h2>
+				<button
+					on:click={() => (encourageLandscape = false)}
+					on:touchstart={() => (encourageLandscape = false)}>Ok</button
+				>
 			</div>
 		</div>
 	{/if}
