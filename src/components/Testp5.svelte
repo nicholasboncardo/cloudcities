@@ -123,7 +123,7 @@
 		};
 
 		p5.windowResized = () => {
-			if (p5.windowWidth >= 600 && p5.windowHeight > 500) {
+			if (p5.windowWidth >= 500 && p5.windowHeight > 500) {
 				canvasHeight = image.height / (image.width / p5.windowWidth);
 				canvasWidth = image.width / (image.height / p5.windowHeight);
 				if (p5.height <= p5.windowHeight && p5.windowWidth < p5.width) {
@@ -133,8 +133,10 @@
 				}
 			} else if (p5.windowHeight < 500) {
 				p5.resizeCanvas(p5.windowWidth, canvasHeight);
+			} else if (p5.windowWidth<500){
+				p5.resizeCanvas(canvasWidth, p5.windowHeight);
 			}
-			/*
+			/* 
 			else if (p5.windowWidth < 500 && image.width < image.height) {
 				p5.resizeCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500) {
@@ -190,7 +192,6 @@
 			let formData = new FormData();
 			formData.append('title', canvasTitle);
 			formData.append('location', canvasLocation);
-			//formData.append('description', canvasDescription);
 			formData.append('name', painterName);
 			formData.append('userUploads', uploads.length);
 			let canvas = document.getElementById('defaultCanvas0');
