@@ -37,10 +37,12 @@
 		};
 
 		let canvasRef;
+		let canvasWidth;
+		let canvasHeight;
 		p5.setup = () => {
 			//Handle width of canvas based on
-			let canvasHeight = image.height / (image.width / p5.windowWidth);
-			let canvasWidth = image.width / (image.height / p5.windowHeight);
+			canvasHeight = image.height / (image.width / p5.windowWidth);
+			canvasWidth = image.width / (image.height / p5.windowHeight);
 			if (p5.windowWidth > 500) {
 				canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
@@ -121,14 +123,15 @@
 		};
 
 		p5.windowResized = () => {
-			if (p5.windowWidth > 500) {
-				let canvasHeight = image.height / (image.width / p5.windowWidth);
-				let canvasWidth = image.width / (image.height / p5.windowHeight);
+			//if (p5.windowWidth > 500) {
+				canvasHeight = image.height / (image.width / p5.windowWidth);
+				canvasWidth = image.width / (image.height / p5.windowHeight);
 				if (p5.height <= p5.windowHeight && p5.windowWidth < p5.width) {
 					p5.resizeCanvas(canvasWidth, p5.windowHeight);
 				} else {
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
+			/*	
 			} else if (p5.windowWidth < 500 && image.width < image.height) {
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			} else if (p5.windowWidth < 500) {
@@ -136,7 +139,7 @@
 			} else {
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			}
-
+			*/
 			p5.background(image);
 		};
 	};
