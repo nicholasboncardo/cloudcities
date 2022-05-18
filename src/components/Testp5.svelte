@@ -123,10 +123,9 @@
 
 		p5.windowResized = () => {
 			console.log('resize detected');
-				canvasHeight = image.height / (image.width / p5.windowWidth);
-				canvasWidth = image.width / (image.height / p5.windowHeight);
+			canvasHeight = image.height / (image.width / p5.windowWidth);
+			canvasWidth = image.width / (image.height / p5.windowHeight);
 			if (p5.windowWidth >= 500 && p5.windowHeight > 500) {
-			
 				if (p5.height <= p5.windowHeight && p5.windowWidth < p5.width) {
 					p5.resizeCanvas(canvasWidth, p5.windowHeight);
 				} else {
@@ -139,7 +138,7 @@
 					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				} else {
 					console.log('resize 2');
-					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				}
 			} else if (p5.windowWidth < 500) {
 				console.log('portrait detected');
