@@ -526,16 +526,16 @@
 
 <style>
 	#canvas-container {
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
 	}
 	.container {
 		background: rgba(0, 0, 0, 0.75);
 		position: fixed;
 		top: 0px;
 		z-index: 1000;
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
 		color: white;
 	}
 
