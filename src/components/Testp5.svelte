@@ -142,7 +142,7 @@
 				}
 			} else if (p5.windowWidth < 500) {
 				console.log('portrait detected');
-				p5.resizeCanvas(canvasWidth, p5.windowHeight);
+				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			}
 			/* 
 			else if (p5.windowWidth < 500 && image.width < image.height) {
