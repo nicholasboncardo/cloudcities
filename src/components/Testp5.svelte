@@ -66,7 +66,7 @@
 
 			let container = document.getElementById('canvas-container');
 
-			/*
+			
 			container.addEventListener('touchstart', (event) => {
 				if (event.touches.length === 2) {
 					moveCanvas = true;
@@ -82,7 +82,7 @@
 					moveCanvas = false;
 				}
 			});
-			*/
+			
 
 			redoFunction = () => {
 				p5.clear();
