@@ -759,7 +759,14 @@
 	}
 	@media (max-height: 500px) {
 		.modal-info {
-			width: 80vw;
+			width: 80%;
+		}
+		#landscapemodal > #center {
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 100000;
+			text-align: center;
 		}
 
 		.input-section > p,
