@@ -20,13 +20,8 @@
 		window.addEventListener(
 			'gesturechange',
 			function (e) {
-				if (e.scale < 0.8) {
-					// User moved fingers closer together
-					e.preventDefault();
-				} else if (e.scale > 1.2) {
-					// User moved fingers further apart
-					e.preventDefault();
-				}
+				// User moved fingers further apart
+				e.preventDefault();
 			},
 			false
 		);
