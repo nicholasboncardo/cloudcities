@@ -10,7 +10,6 @@
 	import { onMount } from 'svelte';
 	let start;
 	onMount(() => {
-		console.log('referrer: ', document.referrer);
 		if (
 			document.referrer === 'http://localhost:3000/draw' ||
 			document.referrer === 'http://cloudcities.herokuapp.com/draw' ||

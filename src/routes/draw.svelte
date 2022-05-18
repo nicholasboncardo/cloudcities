@@ -21,7 +21,7 @@
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 		mobile = windowWidth < 500;
 
-		console.log('mobile: ', mobile);
+		//console.log('mobile: ', mobile);
 		//get background Images from wp and choose random image
 		let data = await fetch(
 			'https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=48&per_page=50'
@@ -32,19 +32,21 @@
 	});
 
 	let background;
-	let drawApp = false;
-	let startDrawApp = true;
-	let straightToInstructions = false;
+	let drawApp = false;//starts drawing app if true
+	let startDrawApp = true;//starts drawing info if true
+	let straightToInstructions = false;//skips info if true
 	const setBackground = (e) => {
-		console.log('e.detail: ', e.detail);
-		console.log('e.detail: ', drawBackground);
+
 		if (e.detail) {
+			//means user has uploaded image
 			background = e.detail;
 		} else {
+			//means user chooses given canvas
 			background = drawBackground;
 		}
 
 		if (remix) {
+			//means user chooses remix
 			drawInstructions = true;
 			remix = false;
 			drawApp = true;
@@ -54,7 +56,7 @@
 			drawApp = true;
 		}
 	};
-
+	
 	const chooseCanvas = () => {
 		remix = true;
 		startDrawApp = false;

@@ -86,14 +86,6 @@
 		position: initial;
 	}
 
-	.about {
-		background-image: url('/icon_info.png');
-		cursor: pointer;
-	}
-	.about:hover {
-		background-image: url('/icon_info_hover.png');
-	}
-
 	h2 {
 		font-style: normal;
 		font-weight: 400;

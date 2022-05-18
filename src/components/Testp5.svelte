@@ -6,8 +6,6 @@
 	export let mobile;
 	let backgroundImage = propValue;
 
-	console.log('backgroundImage: ', backgroundImage);
-
 	let contributeText = contributeModal.map((element) => {
 		if (element.includes('<span>')) {
 			return element.split('<span>').pop().split('<')[0];
@@ -41,13 +39,11 @@
 			image = p5.loadImage(backgroundImage);
 		};
 
-		let canvasRef;
 		let canvasWidth;
 		let canvasHeight;
 		p5.setup = () => {
 			if (image.width > image.height && mobile) {
 				encourageLandscape = true;
-				console.log('encourageLandscape: ', encourageLandscape);
 			}
 			//Handle width of canvas based on
 			canvasHeight = image.height / (image.width / p5.windowWidth);
@@ -471,11 +467,13 @@
 					</p>
 				{/if}
 			</div>
-			<div
+			<!--
+				<div
 				class="icon-button exit-button"
 				on:click={handleExitButton}
 				on:touchstart={handleExitButton}
 			/>
+			-->
 		</div>
 	{/if}
 	{#if imageSubmitted}
@@ -557,6 +555,9 @@
 		position: fixed;
 		z-index: 10000;
 	}
+	.repo-button:hover {
+		background-image: url('/button_repository_hover.png');
+	}
 	.draw-settings {
 		width: 300px;
 		padding: 10px;
@@ -628,6 +629,10 @@
 		position: fixed;
 	}
 
+	.about-button:hover {
+		background-image: url('/icon_info_hover.png');
+	}
+
 	.style-section,
 	.input-section {
 		width: 100%;
@@ -646,6 +651,9 @@
 		bottom: 0px;
 		left: 0px;
 		background-image: url('/button_close.png');
+	}
+	.exit-button:hover {
+		background-image: url('/button_close_hover.png');
 	}
 
 	.input-section p {
