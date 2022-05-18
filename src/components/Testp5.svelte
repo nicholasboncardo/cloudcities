@@ -66,6 +66,7 @@
 
 			let container = document.getElementById('canvas-container');
 
+			/*
 			container.addEventListener('touchstart', (event) => {
 				if (event.touches.length === 2) {
 					moveCanvas = true;
@@ -81,13 +82,16 @@
 					moveCanvas = false;
 				}
 			});
+			*/
 
 			redoFunction = () => {
 				p5.clear();
 				p5.background(image);
 			};
 		};
-
+		if (mobile) {
+			window.onresize = p5.resizeCanvas();
+		}
 		let x = 0,
 			y = 0,
 			px = 0,
@@ -134,25 +138,14 @@
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
 			} else if (p5.windowHeight < 500) {
-				console.log('landscapee detected');
 				if (canvasHeight < p5.windowHeight) {
-					console.log('resize 1');
 					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				} else {
-					console.log('resize 2');
 					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				}
 			} else if (p5.windowWidth < 500) {
-				console.log('portrait detected');
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 			}
-			/* 
-			else if (p5.windowWidth < 500 && image.width < image.height) {
-				p5.resizeCanvas(p5.windowWidth, canvasHeight);
-			} else if (p5.windowWidth < 500) {
-				p5.resizeCanvas(canvasWidth, p5.windowHeight);
-			} 
-			*/
 			p5.background(image);
 		};
 	};
