@@ -49,16 +49,18 @@
 			canvasHeight = image.height / (image.width / p5.windowWidth);
 			canvasWidth = image.width / (image.height / p5.windowHeight);
 
-			if (p5.windowWidth > 500) {
-				if (canvasHeight < p5.windowHeight) {
+			if (p5.windowWidth >= 500) {
+				if (p5.windowHeight <= 500) {
+					canvas = p5.createCanvas(p5.windowWidth, p5.windowResized);
+				} else if (canvasHeight < p5.windowHeight) {
 					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
 				} else {
 					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 				}
-			} else if (p5.windowWidth < 500 && image.width < image.height) {
+			} else if (p5.windowWidth <= 500 && image.width < image.height) {
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-			} else if (p5.windowWidth < 500) {
-				canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+			} else if (p5.windowWidth <= 500) {
+				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			}
 			p5.background(image);
 
