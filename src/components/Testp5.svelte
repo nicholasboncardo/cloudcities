@@ -526,8 +526,8 @@
 
 <style>
 	#canvas-container {
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 	}
 	.container {
 		background: rgba(0, 0, 0, 0.75);
