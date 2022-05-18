@@ -32,7 +32,6 @@
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 		mobile = windowWidth < 500;
 
-		//console.log('mobile: ', mobile);
 		//get background Images from wp and choose random image
 		let data = await fetch(
 			'https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=48&per_page=50'

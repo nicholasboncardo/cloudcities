@@ -130,7 +130,6 @@
 		};
 
 		p5.windowResized = () => {
-			console.log('resize detected');
 			canvasHeight = image.height / (image.width / p5.windowWidth);
 			canvasWidth = image.width / (image.height / p5.windowHeight);
 			if (p5.windowWidth >= 500 && p5.windowHeight > 500) {
@@ -324,7 +323,7 @@
 </script>
 
 <div id="canvas-container">
-	{#if encourageLandscape}
+	{#if encourageLandscape && drawInstructions}
 		<div id="landscapemodal">
 			<div id="center">
 				<h2>

@@ -24,8 +24,6 @@
 		}
 	});
 
-	console.log('start: ', start);
-
 	let component = 'gallery';
 	const leaveStartPage = () => {
 		start = false;
