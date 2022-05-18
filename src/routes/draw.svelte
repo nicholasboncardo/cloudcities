@@ -17,12 +17,20 @@
 	let drawBackground;
 	let mobile;
 	onMount(async () => {
-		window.addEventListener('resize', function (event) {
-			var newWidth = window.innerWidth;
-			var newHeight = window.innerHeight;
-			console.log('newWidth: ', newWidth);
-			console.log('newHeight: ', newHeight);
-		});
+		window.addEventListener(
+			'gesturechange',
+			function (e) {
+				if (e.scale < 1.0) {
+					// User moved fingers closer together
+					e.preventDefault();
+				} else if (e.scale > 1.0) {
+					// User moved fingers further apart
+					e.preventDefault();
+				}
+			},
+			false
+		);
+
 		document
 			.querySelector('meta[name="viewport"]')
 			.setAttribute(
