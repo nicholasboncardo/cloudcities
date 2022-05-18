@@ -135,7 +135,7 @@
 				console.log('landscapee detected');
 				if (canvasHeight < p5.windowHeight) {
 					console.log('resize 1');
-					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				} else {
 					console.log('resize 2');
 					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
