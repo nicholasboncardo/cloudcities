@@ -44,7 +44,6 @@
 	let startDrawApp = true; //starts drawing info if true
 	let straightToInstructions = false; //skips info if true
 	const setBackground = (e) => {
-		console.log('setBackground');
 		if (e.detail) {
 			//means user has uploaded image
 			background = e.detail;
