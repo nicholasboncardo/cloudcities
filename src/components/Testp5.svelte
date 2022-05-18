@@ -50,7 +50,7 @@
 			canvasWidth = image.width / (image.height / p5.windowHeight);
 
 			if (p5.windowWidth >= 500) {
-				if (p5.windowHeight < 600) {
+				if (p5.windowHeight < 500) {
 					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				} else if (canvasHeight < p5.windowHeight) {
 					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);

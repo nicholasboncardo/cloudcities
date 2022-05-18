@@ -26,12 +26,7 @@
 			false
 		);
 
-		document
-			.querySelector('meta[name="viewport"]')
-			.setAttribute(
-				'content',
-				'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1 viewport-fit=cover, user-scalable=no'
-			);
+	
 		//test if user is on mobile
 		let windowWidth =
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
