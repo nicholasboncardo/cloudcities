@@ -17,7 +17,6 @@
 	let drawBackground;
 	let mobile;
 	onMount(async () => {
-		/*
 		window.addEventListener(
 			'gesturechange',
 			function (e) {
@@ -26,7 +25,6 @@
 			},
 			false
 		);
-		*/
 
 		document
 			.querySelector('meta[name="viewport"]')
