@@ -15,7 +15,7 @@
 			return element.split('">').pop().split('<')[0];
 		}
 	});
-	let tandcLinK = contributeModal[3].split('href="').pop().split('"')[0];
+	//let tandcLinK = contributeModal[3].split('href="').pop().split('"')[0];
 	let tandcText = contributeModal[3].split('<span>').pop().split('<')[0];
 	let tandcAelemText = contributeModal[3]
 		.split('style="text-decoration: underline;">')

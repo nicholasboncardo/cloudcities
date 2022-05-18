@@ -10,6 +10,7 @@
 	import { drawInstruction } from '../stores/wpTexts';
 	import { drawStartTitle } from '../stores/wpTitles';
 	import { contributeModal } from '../stores/wpTexts';
+	import { set_attributes } from 'svelte/internal';
 
 	let remix = false;
 	let drawInstructions = false;
@@ -22,13 +23,13 @@
 			console.log('newWidth: ', newWidth);
 			console.log('newHeight: ', newHeight);
 		});
+		document
+			.querySelector('meta[name="viewport"]')
+			.setAttribute(
+				'content',
+				'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1 viewport-fit=cover, user-scalable=no'
+			);
 		//test if user is on mobile
-		console.log('window.screen.width: ', window.screen.width);
-		console.log('window.screen.height: ', window.screen.height);
-		console.log('window.screen.outerWidth: ', window.outerWidth);
-		console.log('window.screen.innerWidth: ', window.width);
-		let html = document.getElementsByTagName('body');
-		console.log('html: ', html);
 		let windowWidth =
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 		mobile = windowWidth < 500;
