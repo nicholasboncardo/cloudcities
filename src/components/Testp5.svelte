@@ -739,6 +739,10 @@
 		text-align: center;
 	}
 
+	.modal-info > .flex-row {
+		margin: 0px;
+	}
+
 	@media (max-width: 500px) {
 		.modal-info {
 			width: 80vw;
