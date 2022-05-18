@@ -6,15 +6,12 @@
 	export let image;
 
 	const closeLargeImage = () => {
+		closeButtonSrc = 'button_close.png';
 		dispatch('closeLargeImage');
 	};
 
 	const clickDraw = () => {
 		dispatch('clickDraw');
-	};
-
-	const goToAbout = () => {
-		window.open('https://cloudcities.studiotomassaraceno.org', '_blank').focus();
 	};
 
 	let drawButtonSrc = 'draw-unselected.png';

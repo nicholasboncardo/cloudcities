@@ -122,6 +122,7 @@
 		};
 
 		p5.windowResized = () => {
+			console.log('resize detected');
 			if (p5.windowWidth >= 500 && p5.windowHeight > 500) {
 				canvasHeight = image.height / (image.width / p5.windowWidth);
 				canvasWidth = image.width / (image.height / p5.windowHeight);
@@ -131,12 +132,16 @@
 					p5.resizeCanvas(p5.windowWidth, canvasHeight);
 				}
 			} else if (p5.windowHeight < 500) {
+				console.log('landscapee detected');
 				if (canvasHeight < p5.windowHeight) {
+					console.log('resize 1');
 					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
 				} else {
+					console.log('resize 2');
 					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 				}
 			} else if (p5.windowWidth < 500) {
+				console.log('portrait detected');
 				p5.resizeCanvas(canvasWidth, p5.windowHeight);
 			}
 			/* 

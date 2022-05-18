@@ -28,7 +28,7 @@ const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 </div>`;
 });
 const css$1 = {
-  code: ".overlay.svelte-v35iav{color:white;width:100%;position:fixed;top:0px;display:flex;justify-content:space-between;align-items:center;z-index:1000}.icon-button.svelte-v35iav{position:initial}h2.svelte-v35iav{font-style:normal;font-weight:400;font-size:32px;line-height:38px;margin:0px;max-width:60vw;word-wrap:break-word}#remix.svelte-v35iav{position:absolute;top:10px;left:50%;transform:translateX(-50%)}@media(max-width: 500px){h2.svelte-v35iav{font-style:normal;font-weight:400;font-size:18px;line-height:20px;text-align:center;letter-spacing:0.05em}}",
+  code: ".overlay.svelte-jfml84{color:white;width:100%;position:fixed;top:0px;display:flex;justify-content:space-between;align-items:center;z-index:1000}.icon-button.svelte-jfml84{position:initial}h2.svelte-jfml84{font-style:normal;font-weight:400;font-size:32px;line-height:38px;margin:0px;max-width:60vw;word-wrap:break-word}#remix.svelte-jfml84{position:absolute;top:10px;left:50%;transform:translateX(-50%)}@media(max-width: 500px){h2.svelte-jfml84{font-style:normal;font-weight:400;font-size:18px;line-height:20px;text-align:center;letter-spacing:0.05em}}",
   map: null
 };
 const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -43,25 +43,25 @@ const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   if ($$props.image === void 0 && $$bindings.image && image !== void 0)
     $$bindings.image(image);
   $$result.css.add(css$1);
-  return `<div class="${"overlay svelte-v35iav"}">${openComponent === "gallery" ? `<a href="${"/draw"}"><img${add_attribute("src", drawButtonSrc, 0)} alt="${"draw-button"}" class="${"icon-button svelte-v35iav"}"></a>
-		<h2 class="${"svelte-v35iav"}">Cloud Cities</h2>
-		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-v35iav"}"></a>` : ``}
-	${openComponent === "individualPost" ? `<img class="${"icon-button svelte-v35iav"}" alt="${"exit-button"}"${add_attribute("src", closeButtonSrc, 0)}>
-		<h2 class="${"svelte-v35iav"}">${escape(image.title)}</h2>
-		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-v35iav"}"></a>` : ``}
-	${openComponent === "remix" ? `<h2 id="${"remix"}" class="${"svelte-v35iav"}">Select a drawing to re/interpret</h2>` : ``}
+  return `<div class="${"overlay svelte-jfml84"}">${openComponent === "gallery" ? `<a href="${"/draw"}"><img${add_attribute("src", drawButtonSrc, 0)} alt="${"draw-button"}" class="${"icon-button svelte-jfml84"}"></a>
+		<h2 class="${"svelte-jfml84"}">Cloud Cities</h2>
+		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-jfml84"}"></a>` : ``}
+	${openComponent === "individualPost" ? `<img class="${"icon-button svelte-jfml84"}" alt="${"exit-button"}"${add_attribute("src", closeButtonSrc, 0)}>
+		<h2 class="${"svelte-jfml84"}">${escape(image.title)}</h2>
+		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-jfml84"}"></a>` : ``}
+	${openComponent === "remix" ? `<h2 id="${"remix"}" class="${"svelte-jfml84"}">Select a drawing to re/interpret</h2>` : ``}
 </div>`;
 });
 var start_svelte_svelte_type_style_lang = "";
 var IndividualPost_svelte_svelte_type_style_lang = "";
 var Loading_svelte_svelte_type_style_lang = "";
 const css = {
-  code: ".loading.svelte-1akkeh1.svelte-1akkeh1{position:fixed;top:0px;width:100vw;height:100vh;background:linear-gradient(0deg, #ffffff 0%, #0094ff 100%);color:white}.loading.svelte-1akkeh1>h2.svelte-1akkeh1{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)}",
+  code: ".loading.svelte-xrvvla.svelte-xrvvla{position:fixed;top:0px;width:100%;height:100%;background:linear-gradient(0deg, #ffffff 0%, #0094ff 100%);color:white}.loading.svelte-xrvvla>h2.svelte-xrvvla{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)}",
   map: null
 };
 const Loading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);
-  return `<div class="${"loading svelte-1akkeh1"}"><h2 class="${"svelte-1akkeh1"}">Loading...</h2>
+  return `<div class="${"loading svelte-xrvvla"}"><h2 class="${"svelte-xrvvla"}">Loading...</h2>
 </div>`;
 });
 const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -71,12 +71,14 @@ const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$unsubscribe_welcomeToCloudCities = subscribe(welcomeToCloudCities, (value) => $welcomeToCloudCities = value);
   $$unsubscribe_repoImages = subscribe(repoImages, (value) => $repoImages = value);
   $$unsubscribe_welcomeTitle = subscribe(welcomeTitle, (value) => $welcomeTitle = value);
+  let start;
+  console.log("start: ", start);
   let component = "gallery";
   let chosenImage;
   $$unsubscribe_welcomeToCloudCities();
   $$unsubscribe_repoImages();
   $$unsubscribe_welcomeTitle();
-  return `${!$welcomeToCloudCities || $repoImages.length <= 10 || !$welcomeTitle || $welcomeTitle === "undefined" ? `${validate_component(Loading, "Loading").$$render($$result, {}, {}, {})}` : ``}
+  return `${!$welcomeToCloudCities || $repoImages.length <= 8 || !$welcomeTitle || $welcomeTitle === "undefined" ? `${validate_component(Loading, "Loading").$$render($$result, {}, {}, {})}` : ``}
 
 ${`${validate_component(Overlay, "Overlay").$$render($$result, {
     openComponent: component,

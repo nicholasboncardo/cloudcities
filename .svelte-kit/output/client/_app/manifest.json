@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-2307c13f.js",
+    "file": "start-22b774ef.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -10,7 +10,6 @@
     "dynamicImports": [
       ".svelte-kit/runtime/components/layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
-      "src/routes/about.svelte",
       "src/routes/draw.svelte",
       "src/routes/index.svelte"
     ]
@@ -33,47 +32,35 @@
       "_index-37d50d90.js"
     ]
   },
-  "src/routes/about.svelte": {
-    "file": "pages/about.svelte-9f769f75.js",
-    "src": "src/routes/about.svelte",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_index-37d50d90.js"
-    ],
-    "css": [
-      "assets/pages/about.svelte-02fcb81a.css"
-    ]
-  },
   "src/routes/draw.svelte": {
-    "file": "pages/draw.svelte-a0ae7427.js",
+    "file": "pages/draw.svelte-65c542d3.js",
     "src": "src/routes/draw.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-37d50d90.js",
-      "_wpTitles-bbb4604d.js",
+      "_wpTitles-3fdcc8f0.js",
       "_index-d2201ef8.js"
     ],
     "dynamicImports": [
       "_p5.min-21ab2ccd.js"
     ],
     "css": [
-      "assets/pages/draw.svelte-06822ac5.css"
+      "assets/pages/draw.svelte-f1feffed.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-1e4f358f.js",
+    "file": "pages/index.svelte-9cb87391.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-37d50d90.js",
-      "_wpTitles-bbb4604d.js",
+      "_wpTitles-3fdcc8f0.js",
       "_index-d2201ef8.js"
     ],
     "css": [
-      "assets/pages/index.svelte-21e06781.css"
+      "assets/pages/index.svelte-302bb357.css"
     ]
   },
   "_index-37d50d90.js": {
@@ -85,14 +72,14 @@
       "_index-37d50d90.js"
     ]
   },
-  "_wpTitles-bbb4604d.js": {
-    "file": "chunks/wpTitles-bbb4604d.js",
+  "_wpTitles-3fdcc8f0.js": {
+    "file": "chunks/wpTitles-3fdcc8f0.js",
     "imports": [
       "_index-37d50d90.js",
       "_index-d2201ef8.js"
     ],
     "css": [
-      "assets/wpTitles-9c4a8d85.css"
+      "assets/wpTitles-30980f0c.css"
     ]
   },
   "_p5.min-21ab2ccd.js": {

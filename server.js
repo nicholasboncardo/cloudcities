@@ -53,14 +53,10 @@ const multerMiddeWare = (req, res, next) => {
 			return;
 		}
 		// Everything went fine.
-		console.log('everthing went fine');
 		next();
 	});
 };
 app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
-	console.log('req.body: ', req.body);
-	console.log('req.file: ', req.file);
-	let filename = req.body.title.split(' ').join('');
 	let { path } = req.file;
 	console.log('path: ', req.file);
 	let token;
@@ -102,12 +98,10 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 				body: fs.readFileSync(path)
 			})
 				.then((result) => {
-					console.log('result: ', result);
 					res.sendStatus(200);
 					return result.json();
 				})
 				.then((result) => {
-					console.log('token after result from wp: ', token);
 					let imageID = result.id;
 					fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media/${imageID}`, {
 						method: 'POST',
@@ -135,9 +129,6 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 		});
 });
 
-app.get('/return', (req, res) => {
-	console.log('return!!!');
-});
 app.use(handler);
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
