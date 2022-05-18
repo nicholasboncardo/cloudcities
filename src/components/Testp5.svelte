@@ -644,7 +644,7 @@
 
 	.exit-button {
 		bottom: 0px;
-		left: 50px;
+		left: 0px;
 		background-image: url('/button_close.png');
 	}
 

@@ -25,6 +25,8 @@
 		}
 	});
 
+	console.log('start: ', start);
+
 	let component = 'gallery';
 	const leaveStartPage = () => {
 		start = false;
@@ -42,7 +44,7 @@
 	};
 </script>
 
-{#if !$welcomeToCloudCities || $repoImages.length <= 10 || !$welcomeTitle || $welcomeTitle === 'undefined'}
+{#if !$welcomeToCloudCities || $repoImages.length <= 8 || !$welcomeTitle || $welcomeTitle === 'undefined'}
 	<Loading />
 {/if}
 
