@@ -330,12 +330,12 @@
 		<div id="landscapemodal">
 			<div id="center">
 				<h2>
-					For this image we encourge putting you in landscape mode. Please turn your phone 90° and
-					press continue
+					For this image we encourge putting your phone in landscape mode. Please turn your phone
+					90° and press continue.
 				</h2>
 				<button
 					on:click={() => (encourageLandscape = false)}
-					on:touchstart={() => (encourageLandscape = false)}>Ok</button
+					on:touchstart={() => (encourageLandscape = false)}>Continue</button
 				>
 			</div>
 		</div>
@@ -726,6 +726,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 100000;
+		text-align: center;
 	}
 
 	@media (max-width: 500px) {
