@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let drawInstructions;
+	export let propValue;
 
 	let instructionsText;
 	onMount(async () => {
@@ -20,7 +21,10 @@
 </script>
 
 <div class="start-draw-container">
-	<div class="modal-container" />
+	<div
+		class="modal-container"
+		style="background-image: url({propValue}); background-size: cover; background-position: center"
+	/>
 	<div class="start-draw-center">
 		<div id="drawInstructions" />
 		<button id="begin-button" on:click={startDrawing} />

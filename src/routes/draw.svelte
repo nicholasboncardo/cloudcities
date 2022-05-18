@@ -10,7 +10,6 @@
 	import { drawInstruction } from '../stores/wpTexts';
 	import { drawStartTitle } from '../stores/wpTitles';
 	import { contributeModal } from '../stores/wpTexts';
-	import { set_attributes } from 'svelte/internal';
 
 	let remix = false;
 	let drawInstructions = false;
@@ -26,7 +25,6 @@
 			false
 		);
 
-	
 		//test if user is on mobile
 		let windowWidth =
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
@@ -46,6 +44,7 @@
 	let startDrawApp = true; //starts drawing info if true
 	let straightToInstructions = false; //skips info if true
 	const setBackground = (e) => {
+		console.log('setBackground');
 		if (e.detail) {
 			//means user has uploaded image
 			background = e.detail;
@@ -78,7 +77,6 @@
 		drawInstructions={$drawInstruction}
 		cloudsToBe={$cloudsToBe}
 		propValue={drawBackground}
-		{background}
 		{straightToInstructions}
 		on:startDrawing={setBackground}
 		on:remixCanvas={chooseCanvas}
@@ -96,6 +94,7 @@
 
 {#if drawInstructions}
 	<DrawInstructions
+		propValue={background}
 		drawInstructions={$drawInstruction}
 		on:closeInstructions={() => (drawInstructions = false)}
 	/>
