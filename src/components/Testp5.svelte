@@ -141,9 +141,9 @@
 				}
 			} else if (p5.windowHeight < 500) {
 				if (canvasHeight < p5.windowHeight) {
-					canvas = p5.resize(p5.windowWidth, p5.windowHeight);
+					canvas = p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 				} else {
-					canvas = p5.resize(p5.windowWidth, p5.windowHeight);
+					canvas = p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 				}
 			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
