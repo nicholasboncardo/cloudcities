@@ -323,7 +323,7 @@
 </script>
 
 <div id="canvas-container">
-	{#if encourageLandscape && drawInstructions}
+	{#if encourageLandscape && !drawInstructions}
 		<div id="landscapemodal">
 			<div id="center">
 				<h2>
