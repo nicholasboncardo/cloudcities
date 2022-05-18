@@ -189,7 +189,7 @@
 	let allowUpload = true;
 	const submitImage = () => {
 		if (
-			canvasTitle.length > 50 ||
+			(canvasTitle && canvasTitle.length > 50) ||
 			(canvasLocation && canvasLocation.length > 30) ||
 			(painterName && painterName.length > 30)
 		) {
