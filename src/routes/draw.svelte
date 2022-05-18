@@ -16,13 +16,19 @@
 	let drawBackground;
 	let mobile;
 	onMount(async () => {
+		window.addEventListener('resize', function (event) {
+			var newWidth = window.innerWidth;
+			var newHeight = window.innerHeight;
+			console.log('newWidth: ', newWidth);
+			console.log('newHeight: ', newHeight);
+		});
 		//test if user is on mobile
-		console.log("window.screen.width: ", window.screen.width)
-		console.log("window.screen.height: ", window.screen.height)
-		console.log("window.screen.outerWidth: ", window.outerWidth)
-		console.log("window.screen.innerWidth: ", window.width)
+		console.log('window.screen.width: ', window.screen.width);
+		console.log('window.screen.height: ', window.screen.height);
+		console.log('window.screen.outerWidth: ', window.outerWidth);
+		console.log('window.screen.innerWidth: ', window.width);
 		let html = document.getElementsByTagName('body');
-		console.log("html: ", html)
+		console.log('html: ', html);
 		let windowWidth =
 			window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 		mobile = windowWidth < 500;
@@ -38,11 +44,10 @@
 	});
 
 	let background;
-	let drawApp = false;//starts drawing app if true
-	let startDrawApp = true;//starts drawing info if true
-	let straightToInstructions = false;//skips info if true
+	let drawApp = false; //starts drawing app if true
+	let startDrawApp = true; //starts drawing info if true
+	let straightToInstructions = false; //skips info if true
 	const setBackground = (e) => {
-
 		if (e.detail) {
 			//means user has uploaded image
 			background = e.detail;
