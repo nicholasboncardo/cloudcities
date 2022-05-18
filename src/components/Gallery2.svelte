@@ -43,6 +43,7 @@
 			columns = 4;
 		}
 	};
+
 	onMount(async () => {
 		resizeGallery();
 		window.onresize = resizeGallery;
@@ -54,14 +55,27 @@
 		}
 		let gallery = document.getElementById('gallery');
 		let scroll = true;
+		let lastScrollTop = 0;
+
 		gallery.addEventListener('scroll', scrollFunction);
 		function scrollFunction() {
-			if (gallery.scrollTop + window.innerHeight > gallery.scrollHeight - 100 && scroll) {
-				console.log('near bottom');
+			let st = window.pageXOffset || gallery.scrollTop;
+			if (st < lastScrollTop) {
+				//detect scroll up
+				return;
+			} else if (gallery.scrollTop + window.innerHeight > gallery.scrollHeight - 100 && scroll) {
+				if (count > repoImages) {
+					//we request images than are in the repo so stop
+					return;
+				}
 				count += 10;
 				getImages(count);
+
 				scroll = false;
+			} else {
+				scroll = true;
 			}
+			lastScrollTop = st <= 0 ? 0 : st;
 		}
 
 		let imgContainer = document.getElementsByClassName('gallery-item');

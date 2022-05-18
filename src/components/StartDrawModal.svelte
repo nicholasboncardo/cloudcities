@@ -9,8 +9,6 @@
 	export let title;
 	export let straightToInstructions;
 
-
-
 	let instructionsText;
 	onMount(async () => {
 		let startText = document.getElementById('cloudstobe');
@@ -52,7 +50,6 @@
 
 	let drawMode;
 	const drawOnUploadImage = () => {
-		
 		startDrawModal = false;
 		instructionVisible = 'visible';
 		drawMode = 'drawOnUploadImage';
@@ -151,7 +148,6 @@
 	}
 
 	input {
-
 		margin: 0px;
 		text-align: center;
 		width: 100%;
@@ -186,10 +182,25 @@
 		.modal-info {
 			width: 80%;
 		}
+
+		#title {
+			position: fixed;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			top: 5px;
+		}
 	}
 	@media (max-height: 500px) {
 		.modal-info {
 			width: 80%;
+		}
+		#title {
+			position: fixed;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			top: 5px;
 		}
 	}
 </style>

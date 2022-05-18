@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 export const repoImages = writable([]);
 let count = 20;
+
 export const getImages = async (count) => {
 	const res = await fetch(
 		`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media?categories=44&per_page=${count}`
