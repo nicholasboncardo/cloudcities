@@ -57,16 +57,15 @@
 				} else {
 					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
 				}
-			} /*else if (p5.windowWidth < 500 && image.width < image.height) {
-				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-			} */ else if (p5.windowWidth < 500) {
-				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+			} else if (p5.windowWidth < 500 && image.width < image.height) {
+				canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+			} else if (p5.windowWidth < 500) {
+				canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
 			}
 			p5.background(image);
 
 			let container = document.getElementById('canvas-container');
 
-			
 			container.addEventListener('touchstart', (event) => {
 				if (event.touches.length === 2) {
 					moveCanvas = true;
@@ -82,7 +81,6 @@
 					moveCanvas = false;
 				}
 			});
-			
 
 			redoFunction = () => {
 				p5.clear();
