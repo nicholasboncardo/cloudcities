@@ -188,6 +188,10 @@
 	const submitImage = () => {
 		clickSubmit = true;
 		finishedDrawing = false;
+		setTimeout(() => {
+			imageSubmitted = true;
+			clickSubmit = false;
+		}, 10000);
 		if (
 			(canvasTitle && canvasTitle.length > 50) ||
 			(canvasLocation && canvasLocation.length > 30) ||
@@ -495,7 +499,9 @@
 		<div class="container">
 			<div class="modal-info">
 				<h2>Thank you! Submission complete</h2>
-				<p>Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.</p>
+				<p style="text-align: center;">
+					Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.
+				</p>
 				<div class="flex-row">
 					<button on:click={returnToDraw} on:touchstart={returnToDraw}>Return to drawing</button>
 					<button on:click={redirectMobile} on:touchstart={redirectMobile}
