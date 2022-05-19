@@ -199,6 +199,7 @@
 			if (!serverResponse) {
 				imageSubmitted = true;
 				clickSubmit = false;
+				serverResponse = true;
 			} else {
 				return;
 			}
@@ -229,9 +230,11 @@
 					body: formData
 				}).then((result) => {
 					console.log('result: ', result.status);
-					serverResponse = true;
-					imageSubmitted = true;
-					clickSubmit = false;
+					if (!serverResponse) {
+						serverResponse = true;
+						imageSubmitted = true;
+						clickSubmit = false;
+					}
 				});
 			});
 			finishedDrawing = false;
