@@ -156,10 +156,8 @@
 	//set stroke width and highlight chosen width with white background
 	let strokeButtons = document.getElementsByClassName('stroke-button');
 	const setStrokeWidth = (e) => {
-		console.log('setstroke Width ', e.target.id);
 		let selectedButton = e.target.id;
 		if (e.target.id === 'tiny-stroke-container' || e.target.id === 'tiny-stroke-circle') {
-			console.log('strokewidth: ', strokeWidth);
 			strokeWidth = 5;
 		} else if (e.target.id === 'small-stroke') {
 			strokeWidth = 10;
@@ -320,7 +318,6 @@
 	};
 
 	const returnToDraw = () => {
-		console.log('return to draw');
 		finishedDrawing = false;
 		imageSubmitted = false;
 		moveCanvas = false;
@@ -344,8 +341,8 @@
 <div id="canvas-container">
 	{#if encourageLandscape && !drawInstructions}
 		<div id="landscapemodal">
-			<div class="modal-center">
-				<h2>We recommend rotating your device into landscape mode before you begin.</h2>
+			<div class="modal-info">
+				<p>We recommend rotating your device into landscape mode before you begin.</p>
 				<button
 					on:click={() => (encourageLandscape = false)}
 					on:touchstart={() => (encourageLandscape = false)}>I’ve rotated my device</button
@@ -611,6 +608,7 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 50%;
+		height: 40px;
 	}
 
 	.stroke-button {
@@ -677,6 +675,7 @@
 		right: 0px;
 		background-image: url('/icon_info.png');
 		position: fixed;
+		z-index: 100;
 	}
 
 	.about-button:hover {
@@ -691,10 +690,6 @@
 		align-items: center;
 		gap: 1%;
 		text-align: left;
-	}
-
-	.style-section > p {
-		font-size: 20px;
 	}
 
 	.exit-button {
@@ -776,17 +771,19 @@
 		height: 100vh;
 		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
 		color: white;
+		z-index: 10;
 	}
-	#landscapemodal > .modal-center {
+	#landscapemodal > .modal-info {
 		padding: 10px;
 		gap: 20px;
 		background: rgba(0, 0, 0, 0.25);
 		backdrop-filter: blur(26px);
 	}
-	#landscapemodal > .modal-center > h2 {
+	#landscapemodal > .modal-info > p {
 		margin: 0px;
+		text-align: center;
 	}
-	#landscapemodal > .modal-center > button {
+	#landscapemodal > .modal-info > button {
 		width: 100%;
 	}
 
@@ -840,11 +837,6 @@
 			width: 80vw;
 		}
 
-		.input-section > p,
-		.modal-info > p {
-			font-size: 13px;
-		}
-
 		#title {
 			font-size: 18px;
 			line-height: 20px;
@@ -855,14 +847,12 @@
 			width: 80%;
 		}
 
-		.input-section > p,
-		.modal-info > p {
-			font-size: 13px;
-		}
-
 		#title {
 			font-size: 18px;
 			line-height: 20px;
+		}
+		.draw-settings {
+			gap: 10px;
 		}
 	}
 </style>

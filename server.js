@@ -58,7 +58,6 @@ const multerMiddeWare = (req, res, next) => {
 };
 app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 	let { path } = req.file;
-	console.log('path: ', req.file);
 	let token;
 
 	if (req.body.userUploads > 30) {
@@ -83,7 +82,6 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 			return result.json();
 		})
 		.then((result) => {
-			console.log('result: ', result.token);
 			return result.token;
 		})
 		.then((result) => {

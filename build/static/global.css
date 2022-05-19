@@ -54,11 +54,30 @@ button {
 	outline: none;
 	border-style: none;
 	cursor: pointer;
-	height: 48px;
+	height: 76px;
 	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+button:hover {
+	background: rgba(0, 0, 0, 0.25);
 }
 
 h2 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 38px;
+	letter-spacing: 0.02em;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
 }
@@ -107,6 +126,14 @@ p {
 	margin: 0px;
 }
 
+#text {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+
 .modal-container {
 	position: fixed;
 	width: 100%;
@@ -145,6 +172,18 @@ p {
 }
 
 @media (max-width: 500px) {
+	button {
+		color: white;
+		background: rgba(255, 255, 255, 0.25);
+		outline: none;
+		border-style: none;
+		cursor: pointer;
+		height: 48px;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 18px;
+	}
 	.icon-button {
 		width: 28px;
 		height: 28px;
@@ -157,13 +196,38 @@ p {
 		background-size: 28px;
 		margin: 5px;
 	}
+	h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	p {
+		font-size: 16px;
+		line-height: 18px;
+	}
 	#title {
 		font-size: 18px;
 		line-height: 20px;
 	}
+	#text {
+		font-size: 16px;
+		line-height: 18px;
+	}
+
 }
 
 @media (max-height: 500px) {
+	button {
+		color: white;
+		background: rgba(255, 255, 255, 0.25);
+		outline: none;
+		border-style: none;
+		cursor: pointer;
+		height: 48px;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 18px;
+	}
 	.icon-button {
 		width: 28px;
 		height: 28px;
@@ -182,5 +246,26 @@ p {
 	}
 	.modal-info {
 		gap: 5px;
+	}
+	#title {
+		font-size: 18px;
+		line-height: 20px;
+	}
+
+	#text {
+		font-size: 16px;
+		line-height: 18px;
+	}
+
+	h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.start-draw-center {
+		width: 80%;
 	}
 }

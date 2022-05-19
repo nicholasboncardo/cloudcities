@@ -189,6 +189,14 @@
 			line-height: 20px;
 			top: 5px;
 		}
+		.button-section {
+			flex-direction: column;
+			height: unset;
+		}
+		.button-section > button {
+			height: 48px;
+			width: 100%;
+		}
 	}
 	@media (max-height: 500px) {
 		.modal-info {
@@ -200,6 +208,9 @@
 			font-size: 18px;
 			line-height: 20px;
 			top: 5px;
+		}
+		.button-section {
+			height: 48px;
 		}
 	}
 </style>

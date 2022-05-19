@@ -250,10 +250,6 @@
 		color: white;
 	}
 
-	.img-info p {
-		margin: 3px;
-	}
-
 	.info-text {
 		position: absolute;
 		bottom: 0px;
@@ -264,14 +260,17 @@
 		margin-top: 5px;
 		display: flex;
 		text-align: left;
+		line-height: unset;
 	}
 
-	.info-text > p {
+	p {
 		margin: 0px;
-		font-size: small;
+		font-size: unset;
+		line-height: unset;
 	}
 
 	.desc-text {
+		margin-top: 5px;
 		font-size: 20px;
 	}
 

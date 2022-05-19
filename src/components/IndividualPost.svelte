@@ -62,8 +62,12 @@
 		align-items: center;
 		padding: 10px;
 		min-width: 200px;
+		gap: 20px;
 	}
 	.indiv-post-info > p {
+		margin: 0px;
+	}
+	.indiv-post-info > h2 {
 		margin: 0px;
 	}
 
@@ -92,6 +96,7 @@
 			backdrop-filter: blur(26px);
 			height: 100vh;
 			height: calc(var(--vh, 1vh) * 100);
+			gap: 5px;
 		}
 		.indiv-post-image > img {
 			width: 100%;

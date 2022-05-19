@@ -13,8 +13,6 @@
 		beginButton.innerHTML = drawInstructions[1];
 	});
 
-	let drawMode;
-
 	const startDrawing = () => {
 		dispatch('closeInstructions');
 	};
@@ -54,7 +52,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		background: rgba(0, 0, 0, 0.25);
+		background: rgba(255, 255, 255, 0.25);
 		backdrop-filter: blur(26px);
 		display: flex;
 		flex-direction: column;
