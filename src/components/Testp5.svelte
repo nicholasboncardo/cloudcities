@@ -211,11 +211,11 @@
 					body: formData
 				}).then((result) => {
 					console.log('result: ', result.status);
+					imageSubmitted = true;
 				});
 			});
 			finishedDrawing = false;
 			moveCanvas = true;
-			imageSubmitted = true;
 		} else if (!allowUpload) {
 			return;
 		} else {
