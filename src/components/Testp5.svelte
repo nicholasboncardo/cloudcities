@@ -191,12 +191,17 @@
 
 	let allowUpload = true;
 	let clickSubmit = false;
+	let serverResponse = false;
 	const submitImage = () => {
 		clickSubmit = true;
 		finishedDrawing = false;
 		setTimeout(() => {
-			imageSubmitted = true;
-			clickSubmit = false;
+			if (!serverResponse) {
+				imageSubmitted = true;
+				clickSubmit = false;
+			} else {
+				return;
+			}
 		}, 10000);
 		if (
 			(canvasTitle && canvasTitle.length > 50) ||
@@ -224,6 +229,7 @@
 					body: formData
 				}).then((result) => {
 					console.log('result: ', result.status);
+					serverResponse = true;
 					imageSubmitted = true;
 					clickSubmit = false;
 				});
@@ -320,6 +326,7 @@
 	const returnToDraw = () => {
 		finishedDrawing = false;
 		imageSubmitted = false;
+		serverResponse = false;
 		moveCanvas = false;
 		overButton = false;
 	};

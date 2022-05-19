@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-dd035e16.js",
+    "file": "start-f016cc35.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -33,13 +33,13 @@
     ]
   },
   "src/routes/draw.svelte": {
-    "file": "pages/draw.svelte-bfcf771e.js",
+    "file": "pages/draw.svelte-469f4977.js",
     "src": "src/routes/draw.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-37d50d90.js",
-      "_wpTitles-3fc3412b.js",
+      "_wpTitles-8ad038ab.js",
       "_index-d2201ef8.js"
     ],
     "dynamicImports": [
@@ -50,17 +50,17 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-6738589e.js",
+    "file": "pages/index.svelte-47e0ad32.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-37d50d90.js",
-      "_wpTitles-3fc3412b.js",
+      "_wpTitles-8ad038ab.js",
       "_index-d2201ef8.js"
     ],
     "css": [
-      "assets/pages/index.svelte-73608461.css"
+      "assets/pages/index.svelte-a19b1a08.css"
     ]
   },
   "_index-37d50d90.js": {
@@ -72,14 +72,14 @@
       "_index-37d50d90.js"
     ]
   },
-  "_wpTitles-3fc3412b.js": {
-    "file": "chunks/wpTitles-3fc3412b.js",
+  "_wpTitles-8ad038ab.js": {
+    "file": "chunks/wpTitles-8ad038ab.js",
     "imports": [
       "_index-37d50d90.js",
       "_index-d2201ef8.js"
     ],
     "css": [
-      "assets/wpTitles-30980f0c.css"
+      "assets/wpTitles-d7aa965b.css"
     ]
   },
   "_p5.min-21ab2ccd.js": {
