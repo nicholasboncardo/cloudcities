@@ -120,7 +120,7 @@
 	.button-section {
 		display: flex;
 		justify-content: space-between;
-		height: 48px;
+		height: 76px;
 		width: 100%;
 		gap: 2px;
 	}
@@ -133,7 +133,6 @@
 	}
 
 	#drawOnUpload-button {
-		height: 48px;
 		width: 100%;
 		margin: 0px;
 	}

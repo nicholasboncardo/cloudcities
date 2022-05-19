@@ -22,7 +22,7 @@
 		.pop()
 		.split('<')[0];
 
-	let strokeWidth = 10;
+	let strokeWidth = 5;
 	let red = 0;
 	let blue = 0;
 	let green = 0;
@@ -156,7 +156,10 @@
 	//set stroke width and highlight chosen width with white background
 	let strokeButtons = document.getElementsByClassName('stroke-button');
 	const setStrokeWidth = (e) => {
-		if (e.target.id === 'tiny-stroke') {
+		console.log('setstroke Width ', e.target.id);
+		let selectedButton = e.target.id;
+		if (e.target.id === 'tiny-stroke-container' || e.target.id === 'tiny-stroke-circle') {
+			console.log('strokewidth: ', strokeWidth);
 			strokeWidth = 5;
 		} else if (e.target.id === 'small-stroke') {
 			strokeWidth = 10;
@@ -165,9 +168,14 @@
 		} else if (e.target.id === 'big-stroke') {
 			strokeWidth = 30;
 		}
+
 		strokeButtons.forEach((element) => {
 			if (element !== e.target) {
 				element.style.border = 'none';
+				if (selectedButton === 'tiny-stroke-container') {
+					let tinyButton = document.getElementById('tiny-stroke-circle');
+					tinyButton.style.border = 'solid 4px #00D1FF';
+				}
 			} else {
 				element.style.border = 'solid 4px #00D1FF';
 			}
@@ -312,8 +320,11 @@
 	};
 
 	const returnToDraw = () => {
+		console.log('return to draw');
+		finishedDrawing = false;
+		imageSubmitted = false;
 		moveCanvas = false;
-		window.location.reload();
+		overButton = false;
 	};
 
 	const cancelSubmit = () => {
@@ -333,14 +344,11 @@
 <div id="canvas-container">
 	{#if encourageLandscape && !drawInstructions}
 		<div id="landscapemodal">
-			<div id="center">
-				<h2>
-					For this image we encourge putting your phone in landscape mode. Please turn your phone
-					90° and press continue.
-				</h2>
+			<div class="modal-center">
+				<h2>We recommend rotating your device into landscape mode before you begin.</h2>
 				<button
 					on:click={() => (encourageLandscape = false)}
-					on:touchstart={() => (encourageLandscape = false)}>Continue</button
+					on:touchstart={() => (encourageLandscape = false)}>I’ve rotated my device</button
 				>
 			</div>
 		</div>
@@ -367,27 +375,35 @@
 					<p>size</p>
 					<div class="stroke-width">
 						<div
-							class="stroke-button"
-							id="tiny-stroke"
+							id="tiny-stroke-container"
 							on:click={setStrokeWidth}
-							style="border: {tinyButtonBorder}"
-						/>
+							on:touchstart={setStrokeWidth}
+						>
+							<div
+								class="stroke-button"
+								id="tiny-stroke-circle"
+								style="border: {tinyButtonBorder}"
+							/>
+						</div>
 						<div
 							class="stroke-button"
 							id="small-stroke"
 							on:click={setStrokeWidth}
+							on:touchstart={setStrokeWidth}
 							style="border: {smallButtonBorder}"
 						/>
 						<div
 							class="stroke-button"
 							id="medium-stroke"
 							on:click={setStrokeWidth}
+							on:touchstart={setStrokeWidth}
 							style="border: {mediumButtonBorder}"
 						/>
 						<div
 							class="stroke-button"
 							id="big-stroke"
 							on:click={setStrokeWidth}
+							on:touchstart={setStrokeWidth}
 							style="border: {bigButtonBorder}"
 						/>
 					</div>
@@ -592,7 +608,7 @@
 	}
 	.stroke-width {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
 		width: 50%;
 	}
@@ -616,7 +632,20 @@
 		width: 10px;
 		height: 10px;
 	}
-	#tiny-stroke {
+
+	#tiny-stroke-container {
+		position: relative;
+		border-radius: 50%;
+		cursor: pointer;
+		width: 10px;
+		height: 10px;
+	}
+
+	#tiny-stroke-circle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 5px;
 		height: 5px;
 	}
@@ -723,7 +752,6 @@
 
 	#download-button,
 	#submit-button {
-		font-size: 15px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -749,13 +777,17 @@
 		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
 		color: white;
 	}
-	#landscapemodal > #center {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 100000;
-		text-align: center;
+	#landscapemodal > .modal-center {
+		padding: 10px;
+		gap: 20px;
+		background: rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(26px);
+	}
+	#landscapemodal > .modal-center > h2 {
+		margin: 0px;
+	}
+	#landscapemodal > .modal-center > button {
+		width: 100%;
 	}
 
 	.modal-info > .flex-row {
@@ -821,13 +853,6 @@
 	@media (max-height: 500px) {
 		.modal-info {
 			width: 80%;
-		}
-		#landscapemodal > #center {
-			top: 40%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			z-index: 100000;
-			text-align: center;
 		}
 
 		.input-section > p,

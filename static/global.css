@@ -58,9 +58,17 @@ button {
 	font-family: 'Raleway', sans-serif;
 }
 
+button:hover {
+	background: rgba(0, 0, 0, 0.25);
+}
+
 h2 {
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
+}
+
+button {
+	font-size: 24;
 }
 
 .modal-center {
@@ -105,6 +113,98 @@ h2 {
 .modal-info > h2,
 p {
 	margin: 0px;
+}
+
+.modal-info > p {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+.indiv-post-info,
+#drawInstructions > p {
+	text-align: center;
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+.start-draw-center > button > p {
+	text-align: center;
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+#drawInstructions > button > p {
+	text-align: center;
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+#drawOnUpload-button, #download-button, #cancel-button, #submit-button {
+	height: 76px;
+	text-align: center;
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+.indiv-post-info > h2 {
+	text-align: center;
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 38px;
+	text-align: center;
+	letter-spacing: 0.02em;
+}
+
+.button-section > button > p {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+.modal-info > #cloudstobe, .input-section > p {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+#text {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+.modal-info,
+#cloudstobe > h2 {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 38px;
+	text-align: center;
+	letter-spacing: 0.02em;
+}
+.modal-info > button > p {
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
 }
 
 .modal-container {
@@ -161,6 +261,56 @@ p {
 		font-size: 18px;
 		line-height: 20px;
 	}
+	.modal-info,
+	#cloudstobe, .input-section > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	#text {
+		font-size: 16px;
+		line-height: 18px;
+	}
+
+	.modal-info,
+	#cloudstobe > h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	.modal-info > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.modal-info > #cloudstobe,.input-section > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.indiv-post-info > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.indiv-post-info > h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	#drawInstructions > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.button-section > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.start-draw-center > button > p {
+		font-size: 24px;
+		line-height: 28px;
+	}
+	#drawOnUpload-button, #download-button, #cancel-button, #submit-button {
+		height: 48px;
+	}
+	#drawOnUpload-button, #download-button, #cancel-button, #submit-button {
+		font-size: 16px;
+		line-height: 18px;
+	}
 }
 
 @media (max-height: 500px) {
@@ -182,5 +332,61 @@ p {
 	}
 	.modal-info {
 		gap: 5px;
+	}
+	#title {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	.modal-info,
+	#cloudstobe > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	#text {
+		font-size: 16px;
+		line-height: 18px;
+	}
+
+	.modal-info > h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	.modal-info > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	#drawOnUpload-button, #download-button, #cancel-button, #submit-button {
+		height: 48px;
+	}
+	#drawOnUpload-button, #download-button, #cancel-button, #submit-button {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.modal-info > #cloudstobe,.input-section > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.indiv-post-info > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.indiv-post-info > h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	#drawInstructions > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.button-section > button > p {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.start-draw-center > button > p {
+		font-size: 24px;
+		line-height: 28px;
+	}
+	.start-draw-center {
+		width: 80%;
 	}
 }
