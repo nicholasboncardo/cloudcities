@@ -329,7 +329,6 @@
 	const returnToDraw = () => {
 		finishedDrawing = false;
 		imageSubmitted = false;
-		serverResponse = false;
 		moveCanvas = false;
 		overButton = false;
 	};
