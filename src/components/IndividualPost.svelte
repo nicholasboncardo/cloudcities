@@ -60,7 +60,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		padding: 20px;
+		padding: 10px;
 		min-width: 200px;
 	}
 	.indiv-post-info > p {

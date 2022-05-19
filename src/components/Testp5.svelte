@@ -184,7 +184,10 @@
 	localStorage.setItem('cloudUploads', JSON.stringify(uploadArray));
 
 	let allowUpload = true;
+	let clickSubmit = false;
 	const submitImage = () => {
+		clickSubmit = true;
+		finishedDrawing = false;
 		if (
 			(canvasTitle && canvasTitle.length > 50) ||
 			(canvasLocation && canvasLocation.length > 30) ||
@@ -212,6 +215,7 @@
 				}).then((result) => {
 					console.log('result: ', result.status);
 					imageSubmitted = true;
+					clickSubmit = false;
 				});
 			});
 			finishedDrawing = false;
@@ -477,6 +481,11 @@
 			-->
 		</div>
 	{/if}
+	{#if clickSubmit}
+		<div class="container">
+			<h2 id="submitting">Submitting...</h2>
+		</div>
+	{/if}
 	{#if imageSubmitted}
 		<div class="container">
 			<div class="modal-info">
@@ -740,6 +749,13 @@
 
 	.modal-info > .flex-row {
 		margin: 0px;
+	}
+
+	#submitting {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	@media (max-width: 500px) {
