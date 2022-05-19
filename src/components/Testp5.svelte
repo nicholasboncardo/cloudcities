@@ -483,7 +483,12 @@
 	{/if}
 	{#if clickSubmit}
 		<div class="container">
-			<h2 id="submitting">Submitting...</h2>
+			<div id="submit-line">
+				<h2 id="submitting">Submitting</h2>
+				<h2 class="dot dot-1">.</h2>
+				<h2 class="dot dot-2">.</h2>
+				<h2 class="dot dot-3">.</h2>
+			</div>
 		</div>
 	{/if}
 	{#if imageSubmitted}
@@ -751,11 +756,45 @@
 		margin: 0px;
 	}
 
-	#submitting {
+	#submit-line {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		display: flex;
+	}
+
+	.dot {
+		position: relative;
+		bottom: 0px;
+		margin-left: 3px;
+		animation: jump 1s infinite;
+	}
+	.dot-1 {
+		-webkit-animation-delay: 100ms;
+		animation-delay: 100ms;
+	}
+
+	.dot-2 {
+		-webkit-animation-delay: 200ms;
+		animation-delay: 200ms;
+	}
+
+	.dot-3 {
+		-webkit-animation-delay: 300ms;
+		animation-delay: 300ms;
+	}
+
+	@keyframes jump {
+		0% {
+			bottom: 0px;
+		}
+		20% {
+			bottom: 5px;
+		}
+		40% {
+			bottom: 0px;
+		}
 	}
 
 	@media (max-width: 500px) {
