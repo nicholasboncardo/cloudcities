@@ -196,12 +196,13 @@
 		clickSubmit = true;
 		finishedDrawing = false;
 		setTimeout(() => {
+			console.log('serverResponse in setTimeout: ', serverResponse);
 			if (!serverResponse) {
 				imageSubmitted = true;
 				clickSubmit = false;
 				serverResponse = true;
 			} else {
-				return;
+				serverResponse = false;
 			}
 		}, 10000);
 		if (
@@ -230,10 +231,15 @@
 					body: formData
 				}).then((result) => {
 					console.log('result: ', result.status);
+					console.log('serverResponse in then: ', serverResponse);
+					allowUpload = true;
 					if (!serverResponse) {
+						console.log('serverResponse in setTimeout: ', serverResponse);
 						serverResponse = true;
 						imageSubmitted = true;
 						clickSubmit = false;
+					} else {
+						serverResponse = false;
 					}
 				});
 			});
