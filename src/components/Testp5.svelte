@@ -29,7 +29,6 @@
 
 	let moveCanvas; //set true when user moves over canvas on mobile
 
-	let canvas;
 	let redoFunction;
 	let encourageLandscape;
 	const sketch = (p5) => {
@@ -38,7 +37,7 @@
 		p5.preload = () => {
 			image = p5.loadImage(backgroundImage);
 		};
-
+		let canvas;
 		let canvasWidth;
 		let canvasHeight;
 		p5.setup = () => {
@@ -63,8 +62,6 @@
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			}
 			p5.background(image);
-
-			let container = document.getElementById('canvas-container');
 
 			/*
 			container.addEventListener('touchstart', (event) => {
@@ -130,6 +127,14 @@
 		};
 
 		p5.windowResized = () => {
+			if (
+				finishedDrawing ||
+				clickSubmit ||
+				imageSubmitted ||
+				(mobile && p5.width == p5.windowWidth)
+			) {
+				return;
+			}
 			canvasHeight = image.height / (image.width / p5.windowWidth);
 			canvasWidth = image.width / (image.height / p5.windowHeight);
 			if (p5.windowWidth >= 500 && p5.windowHeight > 500) {
@@ -196,7 +201,6 @@
 		clickSubmit = true;
 		finishedDrawing = false;
 		setTimeout(() => {
-			console.log('serverResponse in setTimeout: ', serverResponse);
 			if (!serverResponse) {
 				imageSubmitted = true;
 				clickSubmit = false;
@@ -223,18 +227,15 @@
 			formData.append('location', canvasLocation);
 			formData.append('name', painterName);
 			formData.append('userUploads', uploads.length);
-			let canvas = document.getElementById('defaultCanvas0');
-			canvas.toBlob(function (blob) {
+			let canvasEl = document.getElementById('defaultCanvas0');
+			canvasEl.toBlob(function (blob) {
 				formData.append('cloud', blob);
 				fetch('/addPostfromServer', {
 					method: 'POST',
 					body: formData
-				}).then((result) => {
-					console.log('result: ', result.status);
-					console.log('serverResponse in then: ', serverResponse);
+				}).then(() => {
 					allowUpload = true;
 					if (!serverResponse) {
-						console.log('serverResponse in setTimeout: ', serverResponse);
 						serverResponse = true;
 						imageSubmitted = true;
 						clickSubmit = false;
@@ -483,9 +484,9 @@
 						bind:value={canvasTitle}
 					/>
 				</div>
-				<p>
+				<p class="terms-and-conditions">
 					{tandcText}<span style="text-decoration: underline; cursor: pointer" on:click={openTerms}
-						><p>{tandcAelemText}</p></span
+						><p class="terms-and-conditions">{tandcAelemText}</p></span
 					>
 				</p>
 				<div class="flex-row">
@@ -525,7 +526,7 @@
 	{/if}
 	{#if imageSubmitted}
 		<div class="container">
-			<div class="modal-info">
+			<div class="modal-info thank-you">
 				<h2>Thank you! Submission complete</h2>
 				<p style="text-align: center;">
 					Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.
@@ -571,7 +572,8 @@
 <style>
 	#canvas-container {
 		width: 100vw;
-		height: 100vh;
+		height: 100%;
+		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
 	}
 	.container {
 		background: rgba(0, 0, 0, 0.75);
@@ -582,7 +584,6 @@
 		height: 100%;
 		color: white;
 	}
-
 	#title {
 		position: fixed;
 		top: 0px;
@@ -814,6 +815,16 @@
 		display: flex;
 	}
 
+	.terms-and-conditions {
+		font-size: 16px;
+		line-height: 18px;
+		text-align: center;
+	}
+
+	.thank-you {
+		min-width: 500px;
+	}
+
 	.dot {
 		position: relative;
 		bottom: 0px;
@@ -848,26 +859,36 @@
 	}
 
 	@media (max-width: 500px) {
+		.terms-and-conditions {
+			font-size: 12px;
+		}
 		.modal-info {
 			width: 80vw;
 		}
-
 		#title {
 			font-size: 18px;
 			line-height: 20px;
 		}
+		.thank-you {
+			min-width: unset;
+		}
 	}
 	@media (max-height: 500px) {
+		.terms-and-conditions {
+			font-size: 12px;
+		}
 		.modal-info {
 			width: 80%;
 		}
-
 		#title {
 			font-size: 18px;
 			line-height: 20px;
 		}
 		.draw-settings {
 			gap: 10px;
+		}
+		.thank-you {
+			min-width: unset;
 		}
 	}
 </style>

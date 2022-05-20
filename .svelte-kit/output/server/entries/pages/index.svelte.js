@@ -28,7 +28,7 @@ const Gallery2 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 </div>`;
 });
 const css$1 = {
-  code: ".overlay.svelte-jfml84{color:white;width:100%;position:fixed;top:0px;display:flex;justify-content:space-between;align-items:center;z-index:1000}.icon-button.svelte-jfml84{position:initial}h2.svelte-jfml84{font-style:normal;font-weight:400;font-size:32px;line-height:38px;margin:0px;max-width:60vw;word-wrap:break-word}#remix.svelte-jfml84{position:absolute;top:10px;left:50%;transform:translateX(-50%)}@media(max-width: 500px){h2.svelte-jfml84{font-style:normal;font-weight:400;font-size:18px;line-height:20px;text-align:center;letter-spacing:0.05em}}",
+  code: ".overlay.svelte-18zfup0{color:white;width:100%;position:fixed;top:0px;display:flex;justify-content:space-between;align-items:center;z-index:1000}.icon-button.svelte-18zfup0{position:initial}h2.svelte-18zfup0{font-style:normal;font-weight:400;font-size:32px;line-height:38px;margin:0px;max-width:60vw;word-wrap:break-word;position:absolute;left:50%;transform:translateX(-50%);top:16px}#remix.svelte-18zfup0{position:absolute;top:10px;left:50%;transform:translateX(-50%)}@media(max-width: 500px){h2.svelte-18zfup0{font-style:normal;font-weight:400;font-size:18px;line-height:20px;text-align:center;letter-spacing:0.05em;top:10px}}@media(max-height: 500px){h2.svelte-18zfup0{font-style:normal;font-weight:400;font-size:18px;line-height:20px;text-align:center;letter-spacing:0.05em;top:10px}}",
   map: null
 };
 const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -43,13 +43,13 @@ const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   if ($$props.image === void 0 && $$bindings.image && image !== void 0)
     $$bindings.image(image);
   $$result.css.add(css$1);
-  return `<div class="${"overlay svelte-jfml84"}">${openComponent === "gallery" ? `<a href="${"/draw"}"><img${add_attribute("src", drawButtonSrc, 0)} alt="${"draw-button"}" class="${"icon-button svelte-jfml84"}"></a>
-		<h2 class="${"svelte-jfml84"}">Cloud Cities</h2>
-		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-jfml84"}"></a>` : ``}
-	${openComponent === "individualPost" ? `<img class="${"icon-button svelte-jfml84"}" alt="${"exit-button"}"${add_attribute("src", closeButtonSrc, 0)}>
-		<h2 class="${"svelte-jfml84"}">${escape(image.title)}</h2>
-		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-jfml84"}"></a>` : ``}
-	${openComponent === "remix" ? `<h2 id="${"remix"}" class="${"svelte-jfml84"}">Select a drawing to re/interpret</h2>` : ``}
+  return `<div class="${"overlay svelte-18zfup0"}">${openComponent === "gallery" ? `<a href="${"/draw"}"><img${add_attribute("src", drawButtonSrc, 0)} alt="${"draw-button"}" class="${"icon-button svelte-18zfup0"}"></a>
+		<h2 class="${"svelte-18zfup0"}">Cloud Cities</h2>
+		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-18zfup0"}"></a>` : ``}
+	${openComponent === "individualPost" ? `<img class="${"icon-button svelte-18zfup0"}" alt="${"exit-button"}"${add_attribute("src", closeButtonSrc, 0)}>
+		<h2 class="${"svelte-18zfup0"}">${escape(image.title)}</h2>
+		<a href="${"https://cloudcities.studiotomassaraceno.org"}"><img${add_attribute("src", aboutButtonSrc, 0)} alt="${"about-button"}" class="${"icon-button svelte-18zfup0"}"></a>` : ``}
+	${openComponent === "remix" ? `<h2 id="${"remix"}" class="${"svelte-18zfup0"}">Select a drawing to re/interpret</h2>` : ``}
 </div>`;
 });
 var start_svelte_svelte_type_style_lang = "";

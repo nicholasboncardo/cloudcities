@@ -35,7 +35,7 @@
       "_wpTitles-70103c61.js"
     ],
     "css": [
-      "assets/entries/pages/draw.svelte-940b7688.css"
+      "assets/entries/pages/draw.svelte-0a313efa.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -59,7 +59,7 @@
       "_index-fc226c31.js"
     ],
     "css": [
-      "assets/wpTitles-2972ee12.css"
+      "assets/wpTitles-46c47ad4.css"
     ]
   },
   ".svelte-kit/build/hooks.js": {

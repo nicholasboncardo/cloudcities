@@ -30,7 +30,7 @@ const diskStorage = multer.diskStorage({
 	filename: function (req, file, callback) {
 		//callback(null, `${file.fieldname}.png`);
 		uidSafe(12).then(function (uid) {
-			callback(null, uid);
+			callback(null, uid + '.png');
 		});
 	}
 });

@@ -171,7 +171,7 @@ p {
 	position: fixed;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
 	button {
 		color: white;
 		background: rgba(255, 255, 255, 0.25);
@@ -214,7 +214,7 @@ p {
 	}
 }
 
-@media (max-height: 500px) {
+@media (max-height: 650px) {
 	button {
 		color: white;
 		background: rgba(255, 255, 255, 0.25);

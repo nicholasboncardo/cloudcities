@@ -92,6 +92,10 @@
 		margin: 0px;
 		max-width: 60vw;
 		word-wrap: break-word;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 16px;
 	}
 
 	#remix {
@@ -109,6 +113,18 @@
 			line-height: 20px;
 			text-align: center;
 			letter-spacing: 0.05em;
+			top: 10px;
+		}
+	}
+	@media (max-height: 500px) {
+		h2 {
+			font-style: normal;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			text-align: center;
+			letter-spacing: 0.05em;
+			top: 10px;
 		}
 	}
 </style>
