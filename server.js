@@ -90,7 +90,7 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 				method: 'POST',
 				headers: {
 					'content-type': 'image/png',
-					'Content-Disposition': `attachment; filename=${req.file.filename}.png`,
+					'Content-Disposition': `attachment; filename=${req.file.filename}`,
 					Authorization: `Bearer ${result}`
 				},
 				body: fs.readFileSync(path)

@@ -2,7 +2,7 @@
 	import Draw from '../components/Testp5.svelte';
 	import Gallery from '../components/Gallery2.svelte';
 	import DrawInstructions from '../components/DrawInstructions.svelte';
-	import Overlay from '../components/overlay.svelte';
+	import Overlay from '../components/Overlay.svelte';
 	import { repoImages } from '../stores/repoImages';
 	import { onMount } from 'svelte';
 	import StartDrawModal from '../components/StartDrawModal.svelte';
@@ -10,11 +10,18 @@
 	import { drawInstruction } from '../stores/wpTexts';
 	import { drawStartTitle } from '../stores/wpTitles';
 	import { contributeModal } from '../stores/wpTexts';
+	import LandscapeModal from '../components/LandscapeModal.svelte';
+	import Submitting from '../components/Submitting.svelte';
+	import ImageSubmitted from '../components/ImageSubmittedModal.svelte';
 
 	let remix = false;
 	let drawInstructions = false;
 	let drawBackground;
 	let mobile;
+	let landscape;
+	let submitSuccess;
+	let disableDraw = false;
+
 	onMount(async () => {
 		window.addEventListener(
 			'gesturechange',
@@ -58,15 +65,58 @@
 			remix = false;
 			drawApp = true;
 			background = e.detail.link;
+			disableDraw = true;
 		} else {
 			startDrawApp = false;
 			drawApp = true;
 		}
 	};
 
+	const closeInstructions = () => {
+		drawInstructions = false;
+		disableDraw = false;
+		if (landscapeMode) {
+			landscape = true;
+		}
+	};
+
 	const chooseCanvas = () => {
 		remix = true;
 		startDrawApp = false;
+	};
+
+	let landscapeMode;
+	const openLandscape = () => {
+		landscapeMode = true;
+		if (!drawInstructions) {
+			landscape = true;
+		}
+	};
+
+	const closeLandscape = () => {
+		landscape = false;
+	};
+
+	let waiting;
+	const clickSubmit = () => {
+		waiting = true;
+		disableDraw = true;
+	};
+
+	const imageSubmitted = () => {
+		waiting = false;
+		submitSuccess = true;
+	};
+
+	const returnToDraw = () => {
+		submitSuccess = false;
+		disableDraw = false;
+	};
+	const cancelSubmit = () => {
+		disableDraw = false;
+	};
+	const returnHome = () => {
+		window.open('https://cloudcities.org', '_self');
 	};
 </script>
 
@@ -82,8 +132,21 @@
 	/>
 {/if}
 
+{#if landscape}
+	<LandscapeModal on:closeLandscape={closeLandscape} />
+{/if}
+
 {#if drawApp}
-	<Draw propValue={background} {drawInstructions} contributeModal={$contributeModal} {mobile} />
+	<Draw
+		propValue={background}
+		contributeModal={$contributeModal}
+		{mobile}
+		bind:disableDraw
+		on:openLandscapeModal={openLandscape}
+		on:imageSubmitted={imageSubmitted}
+		on:clickSubmit={clickSubmit}
+		on:cancelSubmit={cancelSubmit}
+	/>
 {/if}
 
 {#if remix}
@@ -95,6 +158,14 @@
 	<DrawInstructions
 		propValue={background}
 		drawInstructions={$drawInstruction}
-		on:closeInstructions={() => (drawInstructions = false)}
+		on:closeInstructions={closeInstructions}
 	/>
+{/if}
+
+{#if waiting}
+	<Submitting />
+{/if}
+
+{#if submitSuccess}
+	<ImageSubmitted on:returnToDraw={returnToDraw} on:returnHome={returnHome} />
 {/if}

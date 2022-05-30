@@ -1,7 +1,7 @@
 <script>
 	import Gallery2 from '../components/Gallery2.svelte';
-	import Overlay from '../components/overlay.svelte';
-	import Start from '../components/start.svelte';
+	import Overlay from '../components/Overlay.svelte';
+	import Start from '../components/Start.svelte';
 	import IndividualPost from '../components/IndividualPost.svelte';
 	import Loading from '../components/Loading.svelte';
 	import { repoImages } from '../stores/repoImages';
@@ -24,7 +24,7 @@
 		}
 	});
 
-	let component = 'gallery';
+	$: component = 'gallery';
 	const leaveStartPage = () => {
 		start = false;
 	};

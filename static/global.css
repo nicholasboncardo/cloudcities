@@ -117,7 +117,7 @@ h2 {
 	padding: 10px;
 	gap: 20px;
 	width: 50%;
-	min-width: 300px;
+	min-width: 450px;
 	max-width: 690px;
 }
 
@@ -212,6 +212,11 @@ p {
 		font-size: 16px;
 		line-height: 18px;
 	}
+	.modal-info {
+		gap: 10px;
+		width: 80%;
+		min-width: unset;
+	}
 }
 
 @media (max-height: 650px) {
@@ -245,6 +250,7 @@ p {
 	}
 	.modal-info {
 		gap: 5px;
+		min-width: unset;
 	}
 	#title {
 		font-size: 18px;

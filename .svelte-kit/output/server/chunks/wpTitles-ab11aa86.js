@@ -61,7 +61,7 @@ const getImages = async (count2) => {
 };
 getImages(count);
 var Gallery2_svelte_svelte_type_style_lang = "";
-var overlay_svelte_svelte_type_style_lang = "";
+var Overlay_svelte_svelte_type_style_lang = "";
 const welcomeToCloudCities = writable([]);
 const cloudsToBe = writable([]);
 const drawInstruction = writable([]);

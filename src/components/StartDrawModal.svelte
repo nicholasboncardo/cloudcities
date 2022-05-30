@@ -176,12 +176,11 @@
 		margin: 0px;
 		top: 10px;
 	}
+	.enter-button {
+		width: 33%;
+	}
 
 	@media (max-width: 500px) {
-		.modal-info {
-			width: 80%;
-		}
-
 		#title {
 			position: fixed;
 			font-weight: 400;
@@ -199,9 +198,6 @@
 		}
 	}
 	@media (max-height: 500px) {
-		.modal-info {
-			width: 80%;
-		}
 		#title {
 			position: fixed;
 			font-weight: 400;

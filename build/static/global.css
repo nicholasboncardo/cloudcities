@@ -117,7 +117,7 @@ h2 {
 	padding: 10px;
 	gap: 20px;
 	width: 50%;
-	min-width: 300px;
+	min-width: 450px;
 	max-width: 690px;
 }
 
@@ -171,7 +171,7 @@ p {
 	position: fixed;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
 	button {
 		color: white;
 		background: rgba(255, 255, 255, 0.25);
@@ -212,9 +212,14 @@ p {
 		font-size: 16px;
 		line-height: 18px;
 	}
+	.modal-info {
+		gap: 10px;
+		width: 80%;
+		min-width: unset;
+	}
 }
 
-@media (max-height: 500px) {
+@media (max-height: 650px) {
 	button {
 		color: white;
 		background: rgba(255, 255, 255, 0.25);
@@ -245,6 +250,7 @@ p {
 	}
 	.modal-info {
 		gap: 5px;
+		min-width: unset;
 	}
 	#title {
 		font-size: 18px;

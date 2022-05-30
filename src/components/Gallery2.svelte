@@ -5,6 +5,7 @@
 	const dispatch = createEventDispatcher();
 	export let repoImages;
 	export let remix;
+
 	const openImage = (e) => {
 		if (remix) {
 			dispatch('drawOnImage', e);
@@ -16,14 +17,16 @@
 	let imageDetail = true;
 
 	const showImageDetail = (e) => {
-		if (imageDetail) {
-			e.srcElement.children[1].style.visibility = 'visible';
-			e.srcElement.children[0].children[0].style.transform = 'scale(1.2)';
-		} else {
-			e.srcElement.children[1].style.visibility = 'hidden';
-			e.srcElement.children[0].children[0].style.transform = 'scale(1)';
+		if (createInfoModals) {
+			if (imageDetail) {
+				e.srcElement.children[1].style.visibility = 'visible';
+				e.srcElement.children[0].children[0].style.transform = 'scale(1.2)';
+			} else {
+				e.srcElement.children[1].style.visibility = 'hidden';
+				e.srcElement.children[0].children[0].style.transform = 'scale(1)';
+			}
+			imageDetail = !imageDetail;
 		}
-		imageDetail = !imageDetail;
 	};
 
 	//load on scroll
@@ -65,7 +68,7 @@
 				return;
 			} else if (gallery.scrollTop + window.innerHeight > gallery.scrollHeight - 100 && scroll) {
 				if (count > repoImages) {
-					//we request images than are in the repo so stop
+					//we request more images than are in the repo so stop
 					return;
 				}
 				count += 10;

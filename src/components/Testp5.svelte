@@ -1,9 +1,12 @@
 <script>
 	import P5 from 'p5-svelte';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 	export let propValue;
 	export let contributeModal;
-	export let drawInstructions;
 	export let mobile;
+	export let disableDraw; //set true when user moves over canvas on mobile
+
 	let backgroundImage = propValue;
 
 	let contributeText = contributeModal.map((element) => {
@@ -27,22 +30,19 @@
 	let blue = 0;
 	let green = 0;
 
-	let moveCanvas; //set true when user moves over canvas on mobile
-
 	let redoFunction;
-	let encourageLandscape;
 	const sketch = (p5) => {
 		let image;
 
 		p5.preload = () => {
 			image = p5.loadImage(backgroundImage);
 		};
-		let canvas;
 		let canvasWidth;
 		let canvasHeight;
 		p5.setup = () => {
 			if (image.width > image.height && mobile) {
-				encourageLandscape = true;
+				//encourageLandscape = true;
+				dispatch('openLandscapeModal');
 			}
 			//Handle width of canvas based on
 			canvasHeight = image.height / (image.width / p5.windowWidth);
@@ -50,16 +50,16 @@
 
 			if (p5.windowWidth >= 500) {
 				if (p5.windowHeight < 500) {
-					canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+					p5.createCanvas(p5.windowWidth, p5.windowHeight);
 				} else if (canvasHeight < p5.windowHeight) {
-					canvas = p5.createCanvas(canvasWidth, p5.windowHeight);
+					p5.createCanvas(canvasWidth, p5.windowHeight);
 				} else {
-					canvas = p5.createCanvas(p5.windowWidth, canvasHeight);
+					p5.createCanvas(p5.windowWidth, canvasHeight);
 				}
 			} /*else if (p5.windowWidth < 500 && image.width < image.height) {
 				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			} */ else if (p5.windowWidth < 500) {
-				canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+				p5.createCanvas(p5.windowWidth, p5.windowHeight);
 			}
 			p5.background(image);
 
@@ -86,18 +86,14 @@
 				p5.background(image);
 			};
 		};
-		/*
-		if (mobile) {
-			window.onresize = p5.resizeCanvas();
-		}
-		*/
+
 		let x = 0,
 			y = 0,
 			px = 0,
 			py = 0,
 			easing = 0.3;
 		p5.mousePressed = () => {
-			if (finishedDrawing || moveCanvas || pallette || overButton || drawInstructions) {
+			if (finishedDrawing || disableDraw || pallette) {
 				return;
 			}
 			// Assign current mouse position to variables.
@@ -109,7 +105,7 @@
 			return false;
 		};
 		p5.touchMoved = () => {
-			if (finishedDrawing || moveCanvas || pallette || overButton || drawInstructions) {
+			if (finishedDrawing || disableDraw || pallette) {
 				return;
 			}
 			let targetX = p5.mouseX;
@@ -145,9 +141,9 @@
 				}
 			} else if (p5.windowHeight < 500) {
 				if (canvasHeight < p5.windowHeight) {
-					canvas = p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+					p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 				} else {
-					canvas = p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+					p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
 				}
 			} else if (p5.windowWidth < 500) {
 				p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
@@ -157,7 +153,6 @@
 	};
 
 	//set color
-
 	//set stroke width and highlight chosen width with white background
 	let strokeButtons = document.getElementsByClassName('stroke-button');
 	const setStrokeWidth = (e) => {
@@ -198,17 +193,6 @@
 	let clickSubmit = false;
 	let serverResponse = false;
 	const submitImage = () => {
-		clickSubmit = true;
-		finishedDrawing = false;
-		setTimeout(() => {
-			if (!serverResponse) {
-				imageSubmitted = true;
-				clickSubmit = false;
-				serverResponse = true;
-			} else {
-				serverResponse = false;
-			}
-		}, 10000);
 		if (
 			(canvasTitle && canvasTitle.length > 50) ||
 			(canvasLocation && canvasLocation.length > 30) ||
@@ -217,6 +201,19 @@
 			return;
 		}
 		if (canvasTitle && allowUpload) {
+			dispatch('clickSubmit');
+			clickSubmit = true;
+			finishedDrawing = false;
+			setTimeout(() => {
+				if (!serverResponse) {
+					//imageSubmitted = true;
+					clickSubmit = false;
+					serverResponse = true;
+					dispatch('imageSubmitted');
+				} else {
+					serverResponse = false;
+				}
+			}, 10000);
 			uploads = JSON.parse(localStorage.getItem('cloudUploads'));
 			uploads.push('upload');
 			localStorage.setItem('cloudUploads', JSON.stringify(uploads));
@@ -237,15 +234,14 @@
 					allowUpload = true;
 					if (!serverResponse) {
 						serverResponse = true;
-						imageSubmitted = true;
 						clickSubmit = false;
+						dispatch('imageSubmitted');
 					} else {
 						serverResponse = false;
 					}
 				});
 			});
 			finishedDrawing = false;
-			moveCanvas = true;
 		} else if (!allowUpload) {
 			return;
 		} else {
@@ -276,13 +272,12 @@
 		green = e.srcElement.value;
 	};
 
-	let overButton = false;
 	const mouseEnterButton = () => {
-		overButton = true;
+		disableDraw = true;
 	};
 
 	const mouseLeaveButton = () => {
-		overButton = false;
+		disableDraw = false;
 	};
 
 	//enable click on repo on moble (instead a.href)
@@ -300,7 +295,7 @@
 			if (finishedDrawing) {
 				finishedDrawing = false;
 			}
-			overButton = false;
+			disableDraw = false;
 		}
 	};
 
@@ -333,16 +328,10 @@
 		}
 	};
 
-	const returnToDraw = () => {
-		finishedDrawing = false;
-		imageSubmitted = false;
-		moveCanvas = false;
-		overButton = false;
-	};
-
 	const cancelSubmit = () => {
 		finishedDrawing = false;
-		overButton = false;
+		dispatch('cancelSubmit');
+		//disableDraw = false;
 	};
 
 	const goToAbout = () => {
@@ -355,17 +344,6 @@
 </script>
 
 <div id="canvas-container">
-	{#if encourageLandscape && !drawInstructions}
-		<div id="landscapemodal">
-			<div class="modal-info">
-				<p>We recommend rotating your device into landscape mode before you begin.</p>
-				<button
-					on:click={() => (encourageLandscape = false)}
-					on:touchstart={() => (encourageLandscape = false)}>I’ve rotated my device</button
-				>
-			</div>
-		</div>
-	{/if}
 	<P5 {sketch} />
 	<h2 id="title">Cloud Cities</h2>
 	<div class="icon-button about-button" on:click={goToAbout} />
@@ -499,48 +477,14 @@
 				</div>
 				<button id="cancel-button" on:click={cancelSubmit}>{contributeText[6]}</button>
 				{#if notEnoughInfo}
-					<p>
+					<p style="text-align: center;">
 						We are missing information to complete your Cloud Cities submission. Please tell us more
 						about your drawing! Please note: Location and Name are optional.
 					</p>
 				{/if}
 			</div>
-			<!--
-				<div
-				class="icon-button exit-button"
-				on:click={handleExitButton}
-				on:touchstart={handleExitButton}
-			/>
-			-->
 		</div>
 	{/if}
-	{#if clickSubmit}
-		<div class="container">
-			<div id="submit-line">
-				<h2 id="submitting">Submitting</h2>
-				<h2 class="dot dot-1">.</h2>
-				<h2 class="dot dot-2">.</h2>
-				<h2 class="dot dot-3">.</h2>
-			</div>
-		</div>
-	{/if}
-	{#if imageSubmitted}
-		<div class="container">
-			<div class="modal-info thank-you">
-				<h2>Thank you! Submission complete</h2>
-				<p style="text-align: center;">
-					Your drawing will be reviewed shortly and subsequently published onto Cloud Cities.
-				</p>
-				<div class="flex-row">
-					<button on:click={returnToDraw} on:touchstart={returnToDraw}>Return to drawing</button>
-					<button on:click={redirectMobile} on:touchstart={redirectMobile}
-						>Visit the repository</button
-					>
-				</div>
-			</div>
-		</div>
-	{/if}
-
 	{#if !pallette && !finishedDrawing}
 		<div
 			class="icon-button finished-drawing-button"
@@ -554,7 +498,7 @@
 			class="icon-button pallette-button"
 			id="p-button"
 			on:click={openPallette}
-			on:touchstart={() => (pallette = !pallette)}
+			on:touchstart={openPallette}
 			on:mouseenter={mouseEnterButton}
 			on:mouseleave={mouseLeaveButton}
 		/>
@@ -593,7 +537,6 @@
 		font-weight: 400;
 		font-size: 32px;
 		line-height: 38px;
-		/*text-shadow: 0px 0px 3px #ffffff;*/
 		margin: 0px;
 		top: 8px;
 	}
@@ -611,6 +554,7 @@
 	.draw-settings {
 		width: 300px;
 		padding: 10px;
+		gap: 20px;
 	}
 
 	.stroke-color {
@@ -691,7 +635,7 @@
 		right: 0px;
 		background-image: url('/icon_info.png');
 		position: fixed;
-		z-index: 100;
+		z-index: 10000;
 	}
 
 	.about-button:hover {
@@ -780,39 +724,8 @@
 		width: 100%;
 	}
 
-	#landscapemodal {
-		position: fixed;
-		top: 0px;
-		width: 100vw;
-		height: 100vh;
-		background: linear-gradient(0deg, #ffffff 0%, #0094ff 100%);
-		color: white;
-		z-index: 10;
-	}
-	#landscapemodal > .modal-info {
-		padding: 10px;
-		gap: 20px;
-		background: rgba(0, 0, 0, 0.25);
-		backdrop-filter: blur(26px);
-	}
-	#landscapemodal > .modal-info > p {
-		margin: 0px;
-		text-align: center;
-	}
-	#landscapemodal > .modal-info > button {
-		width: 100%;
-	}
-
 	.modal-info > .flex-row {
 		margin: 0px;
-	}
-
-	#submit-line {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: flex;
 	}
 
 	.terms-and-conditions {
@@ -821,64 +734,18 @@
 		text-align: center;
 	}
 
-	.thank-you {
-		min-width: 500px;
-	}
-
-	.dot {
-		position: relative;
-		bottom: 0px;
-		margin-left: 3px;
-		animation: jump 1s infinite;
-	}
-	.dot-1 {
-		-webkit-animation-delay: 100ms;
-		animation-delay: 100ms;
-	}
-
-	.dot-2 {
-		-webkit-animation-delay: 200ms;
-		animation-delay: 200ms;
-	}
-
-	.dot-3 {
-		-webkit-animation-delay: 300ms;
-		animation-delay: 300ms;
-	}
-
-	@keyframes jump {
-		0% {
-			bottom: 0px;
-		}
-		20% {
-			bottom: 5px;
-		}
-		40% {
-			bottom: 0px;
-		}
-	}
-
 	@media (max-width: 500px) {
 		.terms-and-conditions {
 			font-size: 12px;
-		}
-		.modal-info {
-			width: 80vw;
 		}
 		#title {
 			font-size: 18px;
 			line-height: 20px;
 		}
-		.thank-you {
-			min-width: unset;
-		}
 	}
 	@media (max-height: 500px) {
 		.terms-and-conditions {
 			font-size: 12px;
-		}
-		.modal-info {
-			width: 80%;
 		}
 		#title {
 			font-size: 18px;
@@ -886,9 +753,6 @@
 		}
 		.draw-settings {
 			gap: 10px;
-		}
-		.thank-you {
-			min-width: unset;
 		}
 	}
 </style>

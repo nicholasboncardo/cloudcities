@@ -1,5 +1,5 @@
 import { c as create_ssr_component, d as createEventDispatcher, f as each, g as add_attribute, e as escape, a as subscribe, v as validate_component } from "../../chunks/index-fc226c31.js";
-import { w as welcomeToCloudCities, r as repoImages, e as welcomeTitle } from "../../chunks/wpTitles-70103c61.js";
+import { w as welcomeToCloudCities, r as repoImages, e as welcomeTitle } from "../../chunks/wpTitles-ab11aa86.js";
 const css$2 = {
   code: ".gallery.svelte-icgujv.svelte-icgujv{background:linear-gradient(0deg, #ffffff 0%, #0094ff 100%);overflow-x:hidden;-webkit-overflow-scrolling:touch;overflow-y:scroll;width:100vw;height:100vh;display:grid;grid-template-columns:1fr 1fr 1fr 1fr}.flex-container.svelte-icgujv.svelte-icgujv{display:flex;flex-direction:column;gap:0px}.gallery-item.svelte-icgujv.svelte-icgujv{width:100%;position:relative;cursor:pointer}.gallery-item.svelte-icgujv .image.svelte-icgujv{display:grid;width:100%;overflow:hidden}.gallery-item.svelte-icgujv .image img.svelte-icgujv{width:100%;object-fit:fill}.img-info.svelte-icgujv.svelte-icgujv{position:absolute;left:0px;top:0px;width:100%;height:100%;align-items:flex-start;text-align:start;background-color:rgb(0, 0, 0, 0.24);color:white}.info-text.svelte-icgujv.svelte-icgujv{position:absolute;bottom:0px;margin-left:10px}.info-text.svelte-icgujv>h2.svelte-icgujv{margin-top:5px;display:flex;text-align:left;line-height:unset}p.svelte-icgujv.svelte-icgujv{margin:0px;font-size:unset;line-height:unset}.desc-text.svelte-icgujv.svelte-icgujv{margin-top:5px;font-size:20px}img.svelte-icgujv.svelte-icgujv:hover{transform:scale(1.2);-ms-transform:scale(1.2);-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2)}@media(max-width: 1500px){.gallery.svelte-icgujv.svelte-icgujv{grid-template-columns:1fr 1fr 1fr}}@media(max-width: 700px){.gallery.svelte-icgujv.svelte-icgujv{grid-template-columns:1fr 1fr}}@media(max-width: 500px){.gallery.svelte-icgujv.svelte-icgujv{grid-template-columns:1fr}}",
   map: null
@@ -52,7 +52,7 @@ const Overlay = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 	${openComponent === "remix" ? `<h2 id="${"remix"}" class="${"svelte-18zfup0"}">Select a drawing to re/interpret</h2>` : ``}
 </div>`;
 });
-var start_svelte_svelte_type_style_lang = "";
+var Start_svelte_svelte_type_style_lang = "";
 var IndividualPost_svelte_svelte_type_style_lang = "";
 var Loading_svelte_svelte_type_style_lang = "";
 const css = {
@@ -65,14 +65,15 @@ const Loading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 </div>`;
 });
 const Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let component;
   let $welcomeToCloudCities, $$unsubscribe_welcomeToCloudCities;
   let $repoImages, $$unsubscribe_repoImages;
   let $welcomeTitle, $$unsubscribe_welcomeTitle;
   $$unsubscribe_welcomeToCloudCities = subscribe(welcomeToCloudCities, (value) => $welcomeToCloudCities = value);
   $$unsubscribe_repoImages = subscribe(repoImages, (value) => $repoImages = value);
   $$unsubscribe_welcomeTitle = subscribe(welcomeTitle, (value) => $welcomeTitle = value);
-  let component = "gallery";
   let chosenImage;
+  component = "gallery";
   $$unsubscribe_welcomeToCloudCities();
   $$unsubscribe_repoImages();
   $$unsubscribe_welcomeTitle();
