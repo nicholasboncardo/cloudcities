@@ -11,17 +11,16 @@ const __dirname = dirname(__filename);
 const port = process.env.PORT || 3000;
 const multer = require('multer');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const { base64encode } = require('nodejs-base64');
 
 let uidSafe = require('uid-safe');
 
-const { STS_user, STS_pw } = require('./secrets.json');
 
 app.use((req, res, next) => {
 	res.setHeader('x-frame-options', 'deny');
 	next();
 });
 
-//app.use(express.json());
 
 const diskStorage = multer.diskStorage({
 	destination: function (req, file, callback) {
@@ -58,7 +57,7 @@ const multerMiddeWare = (req, res, next) => {
 };
 app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 	let { path } = req.file;
-	let token;
+	//let token;
 
 	if (req.body.userUploads > 30) {
 		fs.unlink(path, () => {
@@ -67,67 +66,51 @@ app.post('/addPostfromServer', multerMiddeWare, (req, res) => {
 		return;
 	}
 
-	fetch('https://cloudcities.studiotomassaraceno.org/wp-json/jwt-auth/v1/token', {
+	fetch('https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media', {
 		method: 'POST',
 		headers: {
-			'content-type': 'application/json',
-			accept: 'application/json'
+			'content-type': 'image/png',
+			'Content-Disposition': `attachment; filename=${req.file.filename}`,
+			Authorization: 'Basic ' + base64encode('admin_STS:U9Sd dezD EVpU gViH 06t6 Y7N3')
 		},
-		body: JSON.stringify({
-			username: STS_user,
-			password: STS_pw
-		})
+		body: fs.readFileSync(path)
 	})
 		.then((result) => {
+			res.sendStatus(200);
 			return result.json();
 		})
 		.then((result) => {
-			return result.token;
-		})
-		.then((result) => {
-			token = result;
-			fetch('https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media', {
+			let imageID = result.id;
+			fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media/${imageID}`, {
 				method: 'POST',
 				headers: {
-					'content-type': 'image/png',
-					'Content-Disposition': `attachment; filename=${req.file.filename}`,
-					Authorization: `Bearer ${result}`
+					'content-type': 'application/json',
+					accept: 'application/json',
+					Authorization: 'Basic ' + base64encode('admin_STS:U9Sd dezD EVpU gViH 06t6 Y7N3')
 				},
-				body: fs.readFileSync(path)
-			})
-				.then((result) => {
-					res.sendStatus(200);
-					return result.json();
+				body: JSON.stringify({
+					title: req.body.title,
+					//description: req.body.description,
+					caption: req.body.location,
+					alt_text: req.body.name
 				})
-				.then((result) => {
-					let imageID = result.id;
-					fetch(`https://cloudcities.studiotomassaraceno.org/wp-json/wp/v2/media/${imageID}`, {
-						method: 'POST',
-						headers: {
-							'content-type': 'application/json',
-							accept: 'application/json',
-							Authorization: `Bearer ${token}`
-						},
-						body: JSON.stringify({
-							title: req.body.title,
-							//description: req.body.description,
-							caption: req.body.location,
-							alt_text: req.body.name
-						})
-					}).then(() => {
-						fs.unlink(path, () => {
-							console.log('file deleted');
-						});
+			})
+				.then(() => {
+					fs.unlink(path, () => {
+						console.log('file deleted');
 					});
 				})
 				.catch((error) => {
-					res.sendStatus(500);
 					console.log('error: ', error);
 				});
+		})
+		.catch((error) => {
+			res.sendStatus(500);
+			console.log('error: ', error);
 		});
 });
 
 app.use(handler);
 app.listen(port, () => {
-	console.log(`listening on port ${port}`);
+	console.log(`Now listening on port ${port}`);
 });
